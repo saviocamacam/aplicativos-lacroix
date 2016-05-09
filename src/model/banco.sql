@@ -1,36 +1,34 @@
-create table if not exists curso(
-       idCurso integer auto_increment not null,
-       idNivel integer not null,
-       idInstituicao integer not null,
-       idRegime integer not null,
+drop table if exists instituicao;
+drop table if exists curso;
 
+create table if not exists instituicao(
+       idInstituicao serial,
+       nomeInstituicao varchar(50),
+       primary key(idInstituicao)
+);
+create table if not exists curso(
+       idCurso serial,
+       nivel varchar(50),
+       regime integer not null,
+       idInstituicao integer not null,
+       
        nomeCurso varchar(50),
        qtdPeriodos integer,
        cidade varchar(60),
-
-       primary key (idCurso),
---TODO
-       foreign key(idNivel) references nivel(idNivel),
-       foreign key(idInstituicao) references instituicao(idInstituicao),
- );
-
+       constraint pk_curso primary key (idCurso),
+       constraint fk_curso_instituicao foreign key(idInstituicao) references instituicao(idInstituicao)
+);
 create table if not exists periodo(
-       idPeriodo integer auto_increment not null,
+       idPeriodo serial,
        idCurso integer,
-       idRegime integer not null,
        dataInicio date,
        dataTermino date,
 
-       primary key( idPeriodo ),
-       foreign key( idCurso ) references curso(idCurso)
+       primary key(idPeriodo),
+       constraint fk_periodo_curso foreign key(idCurso) references curso(idCurso)
 );
 
-create table if not exists instituicao(
-       idInstituicao integer auto_increment,
-       nomeInstituicao varchar(50),
 
-       primary key( idInstituicao )
-);
 
 create table if not exists professor(
        idProfessor integer auto_increment,
