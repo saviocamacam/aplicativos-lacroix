@@ -23,7 +23,7 @@ public class Curso {
 		this.nomeDoCurso = nomeDoCurso;
 		this.qtdPeriodos = qtdPeriodos;
 		this.cidade = cidade;
-		this.periodos = new ArrayList<>();
+		this.setPeriodos(new ArrayList<>());
 	}
 	
 	public long getIdCurso() {
@@ -80,6 +80,14 @@ public class Curso {
 	
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public ArrayList<Periodo> getPeriodos() {
+		return periodos;
+	}
+
+	public void setPeriodos(ArrayList<Periodo> periodos) {
+		this.periodos = periodos;
 	}
 	
 }
