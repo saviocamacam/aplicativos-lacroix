@@ -31,7 +31,7 @@ create table if not exists periodo(
 
 
 create table if not exists professor(
-       idProfessor integer auto_increment,
+       idProfessor integer serial,
        idInstituicao integer,
        nomeProfessor varchar(40),
        email varhcar(40),
@@ -51,7 +51,7 @@ create table if not exists materia(
 );
 
 create table if not exists aula(
-       idAula integer auto_increment,
+       idAula integer serial,
        idMateria integer,
        horaInicial date,
        horaFinal date,
@@ -62,7 +62,7 @@ create table if not exists aula(
 );
 
 create table if not exists evento(
-       idEvento integer auto_increment,
+       idEvento integer serial,
        tipoEvento integer,
        idMateria integer,
        dataEvento date,
