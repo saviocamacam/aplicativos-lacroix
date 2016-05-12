@@ -2,14 +2,18 @@ package model;
 
 public class Instituicao {
 	
-	private int idINstituicao;
+	private int idInstituicao;
 	private String nomeInstituicao;
 	
+	public Instituicao() {
+		
+	}
+	
 	public int getIdINstituicao() {
-		return idINstituicao;
+		return idInstituicao;
 	}
 	public void setIdINstituicao(int idINstituicao) {
-		this.idINstituicao = idINstituicao;
+		this.idInstituicao = idINstituicao;
 	}
 	public String getNomeInstituicao() {
 		return nomeInstituicao;
