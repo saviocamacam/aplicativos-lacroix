@@ -1,13 +1,12 @@
 package view;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class CadastroInstituicao extends JPanel {
+public class CadastroInstituicao extends JPanel implements Submitable{
 	private JTextField textField;
 	private JTextField textField_1;
 
@@ -73,6 +72,12 @@ public class CadastroInstituicao extends JPanel {
 		);
 		setLayout(groupLayout);
 
+	}
+
+	@Override
+	public void submit() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

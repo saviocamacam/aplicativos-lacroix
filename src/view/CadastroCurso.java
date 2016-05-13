@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
-public class CadastroCurso extends JPanel {
+public class CadastroCurso extends JPanel implements Submitable {
 	private JTextField textField;
 
 	/**
@@ -59,5 +59,11 @@ public class CadastroCurso extends JPanel {
 		panelCurso.add(label_4);
 		add(panelCurso);
 
+	}
+
+	@Override
+	public void submit() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,38 +1,44 @@
 package view;
 
-import javax.swing.JPanel;
+import java.util.Date;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class CadastroUsuario extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+import controller.UsuarioController;
+import model.Usuario;
+
+public class CadastroUsuario extends JPanel implements Submitable {
+	private JTextField txtNome;
+	private JTextField txtRA;
+	private JTextField fmtTxtNascimento;
+	private UsuarioController controller;
 
 	/**
 	 * Create the panel.
 	 */
 	public CadastroUsuario() {
-		
+		controller = new UsuarioController(this);
 		JPanel panelUsuario = new JPanel();
 		
-		JLabel label = new JLabel("Nome");
+		JLabel lblNome = new JLabel("Nome");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
 		
-		JLabel label_1 = new JLabel("RA");
+		JLabel lblRA = new JLabel("RA");
 		
-		textField_1 = new JTextField();
-		textField_1.setToolTipText("");
-		textField_1.setColumns(10);
+		txtRA = new JTextField();
+		txtRA.setToolTipText("");
+		txtRA.setColumns(10);
 		
-		JLabel label_2 = new JLabel("Data de Nascimento");
+		JLabel lblDataNascimento = new JLabel("Data de Nascimento");
+		fmtTxtNascimento = new JTextField();
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
 		GroupLayout gl_panelUsuario = new GroupLayout(panelUsuario);
 		gl_panelUsuario.setHorizontalGroup(
 			gl_panelUsuario.createParallelGroup(Alignment.LEADING)
@@ -41,17 +47,17 @@ public class CadastroUsuario extends JPanel {
 					.addGap(14)
 					.addGroup(gl_panelUsuario.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_panelUsuario.createSequentialGroup()
-							.addComponent(label)
+							.addComponent(lblNome)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panelUsuario.createSequentialGroup()
-							.addComponent(label_2)
+							.addComponent(lblDataNascimento)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(formattedTextField)))
+							.addComponent(fmtTxtNascimento)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(label_1)
+					.addComponent(lblRA)
 					.addGap(4)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtRA, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
 					.addGap(27))
 		);
 		gl_panelUsuario.setVerticalGroup(
@@ -62,17 +68,17 @@ public class CadastroUsuario extends JPanel {
 						.addGroup(gl_panelUsuario.createSequentialGroup()
 							.addGap(10)
 							.addGroup(gl_panelUsuario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNome)
+								.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panelUsuario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_2)
-								.addComponent(formattedTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(lblDataNascimento)
+								.addComponent(fmtTxtNascimento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_panelUsuario.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_panelUsuario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1))))
+								.addComponent(txtRA, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblRA))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panelUsuario.setLayout(gl_panelUsuario);
@@ -92,5 +98,19 @@ public class CadastroUsuario extends JPanel {
 		setLayout(groupLayout);
 
 	}
-
+	
+	
+	@Override
+	public void submit() {
+		/*
+		 * 	TODO: 	- Fix date format and date panel
+		 * 			- Date is deprecated
+		 */
+		Usuario usuario = new Usuario(
+				Long.valueOf(txtRA.getText()),
+				txtNome.getText(), 
+				new Date(fmtTxtNascimento.getText())
+				);
+		controller.submit(usuario);
+	}
 }
