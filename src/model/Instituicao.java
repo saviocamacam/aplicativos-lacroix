@@ -4,16 +4,26 @@ public class Instituicao {
 	
 	private int idInstituicao;
 	private String nomeInstituicao;
+	private String nomeCidade;
 	
-	public Instituicao() {
-		
+	public Instituicao(String nomeInstituicao, String cidade) {
+		setNomeInstituicao(nomeInstituicao);
+		setNomeCidade(cidade);
 	}
 	
-	public int getIdINstituicao() {
+	private void setNomeCidade(String cidade) {
+		this.nomeCidade = cidade;
+	}
+	
+	public String getNomeCidade() {
+		return this.nomeCidade;
+	}
+
+	public int getIdInstituicao() {
 		return idInstituicao;
 	}
-	public void setIdINstituicao(int idINstituicao) {
-		this.idInstituicao = idINstituicao;
+	public void setIdINstituicao(int idInstituicao) {
+		this.idInstituicao = idInstituicao;
 	}
 	public String getNomeInstituicao() {
 		return nomeInstituicao;

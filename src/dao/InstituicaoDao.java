@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Instituicao;
@@ -26,9 +27,16 @@ public class InstituicaoDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        String sql = "INSERT INTO jogador VALUES(? ,?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO instituicao VALUES(? ,?, )";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(2, instituicao.getNomeInstituicao());
+			stmt.setString(3, instituicao.getNomeCidade());
+			stmt.executeQuery();
+			ResultSet keys = stmt.getGeneratedKeys();
+			keys.next();
+			instituicao.setIdINstituicao(keys.getInt(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
