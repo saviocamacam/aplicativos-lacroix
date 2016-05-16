@@ -18,6 +18,13 @@ public class InstituicaoDao {
 		this.daoManager = daoManager;
 	}
 	
+	public void createTable() throws SQLException {
+		Connection conn = daoManager.getConnection();
+		String sql = "create table if not exists instituicao(idInstituicao serial, nomeInstituicao varchar(50),primary key(idInstituicao))";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.executeQuery();
+	}
+	
 	public void inserirInstituicao(Instituicao instituicao) {
 		
 		Connection conn = null;
