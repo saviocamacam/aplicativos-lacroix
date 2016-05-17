@@ -9,10 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import controller.Submitable;
 import controller.UsuarioController;
 import model.Usuario;
 
-public class CadastroUsuario extends JPanel implements Submitable {
+public class CadastroUsuario extends JPanel{
 	private JTextField txtNome;
 	private JTextField txtRA;
 	private JTextField fmtTxtNascimento;
@@ -99,18 +100,4 @@ public class CadastroUsuario extends JPanel implements Submitable {
 
 	}
 	
-	
-	@Override
-	public void submit() {
-		/*
-		 * 	TODO: 	- Fix date format and date panel
-		 * 			- Date is deprecated
-		 */
-		Usuario usuario = new Usuario(
-				Long.valueOf(txtRA.getText()),
-				txtNome.getText(), 
-				new Date(fmtTxtNascimento.getText())
-				);
-		controller.submit(usuario);
-	}
 }

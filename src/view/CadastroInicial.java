@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class CadastroInicial extends JPanel implements Submitable {
+import controller.Submitable;
+
+public class CadastroInicial extends JPanel{
 
 	CadastroUsuario cadastroUsuario;
 	CadastroInstituicao cadastroInstituicao;
@@ -74,12 +76,5 @@ public class CadastroInicial extends JPanel implements Submitable {
 			}
 		});
 
-	}
-
-	@Override
-	public void submit() {
-		cadastroUsuario.submit();
-		cadastroInstituicao.submit();
-		cadastroCurso.submit();
 	}
 }
