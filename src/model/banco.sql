@@ -4,6 +4,7 @@ drop table if exists curso;
 create table if not exists instituicao(
        idInstituicao serial,
        nomeInstituicao varchar(50),
+       cidade varchar(50),
        primary key(idInstituicao)
 );
 create table if not exists curso(

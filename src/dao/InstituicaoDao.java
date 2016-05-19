@@ -34,22 +34,19 @@ public class InstituicaoDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        String sql = "INSERT INTO instituicao VALUES(? ,?, )";
+        String sql = "INSERT INTO instituicao (nomeinstituicao, cidade) VALUES(? ,?) RETURNING 'idinstituicao'";
         try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(2, instituicao.getNomeInstituicao());
-			stmt.setString(3, instituicao.getNomeCidade());
+			PreparedStatement stmt = conn.prepareStatement(sql);	
+			stmt.setString(1, instituicao.getNomeInstituicao());
+			stmt.setString(2, instituicao.getNomeCidade());
 			stmt.executeQuery();
+			
 			ResultSet keys = stmt.getGeneratedKeys();
-			keys.next();
-			instituicao.setIdINstituicao(keys.getInt(1));
+			while(keys.next()) {
+				instituicao.setIdINstituicao(keys.getInt(1));
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-	
-
 }

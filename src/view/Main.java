@@ -13,19 +13,9 @@ public class Main {
 	public static String nomeCidade;
 	
 	public static void main(String[] args) {
-		scanner = new Scanner(System.in);
-		System.out.println("Hello");
-		do{
-			System.out.println("Informe o nome da instituicao:");
-			nomeInstituicao = scanner.next();
 			
-			System.out.println("Informe a cidade:");
-			nomeCidade = scanner.next();
-			
-			instituicao = new Instituicao(nomeInstituicao, nomeCidade);
+			instituicao = new Instituicao("UTFPR", "Campo Mourao");
 			instituicaoDao = new InstituicaoDao();
 			instituicaoDao.inserirInstituicao(instituicao);
-		} while(true);
 	}
-
 }

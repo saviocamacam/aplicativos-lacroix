@@ -8,15 +8,24 @@ import java.sql.SQLException;
 
 public class DaoManager {
 	String host = "localhost";
-	String port = "3306";
+	String port = "5432";
 	String nomeBancoDados = "lacroixdb";
 	String urlConnection;
+	private String user = "postgres";
+	private String password = "pass@gen";
 	Connection conexao;
 	
 	public DaoManager(){
-		this.urlConnection = "jdbc:mysql://" + host + ":" + port + "/" + verifyDataBaseExists();
-		//conexao = new Con
+		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
 	}
+	
+	public Connection getConnection() throws SQLException{
+        try {
+           return DriverManager.getConnection(urlConnection, user, password);
+        } catch (SQLException ex) {
+        	throw new RuntimeException(ex);
+        }
+   }
 	
 	private boolean verifyDataBaseExists() {
 		try {
@@ -33,12 +42,7 @@ public class DaoManager {
 		}
 		return false;
 	}
+	
 
-	public Connection getConnection() throws SQLException{
-        try {
-           return DriverManager.getConnection(urlConnection, "postgres", "pass@gen");
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-   }
+	
 }
