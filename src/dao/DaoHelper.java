@@ -19,7 +19,7 @@ public class DaoHelper {
 		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
 	}
 	
-	public Connection getConnection() throws SQLException{
+	public Connection getConnection(){
         try {
            return DriverManager.getConnection(urlConnection, user, password);
         } catch (SQLException ex) {
