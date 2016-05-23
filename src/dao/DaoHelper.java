@@ -27,22 +27,6 @@ public class DaoHelper {
         }
    }
 	
-	private boolean verifyDataBaseExists() {
-		try {
-			ResultSet rs = conexao.getMetaData().getCatalogs();
-			while(rs.next()) {
-				if(rs.getString(1).equals(nomeBancoDados)) {
-					return true;
-				}
-			}
-			rs.close();
-		} catch (SQLException e) {
-			System.err.println("Erro ao pegar os nomes do banco de dados!");
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
 
 	
 }
