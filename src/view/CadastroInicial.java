@@ -28,7 +28,7 @@ public class CadastroInicial extends JPanel{
 		panelAbas.setName("");
 		panelAbas.setBackground(Color.LIGHT_GRAY);
 		
-		JButton btnAvancar = new JButton("Avançar >>");
+		JButton btnAvancar = new JButton("Avancar >>");
 		
 		JButton btnVoltar = new JButton("<< Voltar");
 		GroupLayout groupLayout = new GroupLayout(this);

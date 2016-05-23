@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DaoManager {
+public class DaoHelper {
 	String host = "localhost";
 	String port = "5432";
 	String nomeBancoDados = "lacroixdb";
@@ -15,7 +15,7 @@ public class DaoManager {
 	private String password = "pass@gen";
 	Connection conexao;
 	
-	public DaoManager(){
+	public DaoHelper(){
 		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
 	}
 	
@@ -26,22 +26,6 @@ public class DaoManager {
         	throw new RuntimeException(ex);
         }
    }
-	
-	private boolean verifyDataBaseExists() {
-		try {
-			ResultSet rs = conexao.getMetaData().getCatalogs();
-			while(rs.next()) {
-				if(rs.getString(1).equals(nomeBancoDados)) {
-					return true;
-				}
-			}
-			rs.close();
-		} catch (SQLException e) {
-			System.err.println("Erro ao pegar os nomes do banco de dados!");
-			e.printStackTrace();
-		}
-		return false;
-	}
 	
 
 	
