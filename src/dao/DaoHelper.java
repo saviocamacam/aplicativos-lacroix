@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DaoManager {
+public class DaoHelper {
 	String host = "localhost";
 	String port = "5432";
 	String nomeBancoDados = "lacroixdb";
@@ -15,7 +15,7 @@ public class DaoManager {
 	private String password = "pass@gen";
 	Connection conexao;
 	
-	public DaoManager(){
+	public DaoHelper(){
 		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
 	}
 	

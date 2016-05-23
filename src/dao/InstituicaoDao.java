@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import model.Instituicao;
 
 public class InstituicaoDao {
-	private DaoManager daoManager;
+	private DaoHelper daoManager;
 	
 	public InstituicaoDao() {
-		this.setDaoManager(new DaoManager());
+		this.setDaoManager(new DaoHelper());
 	}
 
-	public void setDaoManager(DaoManager daoManager) {
+	public void setDaoManager(DaoHelper daoManager) {
 		this.daoManager = daoManager;
 	}
 	
