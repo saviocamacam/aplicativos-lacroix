@@ -27,13 +27,8 @@ public class InstituicaoDao {
 	
 	public void inserirInstituicao(Instituicao instituicao) {
 		
-		Connection conn = null;
-		try {
-			conn = daoManager.getConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Connection conn = daoManager.getConnection();
+		
         String sql = "INSERT INTO instituicao (nomeinstituicao, cidade) VALUES(? ,?) RETURNING 'idinstituicao'";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql);	
