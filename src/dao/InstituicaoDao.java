@@ -8,18 +8,18 @@ import java.sql.SQLException;
 import model.Instituicao;
 
 public class InstituicaoDao {
-	private DaoHelper daoManager;
+	private DaoHelper daoHelper;
 	
 	public InstituicaoDao() {
 		this.setDaoManager(new DaoHelper());
 	}
 
 	public void setDaoManager(DaoHelper daoManager) {
-		this.daoManager = daoManager;
+		this.daoHelper = daoManager;
 	}
 	
 	public void createTable() throws SQLException {
-		Connection conn = daoManager.getConnection();
+		Connection conn = daoHelper.getConnection();
 		String sql = "create table if not exists instituicao(idInstituicao serial, nomeInstituicao varchar(50),primary key(idInstituicao))";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.executeQuery();
@@ -29,7 +29,7 @@ public class InstituicaoDao {
 		
 		Connection conn = null;
 		try {
-			conn = daoManager.getConnection();
+			conn = daoHelper.getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
