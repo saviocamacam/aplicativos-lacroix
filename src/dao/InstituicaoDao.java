@@ -11,29 +11,13 @@ public class InstituicaoDao {
 	private DaoHelper daoHelper;
 	
 	public InstituicaoDao() {
-		this.setDaoManager(new DaoHelper());
+		this.daoHelper = new DaoHelper();
 	}
 
-	public void setDaoManager(DaoHelper daoManager) {
-		this.daoHelper = daoManager;
-	}
-	
-	public void createTable() throws SQLException {
-		Connection conn = daoHelper.getConnection();
-		String sql = "create table if not exists instituicao(idInstituicao serial, nomeInstituicao varchar(50),primary key(idInstituicao))";
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.executeQuery();
-	}
-	
 	public void inserirInstituicao(Instituicao instituicao) {
 		
-		Connection conn = null;
-		try {
-			conn = daoHelper.getConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Connection conn = daoHelper.getConnection();
+		
         String sql = "INSERT INTO instituicao (nomeinstituicao, cidade) VALUES(? ,?) RETURNING 'idinstituicao'";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql);	
