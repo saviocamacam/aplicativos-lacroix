@@ -16,11 +16,7 @@ public class CursoDao {
 public void inserirCurso(Curso curso) {
 		
 		Connection conn = null;
-		try {
-			conn = daoHelper.getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		conn = daoHelper.getConnection();
         String sql = "INSERT INTO curso (nomeinstituicao, cidade) VALUES(? ,?) RETURNING 'idinstituicao'";
 	}
 
