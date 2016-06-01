@@ -27,7 +27,7 @@ public class CursoDao {
 			stmt.setString(5, curso.getNomeCurso());
 			stmt.setInt(6, curso.getQtdPeriodos());
 			stmt.setString(7, curso.getCidade());
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 		    rs.next();
 		    curso.setIdCurso(rs.getInt(1));

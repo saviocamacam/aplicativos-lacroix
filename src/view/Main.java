@@ -3,19 +3,23 @@ package view;
 import java.sql.Date;
 import java.util.Scanner;
 
+import dao.CursoDao;
 import dao.InstituicaoDao;
 import dao.UsuarioDao;
+import model.Curso;
 import model.Instituicao;
+import model.Nivel;
+import model.Regime;
 import model.Usuario;
 
 public class Main {
-	public static Instituicao instituicao;
-	public static Usuario usuario;
 	public static Scanner scanner;
-	public static InstituicaoDao instituicaoDao;
+	public static Usuario usuario;
 	public static UsuarioDao usuarioDao;
-	public static String nomeInstituicao;
-	public static String nomeCidade;
+	public static Instituicao instituicao;
+	public static InstituicaoDao instituicaoDao;
+	public static Curso curso;
+	public static CursoDao cursoDao;
 	
 	public static void main(String[] args) {
 			
@@ -30,6 +34,12 @@ public class Main {
 		instituicaoDao.inserirInstituicao(instituicao);
 		
 		System.out.println(instituicao.getIdInstituicao());
+		
+		curso = new Curso(Nivel.GRADUACAO, instituicao.getIdInstituicao(), usuario.getId(), Regime.SEMESTRAL, "BCC", 8, "Campo Mourao");
+		cursoDao = new CursoDao();
+		cursoDao.inserirCurso(curso);
+		
+		System.out.println(curso.getIdCurso());
 		
 		
 	}

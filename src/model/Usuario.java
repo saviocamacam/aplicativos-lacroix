@@ -3,37 +3,37 @@ package model;
 import java.sql.Date;
 
 public class Usuario {
-	private int id;
-	private String nome;
+	private int idUsuario;
+	private String nomeUsuario;
 	private int registro;
-	private Date nascimento;
+	private Date dataNascimento;
 	
 	public Usuario() {
 	}
 	
 	public Usuario(String nome, int registro, Date nascimento) {
-		this.nome = nome;
+		this.nomeUsuario = nome;
 		this.registro = registro;
-		this.nascimento = nascimento;
+		this.dataNascimento = nascimento;
 	}
 	
 	public int getId() {
-		return id;
+		return idUsuario;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.idUsuario = id;
 	}
 	public String getNome() {
-		return nome;
+		return nomeUsuario;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nomeUsuario = nome;
 	}
 	public Date getNascimento() {
-		return nascimento;
+		return dataNascimento;
 	}
 	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
+		this.dataNascimento = nascimento;
 	}
 
 	public int getRegistro() {

@@ -14,7 +14,7 @@ create table if not exists instituicao(
     idInstituicao serial,
     nomeInstituicao varchar(50),
     cidade varchar(50),
-    primary key(idInstituicao)
+    constraint pk_instituicao primary key(idInstituicao)
 );
 create table if not exists curso(
     idCurso serial,
@@ -47,7 +47,7 @@ create table if not exists professor(
     nomeProfessor varchar(40),
     email varhcar(40),
 
-    constraint pk_professor primary key ( idProfessor ),
+    constraint pk_professor primary key(idProfessor),
 );
 
 create table if not exists materia(
@@ -62,19 +62,21 @@ create table if not exists materia(
 
 create table if not exists aula(
     idAula integer serial,
+    idPeriodo integer,
     idMateria integer,
     horaInicial date,
     horaFinal date,
     local varchar(100),
 
     primary key (idAula),
-    foreign key (idMateria) references materia(idMateria)
+    foreign key (idMateria) references materia(idMateria),
+    foreign key (idPeriodo) references periodo(idPeriodo)
 );
 
 create table if not exists evento(
     idEvento integer serial,
-    tipoEvento integer,
     idMateria integer,
+    tipoEvento varchar(50),
     dataEvento date,
     descricao varchar(140),
     detalhes varchar(140),
@@ -84,5 +86,33 @@ create table if not exists evento(
 
     primary key (idEvento),
     foreign key (idMateria) references materia(idMateria)
-);       
+);
+
+create table if not exists professorMateria(
+    idProfessor integer,
+    idMateria integer,
+    
+    constraint pk_professorMateria primary key(idProfessor, idMateria),
+    constraint fk_professorMateria_professor foreign key(idProfessor) references professor(idProfessor),
+    constraint fk_professorMateria_materia foreign key(idMateria) references materia(idMateria)
+);
+
+create table if not exists professorPeriodo(
+    idProfessor integer,
+    idPeriodo integer,
+    
+    constraint pk_professorPeriodo primary key(idProfessor, idPeriodo),
+    constraint fk_professorPeriodo_professor foreign key(idProfessor) references professor(idProfessor),
+    constraint fk_professorPeriodo_periodo foreign key(idPeriodo) references periodo(idPeriodo)
+);
+
+create table if not exists periodoMateria(
+    idPeriodo integer,
+    idMateria integer,
+    nota real,
+    
+    constraint pk_periodoMateria primary key(idPeriodo, idMateria),
+    constraint fk_periodoMateria_periodo foreign key(idPeriodo) references periodo(idPeriodo),
+    constraint fk_periodoMateria_materia foreign key(idMateria) references materia(idMateria)
+);
 

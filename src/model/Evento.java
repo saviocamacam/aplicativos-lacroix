@@ -1,11 +1,11 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Evento {
 	private int idEvento;
-	private int tipoEvento;
 	private int idMateria;
+	private TipoEvento tipoEvento;
 	private Date dataEvento;
 	private String descricao;
 	private String detalhes;
@@ -13,16 +13,25 @@ public class Evento {
 	private float notaRecebida;
 	private String localEvento;
 	
+	public Evento(int idMateria, TipoEvento tipo, Date data, String descricao, String detalhes, float valorNota, String local) {
+		this.idMateria = idMateria;
+		this.tipoEvento = tipo;
+		this.dataEvento = data;
+		this.descricao = descricao;
+		this.detalhes = detalhes;
+		this.valorNota = valorNota;
+		this.localEvento = local;
+	}
 	public int getIdEvento() {
 		return idEvento;
 	}
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	public int getTipoEvento() {
-		return tipoEvento;
+	public String getTipoEvento() {
+		return this.tipoEvento.getNomeTipoEvento();
 	}
-	public void setTipoEvento(int tipoEvento) {
+	public void setTipoEvento(TipoEvento tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
 	public int getIdMateria() {

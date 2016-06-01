@@ -1,16 +1,18 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Aula {
 	private int idAula;
 	private int idMateria;
-	private java.util.Date horaInicial;
-	private java.util.Date horaFinal;
+	private int idPeriodo;
+	private Date horaInicial;
+	private Date horaFinal;
 	private String local;
 	
-	public Aula(int idMateria, Date horaInicial, Date horaFinal, String local) {
+	public Aula(int idMateria, int idPeriodo, Date horaInicial, Date horaFinal, String local) {
 		this.idMateria = idMateria;
+		this.idPeriodo = idPeriodo;
 		this.horaInicial = horaInicial;
 		this.horaFinal = horaFinal;
 		this.local = local;
@@ -28,16 +30,16 @@ public class Aula {
 	public void setIdMateria(int idMateria) {
 		this.idMateria = idMateria;
 	}
-	public java.util.Date getHoraInicial() {
+	public Date getHoraInicial() {
 		return horaInicial;
 	}
-	public void setHoraInicial(java.util.Date horaInicial) {
+	public void setHoraInicial(Date horaInicial) {
 		this.horaInicial = horaInicial;
 	}
-	public java.util.Date getHoraFinal() {
+	public Date getHoraFinal() {
 		return horaFinal;
 	}
-	public void setHoraFinal(java.util.Date horaFinal) {
+	public void setHoraFinal(Date horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 	public String getLocal() {
@@ -45,5 +47,13 @@ public class Aula {
 	}
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public int getIdPeriodo() {
+		return idPeriodo;
+	}
+
+	public void setIdPeriodo(int idPeriodo) {
+		this.idPeriodo = idPeriodo;
 	}
 }

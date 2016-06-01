@@ -95,5 +95,8 @@ public class Curso {
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+	public void addPeriodo(Periodo periodo) {
+		this.periodos.add(periodo);
+	}
 	
 }
