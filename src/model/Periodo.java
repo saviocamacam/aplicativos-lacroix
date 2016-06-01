@@ -3,21 +3,21 @@ package model;
 import java.util.Date;
 
 public class Periodo {
-	private long idCurso;
+	private int idPeriodo;
+	private int idCurso;
 	private Date dataDeInicio;
 	private Date dataDeTermino;
 	
-	public Periodo(long idCurso, Date dataDeInicio, Date dataDeTermino) {
-		super();
+	public Periodo(int idCurso, Date dataDeInicio, Date dataDeTermino) {
 		this.idCurso = idCurso;
 		this.dataDeInicio = dataDeInicio;
 		this.dataDeTermino = dataDeTermino;
 	}
 	
-	public long getIdCurso() {
+	public int getIdCurso() {
 		return idCurso;
 	}
-	public void setIdCurso(long idCurso) {
+	public void setIdCurso(int idCurso) {
 		this.idCurso = idCurso;
 	}
 	public Date getDataDeInicio() {
@@ -29,8 +29,16 @@ public class Periodo {
 	public Date getDataDeTermino() {
 		return dataDeTermino;
 	}
-	public void setDataDeTermino(Date dataDeTermino) {
+	public void setDataTermino(Date dataDeTermino) {
 		this.dataDeTermino = dataDeTermino;
+	}
+
+	public int getIdPeriodo() {
+		return idPeriodo;
+	}
+
+	public void setIdPeriodo(int idPeriodo) {
+		this.idPeriodo = idPeriodo;
 	}
 	
 	

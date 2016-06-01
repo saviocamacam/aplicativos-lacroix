@@ -1,11 +1,21 @@
 package model;
 
+import java.util.Date;
+
 public class Aula {
 	private int idAula;
 	private int idMateria;
 	private java.util.Date horaInicial;
 	private java.util.Date horaFinal;
 	private String local;
+	
+	public Aula(int idMateria, Date horaInicial, Date horaFinal, String local) {
+		this.idMateria = idMateria;
+		this.horaInicial = horaInicial;
+		this.horaFinal = horaFinal;
+		this.local = local;
+	}
+	
 	public int getIdAula() {
 		return idAula;
 	}
@@ -36,5 +46,4 @@ public class Aula {
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
 }

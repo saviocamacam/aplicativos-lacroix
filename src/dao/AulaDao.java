@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import model.Aula;
 
@@ -19,23 +20,19 @@ public class AulaDao {
 		this.daoManager = daoManager;
 	}
 	
-	public void inserirAula(Aula Aula) {
-		Connection con = daoManager.getConnection();
-        String sql = "INSERT INTO Aula (idMateria,horaInicial,horaFinal,local) "
-        			+ "VALUES (?,?,?,?) RETURNING 'idAula'";
+	public void inserirAula(Aula aula) {
+		Connection conn = daoManager.getConnection();
+        String sql = "INSERT INTO aula(idMateria, horaInicial, horaFinal, local) VALUES (?,?,?,?)";
         try {
-			PreparedStatement stmt = con.prepareStatement(sql);	
-			stmt.setInt(1, Aula.getIdMateria());
-			stmt.setDate(2, (Date) Aula.getHoraInicial());
-			stmt.setDate(3, (Date) Aula.getHoraFinal());
-			stmt.setString(4, Aula.getLocal());
-			
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);	
+			stmt.setInt(1, aula.getIdMateria());
+			stmt.setDate(2, (Date) aula.getHoraInicial());
+			stmt.setDate(3, (Date) aula.getHoraFinal());
+			stmt.setString(4, aula.getLocal());
 			stmt.executeQuery();
-			
-			ResultSet keys = stmt.getGeneratedKeys();
-			while(keys.next()) {
-				Aula.setIdAula(keys.getInt(1));
-			}
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.next();
+			aula.setIdAula(rs.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

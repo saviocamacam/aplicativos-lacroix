@@ -1,26 +1,26 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Usuario {
-	private long id;
+	private int id;
 	private String nome;
+	private int registro;
 	private Date nascimento;
 	
 	public Usuario() {
 	}
 	
-	public Usuario(long id, String nome, Date nascimento) {
-		super();
-		this.id = id;
+	public Usuario(String nome, int registro, Date nascimento) {
 		this.nome = nome;
+		this.registro = registro;
 		this.nascimento = nascimento;
 	}
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -34,6 +34,14 @@ public class Usuario {
 	}
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
+	}
+
+	public int getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(int registro) {
+		this.registro = registro;
 	}
 	
 	

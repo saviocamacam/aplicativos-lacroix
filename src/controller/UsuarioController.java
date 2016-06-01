@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.swing.JPanel;
 

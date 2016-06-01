@@ -8,9 +8,10 @@ public class Materia {
 	private int periodoAssociado;
 	private EstadoMateria estado;
 	
-	public Materia(int idCurso, EstadoMateria estado) {
+	public Materia(int idCurso, EstadoMateria estado, int periodoAssociado) {
 		this.idCurso = idCurso;
 		this.estado = estado;
+		this.periodoAssociado = periodoAssociado;
 	}
 	
 	public int getIdMateria() {
@@ -36,5 +37,21 @@ public class Materia {
 	}
 	public void setPeriodoAssociado(int periodoAssociado) {
 		this.periodoAssociado = periodoAssociado;
+	}
+
+	public int getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public EstadoMateria getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoMateria estado) {
+		this.estado = estado;
 	}
 }

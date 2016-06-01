@@ -1,33 +1,33 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.Professor;
+import model.Periodo;
 
-public class ProfessorDao {
+public class PeriodoDao {
 	private DaoHelper daoHelper;
-	
-	public ProfessorDao() {
+	public PeriodoDao() {
 		this.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirProfessor(Professor professor) {
+	public void inserirPeriodo(Periodo periodo) {
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO professor(nomeProfessor, email) VALUES(?, ?)";
+		String sql = "INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(?, ?, ?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, professor.getNomeProfessor());
-			stmt.setString(2, professor.getEmail());
+			stmt.setInt(1, periodo.getIdCurso());
+			stmt.setDate(2, (Date) periodo.getDataDeInicio());
+			stmt.setDate(2, (Date) periodo.getDataDeTermino());
 			stmt.executeQuery();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			professor.setIdProfessor(rs.getInt(1));
-			
+			periodo.setIdPeriodo(rs.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
