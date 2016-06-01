@@ -3,34 +3,30 @@ package model;
 import java.util.ArrayList;
 
 public class Curso {
-	private long idCurso;
+	private int idCurso;
 	private Nivel nivel;
-	private long idInstituicao;
+	private int idInstituicao;
 	private Regime regime;
-	private String nomeDoCurso;
-	private long qtdPeriodos;
+	private String nomeCurso;
+	private int qtdPeriodos;
 	private String cidade;
 	private ArrayList<Periodo> periodos;
 	
 
-	public Curso(long idCurso, Nivel nivel, long idInstituicao, Regime regime, String nomeDoCurso, long qtdPeriodos,
-			String cidade) {
-		super();
-		this.idCurso = idCurso;
+	public Curso(Nivel nivel, int idInstituicao, Regime regime, String nomeCurso, int qtdPeriodos, String cidade) {
 		this.nivel = nivel;
 		this.idInstituicao = idInstituicao;
 		this.regime = regime;
-		this.nomeDoCurso = nomeDoCurso;
+		this.nomeCurso = nomeCurso;
 		this.qtdPeriodos = qtdPeriodos;
 		this.cidade = cidade;
-		this.setPeriodos(new ArrayList<>());
 	}
 	
-	public long getIdCurso() {
+	public int getIdCurso() {
 		return idCurso;
 	}
 	
-	public void setIdCurso(long idCurso) {
+	public void setIdCurso(int idCurso) {
 		this.idCurso = idCurso;
 	}
 	
@@ -42,11 +38,11 @@ public class Curso {
 		this.nivel = nivel;
 	}
 	
-	public long getIdInstituicao() {
+	public int getIdInstituicao() {
 		return idInstituicao;
 	}
 	
-	public void setIdInstituicao(long idInstituicao) {
+	public void setIdInstituicao(int idInstituicao) {
 		this.idInstituicao = idInstituicao;
 	}
 	
@@ -58,19 +54,19 @@ public class Curso {
 		this.regime = regime;
 	}
 	
-	public String getNomeDoCurso() {
-		return nomeDoCurso;
+	public String getNomeCurso() {
+		return nomeCurso;
 	}
 	
-	public void setNomeDoCurso(String nomeDoCurso) {
-		this.nomeDoCurso = nomeDoCurso;
+	public void setNomeCurso(String nomeDoCurso) {
+		this.nomeCurso = nomeDoCurso;
 	}
 	
-	public long getQtdPeriodos() {
+	public int getQtdPeriodos() {
 		return qtdPeriodos;
 	}
 	
-	public void setQtdPeriodos(long qtdPeriodos) {
+	public void setQtdPeriodos(int qtdPeriodos) {
 		this.qtdPeriodos = qtdPeriodos;
 	}
 	

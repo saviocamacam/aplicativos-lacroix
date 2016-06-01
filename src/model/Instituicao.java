@@ -7,11 +7,7 @@ public class Instituicao {
 	private String nomeCidade;
 	
 	public Instituicao(String nomeInstituicao, String cidade) {
-		setNomeInstituicao(nomeInstituicao);
-		setNomeCidade(cidade);
-	}
-	
-	private void setNomeCidade(String cidade) {
+		this.nomeInstituicao = nomeInstituicao;
 		this.nomeCidade = cidade;
 	}
 	
@@ -22,7 +18,7 @@ public class Instituicao {
 	public int getIdInstituicao() {
 		return idInstituicao;
 	}
-	public void setIdINstituicao(int idInstituicao) {
+	public void setIdInstituicao(int idInstituicao) {
 		this.idInstituicao = idInstituicao;
 	}
 	public String getNomeInstituicao() {

@@ -19,6 +19,7 @@ create table if not exists curso(
        constraint pk_curso primary key (idCurso),
        constraint fk_curso_instituicao foreign key(idInstituicao) references instituicao(idInstituicao)
 );
+
 create table if not exists periodo(
        idPeriodo serial,
        idCurso integer,
@@ -28,8 +29,6 @@ create table if not exists periodo(
        primary key(idPeriodo),
        constraint fk_periodo_curso foreign key(idCurso) references curso(idCurso)
 );
-
-
 
 create table if not exists professor(
        idProfessor integer serial,
