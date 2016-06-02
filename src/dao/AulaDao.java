@@ -35,6 +35,7 @@ public class AulaDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			aula.setIdAula(rs.getInt(1));
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

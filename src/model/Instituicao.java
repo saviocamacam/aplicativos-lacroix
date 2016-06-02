@@ -6,6 +6,12 @@ public class Instituicao {
 	private String nomeInstituicao;
 	private String nomeCidade;
 	
+	public Instituicao(int idInstituicao, String nomeInstituicao, String cidade) {
+		this.idInstituicao = idInstituicao;
+		this.nomeInstituicao = nomeInstituicao;
+		this.nomeCidade = cidade;
+	}
+	
 	public Instituicao(String nomeInstituicao, String cidade) {
 		this.nomeInstituicao = nomeInstituicao;
 		this.nomeCidade = cidade;

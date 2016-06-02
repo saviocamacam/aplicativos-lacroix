@@ -8,6 +8,13 @@ public class Periodo {
 	private Date dataDeInicio;
 	private Date dataDeTermino;
 	
+	public Periodo(int idPeriodo, int idCurso, Date dataDeInicio, Date dataDeTermino) {
+		this.idPeriodo = idPeriodo;
+		this.idCurso = idCurso;
+		this.dataDeInicio = dataDeInicio;
+		this.dataDeTermino = dataDeTermino;
+	}
+	
 	public Periodo(int idCurso, Date dataDeInicio, Date dataDeTermino) {
 		this.idCurso = idCurso;
 		this.dataDeInicio = dataDeInicio;

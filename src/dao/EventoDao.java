@@ -32,7 +32,7 @@ public class EventoDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			evento.setIdEvento(rs.getInt(1));
-			
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

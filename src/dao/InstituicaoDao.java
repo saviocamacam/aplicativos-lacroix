@@ -28,9 +28,26 @@ public class InstituicaoDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 		    rs.next();
 		    instituicao.setIdInstituicao(rs.getInt(1));
-			
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Instituicao getInstituicao(int idInstituicao) {
+		Instituicao instituicao = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "SELECT * FROM instituicao i WHERE i.idInstituicao = " + idInstituicao;
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			instituicao = new Instituicao(rs.getInt("idInstituicao"), rs.getString("nomeInstituicao"), rs.getString("cidade"));
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return instituicao;
 	}
 }

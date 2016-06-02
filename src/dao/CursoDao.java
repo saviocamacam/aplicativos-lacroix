@@ -30,6 +30,7 @@ public class CursoDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 		    rs.next();
 		    curso.setIdCurso(rs.getInt(1));
+		    stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

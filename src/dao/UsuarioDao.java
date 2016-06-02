@@ -29,6 +29,7 @@ public class UsuarioDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			usuario.setId(rs.getInt(1));
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
