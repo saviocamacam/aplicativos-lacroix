@@ -35,7 +35,7 @@ public class Main {
 		
 		System.out.println(instituicao.getIdInstituicao());
 		
-		curso = new Curso(Nivel.GRADUACAO, instituicao.getIdInstituicao(), usuario.getId(), Regime.SEMESTRAL, "BCC", 8, "Campo Mourao");
+		curso = new Curso(Nivel.GRADUACAO, instituicao.getIdInstituicao(), usuario.getId(), Regime.SEMESTRAL, "BCC", 8);
 		cursoDao = new CursoDao();
 		cursoDao.inserirCurso(curso);
 		

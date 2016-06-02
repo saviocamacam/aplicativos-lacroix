@@ -10,18 +10,16 @@ public class Curso {
 	private Regime regime;
 	private String nomeCurso;
 	private int qtdPeriodos;
-	private String cidade;
 	private ArrayList<Periodo> periodos;
 	
 
-	public Curso(Nivel nivel, int idInstituicao, int idUsuario, Regime regime, String nomeCurso, int qtdPeriodos, String cidade) {
+	public Curso(Nivel nivel, int idInstituicao, int idUsuario, Regime regime, String nomeCurso, int qtdPeriodos) {
 		this.nivel = nivel;
 		this.idInstituicao = idInstituicao;
 		this.idUsuario = idUsuario;
 		this.regime = regime;
 		this.nomeCurso = nomeCurso;
 		this.qtdPeriodos = qtdPeriodos;
-		this.cidade = cidade;
 	}
 	
 	public int getIdCurso() {
@@ -72,14 +70,6 @@ public class Curso {
 		this.qtdPeriodos = qtdPeriodos;
 	}
 	
-	public String getCidade() {
-		return cidade;
-	}
-	
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
 	public ArrayList<Periodo> getPeriodos() {
 		return periodos;
 	}

@@ -22,14 +22,15 @@ public class AulaDao {
 	
 	public void inserirAula(Aula aula) {
 		Connection conn = daoManager.getConnection();
-        String sql = "INSERT INTO aula(idMateria, idPeriodo, horaInicial, horaFinal, local) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?)";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);	
 			stmt.setInt(1, aula.getIdMateria());
 			stmt.setInt(2, aula.getIdPeriodo());
-			stmt.setDate(3, (Date) aula.getHoraInicial());
-			stmt.setDate(4, (Date) aula.getHoraFinal());
-			stmt.setString(5, aula.getLocal());
+			stmt.setString(3, aula.getDiaSemana());
+			stmt.setTime(4, aula.getHoraInicial());
+			stmt.setTime(5, aula.getHoraFinal());
+			stmt.setString(6, aula.getLocal());
 			stmt.executeQuery();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();

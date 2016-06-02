@@ -17,7 +17,7 @@ public class EventoDao {
 	
 	public void inserirEvento(Evento evento) {
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES(?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -27,6 +27,7 @@ public class EventoDao {
 			stmt.setString(4, evento.getDescricao());
 			stmt.setString(5, evento.getDetalhes());
 			stmt.setFloat(6, evento.getValorNota());
+			stmt.setString(7, evento.getLocalEvento());
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();

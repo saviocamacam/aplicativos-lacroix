@@ -1,21 +1,23 @@
 package model;
 
-import java.sql.Date;
+import java.sql.Time;
 
 public class Aula {
 	private int idAula;
 	private int idMateria;
 	private int idPeriodo;
-	private Date horaInicial;
-	private Date horaFinal;
-	private String local;
+	private String diaSemana;
+	private Time horaInicial;
+	private Time horaFinal;
+	private String sala;
 	
-	public Aula(int idMateria, int idPeriodo, Date horaInicial, Date horaFinal, String local) {
+	public Aula(int idMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
 		this.idMateria = idMateria;
 		this.idPeriodo = idPeriodo;
+		this.diaSemana = diaSemana;
 		this.horaInicial = horaInicial;
 		this.horaFinal = horaFinal;
-		this.local = local;
+		this.sala = local;
 	}
 	
 	public int getIdAula() {
@@ -30,23 +32,23 @@ public class Aula {
 	public void setIdMateria(int idMateria) {
 		this.idMateria = idMateria;
 	}
-	public Date getHoraInicial() {
+	public Time getHoraInicial() {
 		return horaInicial;
 	}
-	public void setHoraInicial(Date horaInicial) {
+	public void setHoraInicial(Time horaInicial) {
 		this.horaInicial = horaInicial;
 	}
-	public Date getHoraFinal() {
+	public Time getHoraFinal() {
 		return horaFinal;
 	}
-	public void setHoraFinal(Date horaFinal) {
+	public void setHoraFinal(Time horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 	public String getLocal() {
-		return local;
+		return sala;
 	}
 	public void setLocal(String local) {
-		this.local = local;
+		this.sala = local;
 	}
 
 	public int getIdPeriodo() {
@@ -55,5 +57,13 @@ public class Aula {
 
 	public void setIdPeriodo(int idPeriodo) {
 		this.idPeriodo = idPeriodo;
+	}
+
+	public String getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDiaSemana(String diaSemana) {
+		this.diaSemana = diaSemana;
 	}
 }

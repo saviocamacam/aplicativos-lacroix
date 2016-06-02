@@ -7,6 +7,7 @@ public class Materia {
 	private String nomeMateria;
 	private int periodoAssociado;
 	private EstadoMateria estado;
+	private float nota;
 	
 	public Materia(int idCurso, EstadoMateria estado, int periodoAssociado) {
 		this.idCurso = idCurso;
@@ -53,5 +54,13 @@ public class Materia {
 
 	public void setEstado(EstadoMateria estado) {
 		this.estado = estado;
+	}
+
+	public float getNota() {
+		return nota;
+	}
+
+	public void setNota(float nota) {
+		this.nota = nota;
 	}
 }
