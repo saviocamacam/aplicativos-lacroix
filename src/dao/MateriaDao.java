@@ -38,7 +38,11 @@ public class MateriaDao {
 		Connection conn = daohelper.getConnection();
 		String sql = "SELECT * FROM materia WHERE materia.idMateria = " + idMateria;
 		
-		Statement stmt = conn.createStatement();
+		try {
+			Statement stmt = conn.createStatement();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return materia;
 	}
