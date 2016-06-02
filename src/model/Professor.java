@@ -5,6 +5,12 @@ public class Professor {
 	private String nomeProfessor;
 	private String email;
 	
+	public Professor(int idProfessor, String nome, String email) {
+		this.idProfessor = idProfessor;
+		this.nomeProfessor = nome;
+		this.email = email;
+	}
+	
 	public Professor(String nome, String email) {
 		this.nomeProfessor = nome;
 		this.email = email;

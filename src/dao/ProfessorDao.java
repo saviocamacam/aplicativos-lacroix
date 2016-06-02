@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Professor;
 
@@ -32,6 +33,23 @@ public class ProfessorDao {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public ArrayList<Professor> getProfessores() {
+		ArrayList<Professor> listaProfessores = new ArrayList<>();
+		Connection conn = daoHelper.getConnection();
+		String sql = "SELECT * FROM professor";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				listaProfessores.add(new Professor(rs.getInt("idProfessor"), rs.getString("nomeProfessor"), rs.getString("email")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listaProfessores;
 	}
 
 }

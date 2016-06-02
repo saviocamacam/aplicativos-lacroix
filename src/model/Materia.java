@@ -3,15 +3,16 @@ package model;
 public class Materia {
 	private int idMateria;
 	private int idCurso;
-	private int idEstado;
+	private EstadoMateria estado;
 	private String nomeMateria;
 	private int periodoAssociado;
-	private EstadoMateria estado;
 	private float nota;
 	
-	public Materia(int idCurso, EstadoMateria estado, int periodoAssociado) {
+	public Materia(int idMateria, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado) {
+		this.idMateria = idMateria;
 		this.idCurso = idCurso;
 		this.estado = estado;
+		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 	}
 	
@@ -20,12 +21,6 @@ public class Materia {
 	}
 	public void setIdMateria(int idMateria) {
 		this.idMateria = idMateria;
-	}
-	public int getIdEstado() {
-		return idEstado;
-	}
-	public void setIdEstado(int idEstado) {
-		this.idEstado = idEstado;
 	}
 	public String getNomeMateria() {
 		return nomeMateria;
