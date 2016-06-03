@@ -1,7 +1,5 @@
 package view;
 
-import java.util.Date;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
