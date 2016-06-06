@@ -28,7 +28,8 @@ public class InstituicaoDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 		    rs.next();
 		    instituicao.setIdInstituicao(rs.getInt(1));
-			stmt.close();
+			
+		    daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,6 +46,8 @@ public class InstituicaoDao {
 			rs.next();
 			instituicao = new Instituicao(rs.getInt("idInstituicao"), rs.getString("nomeInstituicao"), rs.getString("cidade"));
 			stmt.close();
+			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

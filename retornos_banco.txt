@@ -1,0 +1,14 @@
+Lista de Retornos do Banco
+
+- Usuário dado um nome(*)
+- Professor dado um nome(*)
+- Todos os professores(*)
+- Todas as materias dado um periodo()
+- Todos os períodos dado um idCurso(*)
+- Todas as materias()
+- Todas as materias dado um estado(*)
+- Todos os eventos até uma data()
+- Todos os eventos dado um tipo()
+- Todos os eventos dada uma materia()
+- Todas as aulas dada uma materia()
+- Todas as aulas dado um dia da semana()

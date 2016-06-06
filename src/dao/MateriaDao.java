@@ -40,6 +40,8 @@ public class MateriaDao {
 		
 		try {
 			Statement stmt = conn.createStatement();
+			stmt.executeQuery(sql);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

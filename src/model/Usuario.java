@@ -11,6 +11,13 @@ public class Usuario {
 	public Usuario() {
 	}
 	
+	public Usuario(int idUsuario, String nome, int registro, Date nascimento) {
+		this.idUsuario = idUsuario;
+		this.nomeUsuario = nome;
+		this.registro = registro;
+		this.dataNascimento = nascimento;
+	}
+	
 	public Usuario(String nome, int registro, Date nascimento) {
 		this.nomeUsuario = nome;
 		this.registro = registro;

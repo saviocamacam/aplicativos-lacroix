@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,18 +9,18 @@ import java.sql.Statement;
 import model.Aula;
 
 public class AulaDao {
-	private DaoHelper daoManager;
+	private DaoHelper daoHelper;
 	
 	public AulaDao() {
 		this.setDaoManager(new DaoHelper());
 	}
 
 	public void setDaoManager(DaoHelper daoManager) {
-		this.daoManager = daoManager;
+		this.daoHelper = daoManager;
 	}
 	
 	public void inserirAula(Aula aula) {
-		Connection conn = daoManager.getConnection();
+		Connection conn = daoHelper.getConnection();
         String sql = "INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?)";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);	
@@ -35,7 +34,8 @@ public class AulaDao {
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			aula.setIdAula(rs.getInt(1));
-			stmt.close();
+			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

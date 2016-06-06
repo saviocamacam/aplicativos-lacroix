@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import model.EstadoMateria;
 import model.Materia;
 import model.Periodo;
@@ -28,6 +26,8 @@ public class MateriaPeriodo {
 			stmt.setInt(1, professor.getIdProfessor());
 			stmt.setInt(2, materia.getIdMateria());
 			stmt.executeUpdate();
+			
+			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -42,6 +42,8 @@ public class MateriaPeriodo {
 			stmt.setInt(1, professor.getIdProfessor());
 			stmt.setInt(2, periodo.getIdPeriodo());
 			stmt.executeUpdate();
+			
+			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,8 +60,8 @@ public class MateriaPeriodo {
 			stmt.setInt(2, periodo.getIdPeriodo());
 			stmt.setFloat(3, materia.getNota());
 			stmt.setString(4, materia.getEstado().getNomeEstado());
-			stmt.execute();
-			stmt.close();
+			
+			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,6 +79,8 @@ public class MateriaPeriodo {
 			while(rs.next()) {
 				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado")));
 			}
+			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

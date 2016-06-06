@@ -31,10 +31,29 @@ public class UsuarioDao {
 			usuario.setId(rs.getInt(1));
 			stmt.close();
 			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Usuario recuperaUsuario(String nomeUsuario) {
+		Usuario usuario = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "SELECT * FROM usuario WHERE usuario.nomeUsuario = " + "'" + nomeUsuario + "'";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			usuario = new Usuario(rs.getInt("idUsuario"), rs.getString("nomeUsuario"), rs.getInt("registro"), rs.getDate("dataNascimento"));
+			
+			daoHelper.releaseAll(rs, stmt, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
 	}
 	
 }

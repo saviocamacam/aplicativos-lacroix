@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.Curso;
+import model.Usuario;
 
 public class CursoDao {
 	private DaoHelper daoHelper;
@@ -36,5 +37,13 @@ public class CursoDao {
 			e.printStackTrace();
 		}
 	
+	}
+	
+	public Curso recuperarCurso(Usuario usuario) {
+		Connection conn = daoHelper.getConnection();
+		String sql = "SELECT * FROM curso WHERE curso.idUsuario = " + usuario.getId();
+		
+		
+		return null;
 	}
 }

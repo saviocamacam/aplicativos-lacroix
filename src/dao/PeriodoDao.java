@@ -28,8 +28,9 @@ public class PeriodoDao {
 			stmt.executeQuery();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			stmt.close();
 			periodo.setIdPeriodo(rs.getInt(1));
+			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -47,6 +48,8 @@ public class PeriodoDao {
 			while(rs.next()) {
 				listaPeriodo.add(new Periodo(rs.getInt("idPeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino")));
 			}
+			
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

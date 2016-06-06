@@ -56,7 +56,7 @@ public class ProfessorDao {
 	public Professor getProfessor(String nome) {
 		Professor professor = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "SELECT * FROM professor WHERE professor.nomeProfesso = "+ nome;
+		String sql = "SELECT * FROM professor WHERE professor.nomeProfessor = "+ nome;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
