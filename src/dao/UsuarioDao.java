@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Usuario;
 
@@ -56,4 +57,35 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
+	public <T> ArrayList<Usuario> getUsuario(String nomeCampo, T valorCampo )
+	{
+		ArrayList<Usuario> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM usuario where "+nomeCampo+" = "+valorCampo;
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Usuario usr = new Usuario(rs.getInt		("idUsuario")	,
+										  rs.getString	("nomeUsuario")	,
+										  rs.getInt		("registro")	,
+										  rs.getDate	("dataNascimento")
+										  );
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	public static void main(String[] args){
+		UsuarioDao dao = new UsuarioDao();
+		int id = 1;
+		ArrayList<Usuario> usrs = dao.getUsuario("idusuario", id);
+		System.out.println(usrs.get(0).getNome());
+	}
 }
