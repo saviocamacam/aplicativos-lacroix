@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Aula;
+import model.Usuario;
 
 public class AulaDao {
 	private DaoHelper daoHelper;
@@ -39,5 +41,33 @@ public class AulaDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public <T> ArrayList<Aula> getAulas(String nomeCampo, T valorCampo)
+	{
+		ArrayList<Aula> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM aula where "+nomeCampo+" = "+valorCampo;
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Aula a = new Aula(rs.getInt("idMateria"),
+								  rs.getInt("idperiodo"),
+								  rs.getString("diasemana"),
+								  rs.getTime("horainicial"),
+								  rs.getTime("horafinal"),
+								  rs.getString("sala")
+								  );
+				lista.add(a);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
 	}
 }
