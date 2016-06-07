@@ -82,10 +82,4 @@ public class UsuarioDao {
 		}
 		return lista;
 	}
-	public static void main(String[] args){
-		UsuarioDao dao = new UsuarioDao();
-		int id = 1;
-		ArrayList<Usuario> usrs = dao.getUsuario("idusuario", id);
-		System.out.println(usrs.get(0).getNome());
-	}
 }

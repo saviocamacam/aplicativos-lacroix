@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Aula;
-import model.Usuario;
 
 public class AulaDao {
 	private DaoHelper daoHelper;
