@@ -5,8 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import model.Curso;
+import model.Nivel;
+import model.Periodo;
+import model.Regime;
 import model.Usuario;
 
 public class CursoDao {
@@ -39,11 +44,27 @@ public class CursoDao {
 	
 	}
 	
-	public Curso recuperarCurso(Usuario usuario) {
+	public ArrayList<Curso> recuperarCurso(Usuario usuario) {
+		ArrayList<Curso> listaCursos = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM curso WHERE curso.idUsuario = " + usuario.getId();
 		
+		try {
+			listaCursos = new ArrayList<>();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Curso curso = new Curso(rs.getInt("idCurso"), rs.getInt("idInstituicao"), rs.getInt("idUsuario"), Nivel.valueOf(rs.getString("nivel")), Regime.valueOf(rs.getString("regime")), rs.getString("nomeCurso"), rs.getInt("qtdPeriodos"));
+				ArrayList<Periodo> listaPeriodos = new PeriodoDao().listaPeriodo(rs.getInt("idCurso"));
+				curso.setPeriodos(listaPeriodos);
+				listaCursos.add(curso);
+			}
+			daoHelper.releaseAll(rs, stmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return null;
+		return listaCursos;
 	}
 }

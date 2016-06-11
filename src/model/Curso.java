@@ -12,11 +12,20 @@ public class Curso {
 	private int qtdPeriodos;
 	private ArrayList<Periodo> periodos;
 	
-
-	public Curso(Nivel nivel, int idInstituicao, int idUsuario, Regime regime, String nomeCurso, int qtdPeriodos) {
-		this.nivel = nivel;
+	public Curso(int idCurso, int idInstituicao, int idUsuario, Nivel nivel, Regime regime, String nomeCurso, int qtdPeriodos) {
+		this.idCurso = idCurso;
 		this.idInstituicao = idInstituicao;
 		this.idUsuario = idUsuario;
+		this.nivel = nivel;
+		this.regime = regime;
+		this.nomeCurso = nomeCurso;
+		this.qtdPeriodos = qtdPeriodos;
+	}
+
+	public Curso(int idInstituicao, int idUsuario, Nivel nivel, Regime regime, String nomeCurso, int qtdPeriodos) {
+		this.idInstituicao = idInstituicao;
+		this.idUsuario = idUsuario;
+		this.nivel = nivel;
 		this.regime = regime;
 		this.nomeCurso = nomeCurso;
 		this.qtdPeriodos = qtdPeriodos;

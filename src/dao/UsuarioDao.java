@@ -28,7 +28,7 @@ public class UsuarioDao {
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			usuario.setId(rs.getInt(1));
+			usuario.setId(rs.getInt("idUsuario"));
 			stmt.close();
 			
 			daoHelper.releaseAll(rs, stmt, conn);
