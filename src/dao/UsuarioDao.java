@@ -61,7 +61,7 @@ public class UsuarioDao {
 	{
 		ArrayList<Usuario> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
-		String sql = "SELECT * FROM usuario where "+nomeCampo+" = "+valorCampo;
+		String sql = "SELECT * FROM usuario where "+nomeCampo+" = '"+valorCampo+"'";
 		
 		try{
 			PreparedStatement ps = c.prepareStatement(sql);

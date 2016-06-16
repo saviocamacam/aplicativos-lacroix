@@ -46,7 +46,7 @@ public class AulaDao {
 	{
 		ArrayList<Aula> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
-		String sql = "SELECT * FROM aula where "+nomeCampo+" = "+valorCampo;
+		String sql = "SELECT * FROM aula where "+nomeCampo+" = '"+valorCampo+"'";
 		
 		try{
 			PreparedStatement ps = c.prepareStatement(sql);

@@ -68,5 +68,33 @@ public class ProfessorDao {
 		}
 		return professor;
 	}
+	public ArrayList<Professor> getAll()
+	{
+		return getBy("1", 1);
+	}
+	public <T1> ArrayList<Professor> getBy(String nomeCampo, T1 valorCampo )
+	{
+		ArrayList<Professor> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM usuario where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Professor usr = new Professor(rs.getInt("idProfessor"),
+												rs.getString("nomeProfessor"),
+												rs.getString("email"));
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
 
 }
+
