@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package view;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 
 import dao.UsuarioDao;
 import model.Usuario;
+=======
+>>>>>>> 6241ebd4481dfdeb7eb2b52478db8f0935b0cf01
 
 /**
  *
