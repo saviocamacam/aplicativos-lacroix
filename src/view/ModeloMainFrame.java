@@ -6,6 +6,10 @@
 package view;
 
 import controller.MainFrameController;
+import java.util.ArrayList;
+
+import dao.UsuarioDao;
+import model.Usuario;
 
 /**
  *
