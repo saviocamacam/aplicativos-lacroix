@@ -5,17 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import model.EstadoMateria;
 import model.Materia;
 
 public class MateriaDao {
-	private DaoHelper daohelper;
+	private DaoHelper daoHelper;
 	public MateriaDao() {
-		this.daohelper = new DaoHelper();
+		this.daoHelper = new DaoHelper();
 	}
 	
 	public void inserirMateria(Materia materia) {
-		Connection conn = daohelper.getConnection();
+		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(?, ?, ?)";
 		
 		try {
@@ -35,18 +37,59 @@ public class MateriaDao {
 	
 	public Materia getMateria(int idMateria) {
 		Materia materia = null;
-		Connection conn = daohelper.getConnection();
+		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM materia WHERE materia.idMateria = " + idMateria;
 		
 		try {
 			Statement stmt = conn.createStatement();
-			stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			materia = new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"));
+			daoHelper.releaseAll(rs, stmt, conn);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return materia;
+	}
+	
+	public ArrayList<Materia> materiasEstado(EstadoMateria estado) {
+		ArrayList<Materia> listaMaterias = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
+		try {
+			listaMaterias = new ArrayList<>();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado")));
+			}
+			
+			daoHelper.releaseAll(rs, stmt, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaMaterias;
+	}
+	
+	public ArrayList<Materia>  getMateriaPeriodo(int idPeriodo) {
+		ArrayList<Materia> listaMaterias = null;
+		Connection conn = daoHelper.getConnection();
+		
+		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo =" + idPeriodo;
+		
+		try {
+			listaMaterias = new ArrayList<>();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaMaterias;
 	}
 
 }

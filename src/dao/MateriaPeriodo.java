@@ -67,23 +67,4 @@ public class MateriaPeriodo {
 		}
 		
 	}
-	
-	public ArrayList<Materia> materiasEstado(EstadoMateria estado) {
-		ArrayList<Materia> listaMaterias = null;
-		Connection conn = daoHelper.getConnection();
-		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
-		try {
-			listaMaterias = new ArrayList<>();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado")));
-			}
-			
-			daoHelper.releaseAll(rs, stmt, conn);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return listaMaterias;
-	}
 }
