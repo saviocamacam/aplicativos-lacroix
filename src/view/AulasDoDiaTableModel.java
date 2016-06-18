@@ -14,7 +14,7 @@ public class AulasDoDiaTableModel extends AbstractTableModel{
 	
 	public AulasDoDiaTableModel() {
 		aulas = AulaDao.getAulas("diasemana", "segunda-feira");
-		materias = MateriaDao.getMateriasPeriodo(idPeriodo);
+		materias = MateriaDao.getMateriasPeriodo(4);
 		//TODO: Pega data atual do computador
 	}
 
