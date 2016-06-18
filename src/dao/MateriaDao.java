@@ -20,13 +20,14 @@ public class MateriaDao {
 	public static void inserirMateria(Materia materia) {
 		
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado, cargaHoraria) VALUES(?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, materia.getIdCurso());
 			stmt.setString(2, materia.getNomeMateria());
 			stmt.setInt(3, materia.getPeriodoAssociado());
+			stmt.setInt(4, materia.getCargaHoraria());
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -46,7 +47,7 @@ public class MateriaDao {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
-			materia = new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"));
+			materia = new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"));
 			daoHelper.releaseAll(rs, stmt, conn);
 			
 		} catch (SQLException e) {
@@ -65,7 +66,7 @@ public class MateriaDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado")));
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
 			}
 			
 			daoHelper.releaseAll(rs, stmt, conn);
@@ -86,7 +87,7 @@ public class MateriaDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado")));
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -62,6 +62,7 @@ create table if not exists materia(
     idCurso integer not null,
     nomeMateria varchar(60),
     periodoAssociado integer,
+    cargaHoraria integer,
 
     constraint pk_materia primary key(idMateria),
     constraint fk_materia_curso foreign key (idCurso) references curso(idCurso)
@@ -170,6 +171,7 @@ INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valor
 INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES (3, 'Trabalho', '13-06-2016', 'Trabalho 4', 'Simulador de Armazenamento Arquivos', 10.0, 'E102');
 
 /*select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo = 1;
+select * from periodo where dataTermino > currentDate'/
 select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria = 'Pendente';*/
 
 

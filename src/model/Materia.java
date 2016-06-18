@@ -7,13 +7,15 @@ public class Materia {
 	private String nomeMateria;
 	private int periodoAssociado;
 	private float nota;
+	private int cargaHoraria;
 	
-	public Materia(int idMateria, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado) {
+	public Materia(int idMateria, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
 		this.idMateria = idMateria;
 		this.idCurso = idCurso;
 		this.estado = estado;
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
+		this.cargaHoraria = cargaHoraria;
 	}
 	
 	public int getIdMateria() {
@@ -57,5 +59,13 @@ public class Materia {
 
 	public void setNota(float nota) {
 		this.nota = nota;
+	}
+
+	public int getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(int cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
 	}
 }

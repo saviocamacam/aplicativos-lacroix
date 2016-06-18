@@ -56,5 +56,23 @@ public class PeriodoDao {
 		
 		return listaPeriodo;
 	}
+	
+	public static Periodo periodoAtual(int idCurso, Date currentDate) {
+		Periodo periodo = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "select * from periodo where dataTermino >" + currentDate + "and idCurso ="  + idCurso;
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			periodo = new Periodo(rs.getInt("idPeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino"));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return periodo;
+	}
 
 }
