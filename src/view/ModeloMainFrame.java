@@ -4,29 +4,22 @@
  * and open the template in the editor.
  */
 package view;
-<<<<<<< HEAD
 
-import java.util.ArrayList;
-
-import dao.UsuarioDao;
-import model.Usuario;
-=======
->>>>>>> 6241ebd4481dfdeb7eb2b52478db8f0935b0cf01
+import controller.MainFrameController;
 
 /**
  *
  * @author a1647890
  */
 public class ModeloMainFrame extends javax.swing.JFrame {
+	
+	private MainFrameController controller;
 
     /**
      * Creates new form NovoJFrame
      */
     public ModeloMainFrame() {
         initComponents();
-        ArrayList<Usuario> lista = new UsuarioDao().getUsuario("nomeusuario", "'Savio Camacam'");
-        String nomeUsuario = lista.get(0).getNome();
-        this.nomeUsuario.setText(nomeUsuario);
     }
 
     /**
@@ -39,29 +32,36 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         panelCabecalho = new java.awt.Panel();
-        nomeUsuario = new javax.swing.JLabel();
+        nomeUsuarioLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelColuna = new java.awt.Panel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        panel3 = new java.awt.Panel();
+        panelConteudoPrincipal = new java.awt.Panel();
         jLabel3 = new javax.swing.JLabel();
-        panel4 = new java.awt.Panel();
+        panelProximosEventos = new java.awt.Panel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        panel5 = new java.awt.Panel();
+        tableProximosEventos = new javax.swing.JTable();
+        proximosEventosLabel = new java.awt.Label();
+        label2 = new java.awt.Label();
+        panelDiaDaSemana = new java.awt.Panel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableAulasDoDia = new javax.swing.JTable();
+        diaDaSemanaLabel = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setFocusableWindowState(false);
+        setMinimumSize(new java.awt.Dimension(840, 500));
+        setName("mainFrame"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(840, 600));
 
         panelCabecalho.setBackground(new java.awt.Color(200, 198, 198));
         panelCabecalho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        nomeUsuario.setText("Nome Do Usuário");
+        nomeUsuarioLabel.setText("Nome Do Usuário");
 
         jLabel2.setText("jLabel2");
 
@@ -71,7 +71,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
             panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCabecalhoLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(nomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(45, 45, 45))
@@ -81,7 +81,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
             .addGroup(panelCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jLabel2))
                 .addContainerGap())
         );
@@ -123,7 +123,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panel3.setBackground(new java.awt.Color(200, 198, 198));
+        panelConteudoPrincipal.setBackground(new java.awt.Color(200, 198, 198));
 
         jLabel3.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         jLabel3.setText("jLabel3");
@@ -131,90 +131,115 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel3.setInheritsPopupMenu(false);
 
-        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
-        panel3.setLayout(panel3Layout);
-        panel3Layout.setHorizontalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel3Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(120, 120, 120))
+        javax.swing.GroupLayout panelConteudoPrincipalLayout = new javax.swing.GroupLayout(panelConteudoPrincipal);
+        panelConteudoPrincipal.setLayout(panelConteudoPrincipalLayout);
+        panelConteudoPrincipalLayout.setHorizontalGroup(
+            panelConteudoPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConteudoPrincipalLayout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panel3Layout.setVerticalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+        panelConteudoPrincipalLayout.setVerticalGroup(
+            panelConteudoPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConteudoPrincipalLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        panel4.setBackground(new java.awt.Color(200, 198, 198));
+        panelProximosEventos.setBackground(new java.awt.Color(200, 198, 198));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tableProximosEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Descrição", "Data"
+                "Data", "Local", "Tipo", "Descrição", "Detalhes"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tableProximosEventos);
 
-        javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
-        panel4.setLayout(panel4Layout);
-        panel4Layout.setHorizontalGroup(
-            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+        proximosEventosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        proximosEventosLabel.setText("  Próximos Eventos");
+
+        label2.setBackground(new java.awt.Color(204, 255, 255));
+        label2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label2.setFont(new java.awt.Font("Impact", 1, 24)); // NOI18N
+        label2.setText("   Próximos Eventos");
+
+        javax.swing.GroupLayout panelProximosEventosLayout = new javax.swing.GroupLayout(panelProximosEventos);
+        panelProximosEventos.setLayout(panelProximosEventosLayout);
+        panelProximosEventosLayout.setHorizontalGroup(
+            panelProximosEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProximosEventosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelProximosEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(proximosEventosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panel4Layout.setVerticalGroup(
-            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelProximosEventosLayout.setVerticalGroup(
+            panelProximosEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProximosEventosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(proximosEventosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panel5.setBackground(new java.awt.Color(200, 198, 198));
+        panelDiaDaSemana.setBackground(new java.awt.Color(200, 198, 198));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableAulasDoDia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Descrição", "Data"
+                "Horario", "Materia", "Sala"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableAulasDoDia);
 
-        javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
-        panel5.setLayout(panel5Layout);
-        panel5Layout.setHorizontalGroup(
-            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+        diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        diaDaSemanaLabel.setText(" Segunda-Feira");
+
+        javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
+        panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);
+        panelDiaDaSemanaLayout.setHorizontalGroup(
+            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panel5Layout.setVerticalGroup(
-            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelDiaDaSemanaLayout.setVerticalGroup(
+            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -229,11 +254,11 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                         .addComponent(panelColuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelConteudoPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(panelProximosEventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(panelDiaDaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(panelCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -246,11 +271,11 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelColuna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelConteudoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(panelDiaDaSemana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelProximosEventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -294,6 +319,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label diaDaSemanaLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -302,13 +328,15 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JLabel nomeUsuario;
-    private java.awt.Panel panel3;
-    private java.awt.Panel panel4;
-    private java.awt.Panel panel5;
+    private java.awt.Label label2;
+    private javax.swing.JLabel nomeUsuarioLabel;
     private java.awt.Panel panelCabecalho;
     private java.awt.Panel panelColuna;
+    private java.awt.Panel panelConteudoPrincipal;
+    private java.awt.Panel panelDiaDaSemana;
+    private java.awt.Panel panelProximosEventos;
+    private java.awt.Label proximosEventosLabel;
+    private javax.swing.JTable tableAulasDoDia;
+    private javax.swing.JTable tableProximosEventos;
     // End of variables declaration//GEN-END:variables
 }
