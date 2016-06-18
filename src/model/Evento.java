@@ -76,6 +76,4 @@ public class Evento {
 	public void setLocalEvento(String localEvento) {
 		this.localEvento = localEvento;
 	}
-	
-	
 }
