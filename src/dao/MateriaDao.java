@@ -58,6 +58,7 @@ public class MateriaDao {
 	}
 	
 	public static ArrayList<Materia> materiasEstado(EstadoMateria estado) {
+
 		ArrayList<Materia> listaMaterias = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
@@ -94,5 +95,4 @@ public class MateriaDao {
 		}
 		return listaMaterias;
 	}
-
 }
