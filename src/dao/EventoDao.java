@@ -9,13 +9,13 @@ import java.sql.Statement;
 import model.Evento;
 
 public class EventoDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	
 	public EventoDao() {
-		this.daoHelper = new DaoHelper();
+		EventoDao.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirEvento(Evento evento) {
+	public static void inserirEvento(Evento evento) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES(?,?,?,?,?,?,?)";
 		

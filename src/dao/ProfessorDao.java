@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import model.Professor;
 
 public class ProfessorDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	
 	public ProfessorDao() {
-		this.daoHelper = new DaoHelper();
+		ProfessorDao.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirProfessor(Professor professor) {
+	public static void inserirProfessor(Professor professor) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professor(nomeProfessor, email) VALUES(?, ?)";
 		PreparedStatement stmt = null;
@@ -34,7 +34,7 @@ public class ProfessorDao {
 		}
 	}
 	
-	public ArrayList<Professor> getProfessores() {
+	public static ArrayList<Professor> getProfessores() {
 		ArrayList<Professor> listaProfessores = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM professor";
@@ -53,7 +53,7 @@ public class ProfessorDao {
 		return listaProfessores;
 	}
 	
-	public Professor getProfessor(String nome) {
+	public static Professor getProfessor(String nome) {
 		Professor professor = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM professor WHERE professor.nomeProfessor = "+ nome;
@@ -68,12 +68,12 @@ public class ProfessorDao {
 		}
 		return professor;
 	}
-	public ArrayList<Professor> getAll()
-	{
+	
+	public static ArrayList<Professor> getAll() {
 		return getBy("1", 1);
 	}
-	public <T1> ArrayList<Professor> getBy(String nomeCampo, T1 valorCampo )
-	{
+	
+	public static <T1> ArrayList<Professor> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Professor> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM usuario where "+nomeCampo+" = '"+valorCampo+"'";
@@ -89,7 +89,8 @@ public class ProfessorDao {
 				lista.add(usr);
 			}
 			daoHelper.releaseAll(rs, ps, c);
-		}catch(SQLException e)
+		}
+		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}

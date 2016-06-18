@@ -8,12 +8,12 @@ import model.Periodo;
 import model.Professor;
 
 public class MateriaPeriodo {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	public MateriaPeriodo() {
-		this.daoHelper = new DaoHelper();
+		MateriaPeriodo.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirProfessorMateria(Professor professor, Materia materia) {
+	public static void inserirProfessorMateria(Professor professor, Materia materia) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professorMateria(idProfessor, idMateria) VALUES (?,?)";
 		
@@ -29,7 +29,7 @@ public class MateriaPeriodo {
 		}
 	}
 	
-	public void inserirProfessorPeriodo(Professor professor, Periodo periodo) {
+	public static void inserirProfessorPeriodo(Professor professor, Periodo periodo) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professorPeriodo(idProfessor, idPeriodo) VALUES (?,?)";
 		
@@ -45,7 +45,7 @@ public class MateriaPeriodo {
 		}
 	}
 	
-	public void inserirMateriaPeriodo(Materia materia, Periodo periodo) {
+	public static void inserirMateriaPeriodo(Materia materia, Periodo periodo) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materiaPeriodo(idMateria, idPeriodo, nota, estadoMateria) VALUES (?, ?, ?, ?)";
 		

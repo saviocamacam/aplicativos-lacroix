@@ -15,7 +15,7 @@ public class MainFrameController {
 	public MainFrameController(JFrame theView){
 		this.view = theView;
 		this.daoMateria = new MateriaDao();
-		this.materias = daoMateria.getMateriaPeriodo(4);
+		this.materias = daoMateria.getMateriasPeriodo(4);
 	}
 	
 }

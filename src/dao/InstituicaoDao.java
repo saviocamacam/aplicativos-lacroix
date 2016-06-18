@@ -9,13 +9,13 @@ import java.sql.Statement;
 import model.Instituicao;
 
 public class InstituicaoDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	
 	public InstituicaoDao() {
-		this.daoHelper = new DaoHelper();
+		InstituicaoDao.daoHelper = new DaoHelper();
 	}
 
-	public void inserirInstituicao(Instituicao instituicao) {
+	public static void inserirInstituicao(Instituicao instituicao) {
 		
 		Connection conn = daoHelper.getConnection();
 		
@@ -35,7 +35,7 @@ public class InstituicaoDao {
 		}
 	}
 	
-	public Instituicao getInstituicao(int idInstituicao) {
+	public static Instituicao getInstituicao(int idInstituicao) {
 		Instituicao instituicao = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM instituicao i WHERE i.idInstituicao = " + idInstituicao;

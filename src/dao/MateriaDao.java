@@ -11,12 +11,14 @@ import model.EstadoMateria;
 import model.Materia;
 
 public class MateriaDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
+	
 	public MateriaDao() {
-		this.daoHelper = new DaoHelper();
+		MateriaDao.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirMateria(Materia materia) {
+	public static void inserirMateria(Materia materia) {
+		
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(?, ?, ?)";
 		
@@ -35,7 +37,7 @@ public class MateriaDao {
 		}		
 	}
 	
-	public Materia getMateria(int idMateria) {
+	public static Materia getMateria(int idMateria) {
 		Materia materia = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM materia WHERE materia.idMateria = " + idMateria;
@@ -54,7 +56,8 @@ public class MateriaDao {
 		return materia;
 	}
 	
-	public ArrayList<Materia> materiasEstado(EstadoMateria estado) {
+	public static ArrayList<Materia> materiasEstado(EstadoMateria estado) {
+
 		ArrayList<Materia> listaMaterias = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
@@ -73,7 +76,7 @@ public class MateriaDao {
 		return listaMaterias;
 	}
 	
-	public ArrayList<Materia>  getMateriaPeriodo(int idPeriodo) {
+	public static ArrayList<Materia>  getMateriasPeriodo(int idPeriodo) {
 		ArrayList<Materia> listaMaterias = null;
 		Connection conn = daoHelper.getConnection();
 		
