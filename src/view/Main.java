@@ -45,7 +45,7 @@ public class Main {
 		//System.out.println(curso.getIdCurso());
 		
 		PeriodoDao periodoDao = new PeriodoDao();
-		ArrayList<Periodo> listaPeriodo = periodoDao.listaPeriodo(1);
+		ArrayList<Periodo> listaPeriodo = periodoDao.listaPeriodos(1);
 		
 		Usuario usuario = new UsuarioDao().recuperaUsuario("Savio Camacam");
 		

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import model.Usuario;
 
 public class UsuarioDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	
 	public UsuarioDao() {
-		this.daoHelper = new DaoHelper();
+		UsuarioDao.daoHelper = new DaoHelper();
 	}
 	
-	public void cadastrarUsuario(Usuario usuario) {
+	public static void cadastrarUsuario(Usuario usuario) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES(?, ?, ?)";
 		
@@ -39,7 +39,7 @@ public class UsuarioDao {
 		
 	}
 	
-	public Usuario recuperaUsuario(String nomeUsuario) {
+	public static Usuario recuperaUsuario(String nomeUsuario) {
 		Usuario usuario = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM usuario WHERE usuario.nomeUsuario = " + "'" + nomeUsuario + "'";
@@ -57,7 +57,7 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	public <T> ArrayList<Usuario> getUsuario(String nomeCampo, T valorCampo )
+	public static <T> ArrayList<Usuario> getUsuarios(String nomeCampo, T valorCampo )
 	{
 		ArrayList<Usuario> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();

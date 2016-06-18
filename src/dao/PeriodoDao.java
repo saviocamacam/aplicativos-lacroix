@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import model.Periodo;
 
 public class PeriodoDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	public PeriodoDao() {
-		this.daoHelper = new DaoHelper();
+		PeriodoDao.daoHelper = new DaoHelper();
 	}
 	
-	public void inserirPeriodo(Periodo periodo) {
+	public static void inserirPeriodo(Periodo periodo) {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(?, ?, ?)";
 		
@@ -36,7 +36,7 @@ public class PeriodoDao {
 		}
 	}
 	
-	public ArrayList<Periodo> listaPeriodo(int idCurso) {
+	public static ArrayList<Periodo> listaPeriodos(int idCurso) {
 		ArrayList<Periodo> listaPeriodo = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM periodo WHERE periodo.idCurso = " + idCurso;

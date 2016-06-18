@@ -21,7 +21,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
      */
     public ModeloMainFrame() {
         initComponents();
-        ArrayList<Usuario> lista = new UsuarioDao().getUsuario("nomeusuario", "'Savio Camacam'");
+        ArrayList<Usuario> lista = UsuarioDao.getUsuarios("nomeusuario", "'Savio Camacam'");
         String nomeUsuario = lista.get(0).getNome();
         this.nomeUsuario.setText(nomeUsuario);
     }

@@ -10,17 +10,13 @@ import java.util.ArrayList;
 import model.Aula;
 
 public class AulaDao {
-	private DaoHelper daoHelper;
+	private static DaoHelper daoHelper;
 	
 	public AulaDao() {
-		this.setDaoManager(new DaoHelper());
+		AulaDao.daoHelper = new DaoHelper();
 	}
 
-	public void setDaoManager(DaoHelper daoManager) {
-		this.daoHelper = daoManager;
-	}
-	
-	public void inserirAula(Aula aula) {
+	public static void inserirAula(Aula aula) {
 		Connection conn = daoHelper.getConnection();
         String sql = "INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?)";
         try {
@@ -42,7 +38,7 @@ public class AulaDao {
 		}
 	}
 	
-	public <T> ArrayList<Aula> getAulas(String nomeCampo, T valorCampo)
+	public static <T> ArrayList<Aula> getAulas(String nomeCampo, T valorCampo)
 	{
 		ArrayList<Aula> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
