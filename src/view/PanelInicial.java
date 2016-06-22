@@ -42,17 +42,14 @@ public class PanelInicial extends javax.swing.JPanel {
 
 		setMinimumSize(new java.awt.Dimension(820, 570));
 
-		comboboxUsuario.setModel(new UsuarioComboModel());
+		comboboxUsuario.setModel(new ComboModel<Usuario>());
 		comboboxUsuario.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				comboboxUsuarioActionPerformed(evt);
 			}
 		});
 
-		// FIXME: erro de compilacao
-		// comboboxCurso.setModel(
-		// new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item
-		// 2", "Item 3", "Item 4" }));
+		comboboxCurso.setModel( new ComboModel<Curso>());
 		comboboxCurso.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				comboboxCursoActionPerformed(evt);
