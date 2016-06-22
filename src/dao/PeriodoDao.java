@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import model.Periodo;
 
 public class PeriodoDao {
-	private static DaoHelper daoHelper;
+	private static DaoHelper daoHelper = new DaoHelper();
 	public PeriodoDao() {
 		PeriodoDao.daoHelper = new DaoHelper();
 	}
@@ -37,6 +37,7 @@ public class PeriodoDao {
 	}
 	
 	public static ArrayList<Periodo> listaPeriodos(int idCurso) {
+		
 		ArrayList<Periodo> listaPeriodo = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM periodo WHERE periodo.idCurso = " + idCurso;

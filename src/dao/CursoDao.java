@@ -42,6 +42,7 @@ public class CursoDao {
 	}
 	
 	public static ArrayList<Curso> recuperarCurso(Usuario usuario) {
+		daoHelper = new DaoHelper();
 		ArrayList<Curso> listaCursos = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM curso WHERE curso.idUsuario = " + usuario.getId();
@@ -51,7 +52,7 @@ public class CursoDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				Curso curso = new Curso(rs.getInt("idCurso"), rs.getInt("idInstituicao"), rs.getInt("idUsuario"), Nivel.valueOf(rs.getString("nivel")), Regime.valueOf(rs.getString("regime")), rs.getString("nomeCurso"), rs.getInt("qtdPeriodos"));
+				Curso curso = new Curso(rs.getInt("idCurso"), rs.getInt("idInstituicao"), rs.getInt("idUsuario"), Nivel.valueOf(rs.getString("nivel").toUpperCase()), Regime.valueOf(rs.getString("regime").toUpperCase()), rs.getString("nomeCurso"), rs.getInt("qtdPeriodos"));
 				ArrayList<Periodo> listaPeriodos = PeriodoDao.listaPeriodos(rs.getInt("idCurso"));
 				curso.setPeriodos(listaPeriodos);
 				listaCursos.add(curso);

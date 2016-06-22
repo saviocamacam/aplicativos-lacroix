@@ -14,8 +14,8 @@ public class DaoHelper {
 	String port = "5432";
 	String nomeBancoDados = "lacroixdb";
 	String urlConnection;
-	private String user = "postgres";
-	private String password = "root";
+	private String user = "teste";
+	private String password = "teste";
 	
 	public DaoHelper(){
 		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;

@@ -18,8 +18,10 @@ public class PanelInicialController {
 	
 	public PanelInicialController(JPanel panelInicial) {
 		this.panel = panelInicial;
-		usuarios = UsuarioDao.getUsuarios("nomeusuario", "'Savio Camacam'");
+		usuarios = UsuarioDao.getUsuarios("nomeusuario", "Savio Camacam");
 		cursos = CursoDao.recuperarCurso(usuarios.get(0));	
+		System.out.println(usuarios.get(0).getNome());
+		System.out.println(cursos.get(0).getNomeCurso());
 	}
 
 }
