@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Evento;
+import model.TipoEvento;
 
 public class EventoDao {
 	private static DaoHelper daoHelper;
@@ -37,6 +39,39 @@ public class EventoDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static ArrayList<Evento> getAll(){
+		return getBy("1", 1);
+	}
+	public static <T1> ArrayList<Evento> getBy(String nomeCampo, T1 valorCampo ) {
+		ArrayList<Evento> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM evento where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Evento usr = new Evento(
+						rs.getInt("idmateria"),
+						TipoEvento.valueOf(rs.getString("tipoevento").toUpperCase() ),
+						rs.getDate("dataevento"),
+						rs.getString("descricao"),
+						rs.getString("detalhes"),
+						rs.getFloat("valornota"),
+						rs.getString("localevento")
+						);
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
 	}
 
 }
