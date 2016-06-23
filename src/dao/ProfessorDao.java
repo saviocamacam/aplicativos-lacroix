@@ -76,7 +76,7 @@ public class ProfessorDao {
 	public static <T1> ArrayList<Professor> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Professor> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
-		String sql = "SELECT * FROM usuario where "+nomeCampo+" = '"+valorCampo+"'";
+		String sql = "SELECT * FROM professor where "+nomeCampo+" = '"+valorCampo+"'";
 		
 		try{
 			PreparedStatement ps = c.prepareStatement(sql);

@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.List;
-
 import javax.swing.JFrame;
 
 import dao.CursoDao;

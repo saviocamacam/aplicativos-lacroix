@@ -8,7 +8,6 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
     }
 
     //@SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         campoNomeProfessor = new javax.swing.JTextField();
@@ -92,27 +91,22 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }                        
 
     private void campoNomeProfessorActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        // TODO add your handling code here:
+        
     }                                                  
 
     private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        
     }                                          
 
     private void botaoConcluirHorarioActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-        // TODO add your handling code here:
+        
     }                                                    
 
     //@param args the command line arguments
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -129,9 +123,7 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrameNovoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrameNovoProfessor().setVisible(true);
@@ -139,12 +131,10 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
     private javax.swing.JButton botaoConcluirHorario;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNomeProfessor;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelNomeProfessor;
     private javax.swing.JLabel labelSetDependencias;
-    // End of variables declaration                   
 }
