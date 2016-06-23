@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 import controller.PanelInicialController;
@@ -17,9 +18,12 @@ public class PanelInicial extends javax.swing.JPanel {
 	public PanelInicial() {
 		controller = new PanelInicialController(this);
 		initComponents();
-		Curso curso = this.controller.getCursos().get(0);
-		Curso[] cursos = {curso,curso};
-		this.comboboxCurso = new JComboBox<Curso>(cursos);
+		for( Usuario ususario : controller.getUsuarios()){
+			this.comboboxUsuario.addItem(ususario);
+		}
+		for( Curso curso : controller.getCursos()){
+			this.comboboxCurso.addItem(curso);
+		}
 	}
 
 	/**
@@ -47,14 +51,14 @@ public class PanelInicial extends javax.swing.JPanel {
 
 		setMinimumSize(new java.awt.Dimension(820, 570));
 
-		comboboxUsuario.setModel(new ComboModel<Usuario>());
+		comboboxUsuario.setModel(new DefaultComboBoxModel<>());
 		comboboxUsuario.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				comboboxUsuarioActionPerformed(evt);
 			}
 		});
 
-		comboboxCurso.setModel( new ComboModel<Curso>());
+		comboboxCurso.setModel( new DefaultComboBoxModel<>());
 		comboboxCurso.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				comboboxCursoActionPerformed(evt);

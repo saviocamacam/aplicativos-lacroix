@@ -1,7 +1,7 @@
 package controller;
 
 import view.PanelPeriodosCadastro;
-import view.PanelNovasMaterias;
+import view.PanelMateriasCadastro;
 import view.PanelMateriasDependencias;
 
 public class ResetPeriodoController {

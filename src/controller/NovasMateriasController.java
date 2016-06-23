@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import dao.MateriaDao;
 import model.Materia;
-import view.PanelNovasMaterias;
+import view.PanelMateriasCadastro;
 
 public class NovasMateriasController {
 	private JPanel panelNovasMaterias;

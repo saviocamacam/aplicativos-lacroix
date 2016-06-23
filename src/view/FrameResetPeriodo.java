@@ -145,10 +145,9 @@ public class FrameResetPeriodo extends javax.swing.JFrame {
 }
 
     
-    private void initComponents() {
-    	cadastroPeriodo = new PanelCadastroPeriodo();
-    	setDependencias = new PanelSetDependencias();
-    	novasMaterias = new PanelNovasMaterias();
+    	/*cadastroPeriodo = new PanelPeriodosCadastro();
+    	setDependencias = new PanelMateriasDependencias();
+    	novasMaterias = new PanelMateriasCadastro();
     	panelMaior = new JPanel();
         
         panelPrincipal.add(cadastroPeriodo);
@@ -173,7 +172,7 @@ public class FrameResetPeriodo extends javax.swing.JFrame {
         frame.setVisible(true);
     }
 
-}
+}*/
 
    
        
