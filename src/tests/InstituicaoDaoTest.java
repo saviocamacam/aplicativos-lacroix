@@ -17,5 +17,13 @@ public class InstituicaoDaoTest {
 		ArrayList<Instituicao> l = dao.getAll();
 		assertTrue( l.size()>0 );
 	}
+	
+	@Test
+	public void test2() {
+		InstituicaoDao dao = new InstituicaoDao();
+		ArrayList<Instituicao> l = dao.getBy("nomeinstituicao","UTFPR");
+		assertTrue( l.size()>0 );
+		
+	}
 
 }
