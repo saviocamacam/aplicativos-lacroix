@@ -37,8 +37,8 @@ public class MainFrame {
 				try {
 					MainFrame window = new MainFrame();
 					window.frame.setTitle("Lacroix");
-					CadastroInicial cadastroInicial = new CadastroInicial();
-					window.frame.add(cadastroInicial);
+					PanelCadastroInicial panelCadastroInicial = new PanelCadastroInicial();
+					window.frame.add(panelCadastroInicial);
 					window.frame.pack();
 					window.frame.setVisible(true);
 				} catch (Exception e) {

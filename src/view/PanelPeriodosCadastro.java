@@ -1,33 +1,33 @@
 package view;
 
-//@author savio
-public class PanelCadastroPeriodo extends javax.swing.JPanel {
+public class PanelPeriodosCadastro extends javax.swing.JPanel {
 
-    public PanelCadastroPeriodo() {
+    public PanelPeriodosCadastro() {
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
+        scrollText = new javax.swing.JScrollPane();
+        textNovoPeriodo = new javax.swing.JTextArea();
+        panelDatas = new javax.swing.JPanel();
         selecDataInicial = new com.toedter.calendar.JDateChooser();
         selecDataFinal = new com.toedter.calendar.JDateChooser();
         labelDataInicialPeriodo = new javax.swing.JLabel();
         labelDataFinalPeriodo = new javax.swing.JLabel();
         labelSetDependencias = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(820, 570));
-        setPreferredSize(new java.awt.Dimension(820, 570));
+        setMinimumSize(new java.awt.Dimension(820, 510));
+        setPreferredSize(new java.awt.Dimension(820, 510));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("O Período compreende o espaço de tempo entre o começo e o fim das aulas. Lacroix vai ajudá-lo nesse período.");
-        jScrollPane2.setViewportView(jTextArea1);
+        textNovoPeriodo.setEditable(false);
+        textNovoPeriodo.setColumns(20);
+        textNovoPeriodo.setLineWrap(true);
+        textNovoPeriodo.setRows(5);
+        textNovoPeriodo.setText("O Período compreende o espaço de tempo entre o começo e o fim das aulas. Lacroix vai ajudá-lo nesse período.");
+        scrollText.setViewportView(textNovoPeriodo);
 
         selecDataInicial.setMinimumSize(new java.awt.Dimension(30, 20));
 
@@ -35,32 +35,32 @@ public class PanelCadastroPeriodo extends javax.swing.JPanel {
 
         labelDataFinalPeriodo.setText("Data final");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDatasLayout = new javax.swing.GroupLayout(panelDatas);
+        panelDatas.setLayout(panelDatasLayout);
+        panelDatasLayout.setHorizontalGroup(
+            panelDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatasLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(selecDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(selecDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panelDatasLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(labelDataInicialPeriodo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelDataFinalPeriodo)
                 .addGap(65, 65, 65))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        panelDatasLayout.setVerticalGroup(
+            panelDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelDataFinalPeriodo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelDataInicialPeriodo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(selecDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -76,7 +76,7 @@ public class PanelCadastroPeriodo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(scrollText)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(313, 313, 313)
@@ -84,7 +84,7 @@ public class PanelCadastroPeriodo extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
@@ -93,20 +93,22 @@ public class PanelCadastroPeriodo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(labelSetDependencias)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(scrollText, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addGap(112, 112, 112)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
     }// </editor-fold>                        
 
 
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    // Variables declaration - do not modify                     
     private javax.swing.JLabel labelDataFinalPeriodo;
     private javax.swing.JLabel labelDataInicialPeriodo;
     private javax.swing.JLabel labelSetDependencias;
+    private javax.swing.JPanel panelDatas;
+    private javax.swing.JScrollPane scrollText;
     private com.toedter.calendar.JDateChooser selecDataFinal;
     private com.toedter.calendar.JDateChooser selecDataInicial;
+    private javax.swing.JTextArea textNovoPeriodo;
+    // End of variables declaration                   
 }

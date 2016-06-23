@@ -13,16 +13,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controller.Submitable;
 
-public class CadastroInicial extends JPanel{
+public class PanelCadastroInicial extends JPanel{
 
 	CadastroUsuario cadastroUsuario;
-	CadastroInstituicao cadastroInstituicao;
-	CadastroCurso cadastroCurso;
+	PanelInstituicaoCadastro panelInstituicaoCadastro;
+	PanelCursoCadastro panelCursoCadastro;
 	
 	/**
 	 * Create the panel.
 	 */
-	public CadastroInicial() {
+	public PanelCadastroInicial() {
 		
 		JTabbedPane panelAbas = new JTabbedPane(JTabbedPane.TOP);
 		panelAbas.setName("");
@@ -59,11 +59,11 @@ public class CadastroInicial extends JPanel{
 		);
 		
 		cadastroUsuario = new CadastroUsuario();
-		cadastroInstituicao = new CadastroInstituicao();
-		cadastroCurso = new CadastroCurso();
+		panelInstituicaoCadastro = new PanelInstituicaoCadastro();
+		panelCursoCadastro = new PanelCursoCadastro();
 		panelAbas.addTab("Usuário", null, cadastroUsuario, null);
-		panelAbas.addTab("Instituição", null, cadastroInstituicao, null);
-		panelAbas.addTab("Curso", null, cadastroCurso, null);
+		panelAbas.addTab("Instituição", null, panelInstituicaoCadastro, null);
+		panelAbas.addTab("Curso", null, panelCursoCadastro, null);
 
 		setLayout(groupLayout);
 		

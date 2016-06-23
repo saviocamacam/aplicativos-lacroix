@@ -9,14 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CadastroInstituicao extends JPanel implements Submitable{
+public class PanelInstituicaoCadastro extends JPanel implements Submitable{
 	private JTextField textField;
 	private JTextField textField_1;
 
 	/**
 	 * Create the panel.
 	 */
-	public CadastroInstituicao() {
+	public PanelInstituicaoCadastro() {
 		
 		JPanel panelInstituicao = new JPanel();
 		
