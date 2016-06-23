@@ -97,5 +97,11 @@ public class Curso {
 	public void addPeriodo(Periodo periodo) {
 		this.periodos.add(periodo);
 	}
+
+	@Override
+	public String toString() {
+		return this.nomeCurso;
+	}
+	
 	
 }

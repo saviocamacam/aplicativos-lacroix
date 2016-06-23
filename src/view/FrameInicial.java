@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 /**
@@ -30,20 +32,24 @@ public class FrameInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(820, 570));
         setPreferredSize(new java.awt.Dimension(820, 570));
+        setSize(new java.awt.Dimension(820, 570));
 
+        /*
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 411, Short.MAX_VALUE)
         );
 
         pack();
+        */
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -78,7 +84,7 @@ public class FrameInicial extends javax.swing.JFrame {
             public void run() {
             	PanelInicial panelInicial = new PanelInicial();
             	FrameInicial frame = new FrameInicial();
-            	panelInicial.setVisible(true);
+            	frame.setLayout(new BorderLayout());
                 frame.add(panelInicial);
                 frame.setVisible(true);
             }
