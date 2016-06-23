@@ -169,11 +169,6 @@ INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valor
 INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES (3, 'Trabalho', '06-06-2016', 'Previa Lacroix', 'Apresentacao casos de uso basicos', 10.0, 'E101');
 INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES (3, 'Trabalho', '13-06-2016', 'Trabalho 4', 'Simulador de Armazenamento Arquivos', 10.0, 'E102');
 
-/*select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo = 1;
-select * from periodo where dataTermino > currentDate'/
-select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria = 'Pendente';*/
-
-
 INSERT INTO usuario(nomeUsuario, registro) VALUES ('Mercia', 1648000);
 INSERT INTO usuario(nomeUsuario, registro) VALUES ('Mercia', 1648160);
 INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES ('Mercia', 1648160, '21-01-1995');

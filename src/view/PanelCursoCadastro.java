@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
-public class CadastroCurso extends JPanel implements Submitable {
+public class PanelCursoCadastro extends JPanel implements Submitable {
 	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
-	public CadastroCurso() {
+	public PanelCursoCadastro() {
 		setLayout(null);
 		
 		JPanel panelCurso = new JPanel();

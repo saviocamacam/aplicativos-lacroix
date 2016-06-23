@@ -1,8 +1,8 @@
 package controller;
 
-import view.PanelCadastroPeriodo;
-import view.PanelNovasMaterias;
-import view.PanelSetDependencias;
+import view.PanelPeriodosCadastro;
+import view.PanelMateriasCadastro;
+import view.PanelMateriasDependencias;
 
 public class ResetPeriodoController {
 	private CadastroPeriodoController periodoController;
