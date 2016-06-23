@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Curso;
+import model.Evento;
 import model.Nivel;
 import model.Periodo;
 import model.Regime;
+import model.TipoEvento;
 import model.Usuario;
 
 public class CursoDao {
@@ -64,4 +66,38 @@ public class CursoDao {
 		
 		return listaCursos;
 	}
+	
+	public static ArrayList<Curso> getAll(){
+		return getBy("1", 1);
+	}
+	
+	public static <T1> ArrayList<Curso> getBy(String nomeCampo, T1 valorCampo ) {
+		ArrayList<Curso> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM curso where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Curso usr = new Curso(
+						rs.getInt("idinstituicao"),
+						rs.getInt("idusuario"),
+						Nivel.valueOf(rs.getString("nivel").toUpperCase() ),
+						Regime.valueOf( rs.getString("regime").toUpperCase() ),
+						rs.getString("nomecurso"),
+						rs.getInt("qtdperiodos")
+						);
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
 }
