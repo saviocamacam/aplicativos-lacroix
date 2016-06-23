@@ -57,7 +57,10 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	public static <T> ArrayList<Usuario> getUsuarios(String nomeCampo, T valorCampo )
+	public static ArrayList<Usuario> getAll(){
+		return getBy("1",1);
+	}
+	public static <T> ArrayList<Usuario> getBy(String nomeCampo, T valorCampo )
 	{
 		daoHelper = new DaoHelper();
 		ArrayList<Usuario> lista = new ArrayList<>();

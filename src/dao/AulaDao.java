@@ -38,7 +38,11 @@ public class AulaDao {
 		}
 	}
 	
-	public static <T> ArrayList<Aula> getAulas(String nomeCampo, T valorCampo)
+	public static ArrayList<Aula> getAll(){
+		return getBy("1",1);
+	}
+	
+	public static <T> ArrayList<Aula> getBy(String nomeCampo, T valorCampo)
 	{
 		ArrayList<Aula> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();

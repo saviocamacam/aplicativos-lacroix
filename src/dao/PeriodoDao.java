@@ -77,6 +77,10 @@ public class PeriodoDao {
 		return periodo;
 	}
 
+	public static ArrayList<Periodo> getAll(){
+		return getBy("1", 1);
+	}
+	
 	public static <T1> ArrayList<Periodo> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Periodo> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
