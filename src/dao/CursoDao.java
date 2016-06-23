@@ -71,6 +71,10 @@ public class CursoDao {
 		return getBy("1", 1);
 	}
 	
+	public static ArrayList<Curso> getBy( Usuario user ){
+		return getBy( "idusuario", user.getId() );
+	}
+	
 	public static <T1> ArrayList<Curso> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Curso> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
