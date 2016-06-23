@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import model.Periodo;
 
+
 public class PeriodoDao {
 	private static DaoHelper daoHelper = new DaoHelper();
 	public PeriodoDao() {
@@ -76,4 +77,29 @@ public class PeriodoDao {
 		return periodo;
 	}
 
+	public static <T1> ArrayList<Periodo> getBy(String nomeCampo, T1 valorCampo ) {
+		ArrayList<Periodo> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM periodo where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Periodo usr = new Periodo(
+								rs.getInt("idperiodo"),
+								rs.getInt("idcurso"),
+								rs.getDate("datainicio"), rs.getDate("datatermino")
+								);
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
 }

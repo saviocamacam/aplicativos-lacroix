@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import model.Instituicao;
 import model.Instituicao;
 
 public class InstituicaoDao {
@@ -53,4 +55,33 @@ public class InstituicaoDao {
 		}
 		return instituicao;
 	}
+	public static ArrayList<Instituicao> getAll(){
+		return getBy("1", 1);
+	}
+	public static <T1> ArrayList<Instituicao> getBy(String nomeCampo, T1 valorCampo ) {
+		ArrayList<Instituicao> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM instituicao where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Instituicao usr = new Instituicao(
+							rs.getInt("idinstituicao"),
+							rs.getString("nomeinstituicao"),
+							rs.getString("cidade")
+							);
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	
 }

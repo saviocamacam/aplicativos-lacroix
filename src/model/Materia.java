@@ -17,7 +17,27 @@ public class Materia {
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
 	}
+
+	public Materia(int idMateria, int idCurso, String nomeMateria, int periodoAssociado, float nota, int cargaHoraria) {
+		super();
+		this.idMateria = idMateria;
+		this.idCurso = idCurso;
+		this.nomeMateria = nomeMateria;
+		this.periodoAssociado = periodoAssociado;
+		this.nota = nota;
+		this.cargaHoraria = cargaHoraria;
+	}
 	
+
+	public Materia(int idMateria, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
+		super();
+		this.idMateria = idMateria;
+		this.idCurso = idCurso;
+		this.nomeMateria = nomeMateria;
+		this.periodoAssociado = periodoAssociado;
+		this.cargaHoraria = cargaHoraria;
+	}
+
 	public int getIdMateria() {
 		return idMateria;
 	}

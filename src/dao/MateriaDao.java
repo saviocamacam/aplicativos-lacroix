@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import model.EstadoMateria;
 import model.Materia;
+import model.Periodo;
 
 public class MateriaDao {
 	private static DaoHelper daoHelper;
@@ -94,5 +95,37 @@ public class MateriaDao {
 			e.printStackTrace();
 		}
 		return listaMaterias;
+	}
+	
+	public static ArrayList<Materia> getAll(){
+		return getBy("1", 1); 
+	}
+	
+	public static <T1> ArrayList<Materia> getBy(String nomeCampo, T1 valorCampo ) {
+		ArrayList<Materia> lista = new ArrayList<>();
+		Connection c = daoHelper.getConnection();
+		String sql = "SELECT * FROM materia where "+nomeCampo+" = '"+valorCampo+"'";
+		
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() )
+			{
+				Materia usr = new Materia(
+						rs.getInt("idmateria"),
+						rs.getInt("idcurso"),
+						rs.getString("nomemateria"),
+						rs.getInt("periodoassociado"),
+						rs.getInt("cargahoraria")
+						);
+				lista.add(usr);
+			}
+			daoHelper.releaseAll(rs, ps, c);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
 	}
 }
