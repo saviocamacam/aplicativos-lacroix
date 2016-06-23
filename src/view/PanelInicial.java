@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JComboBox;
+
 import controller.PanelInicialController;
 import model.Curso;
 import model.Usuario;
@@ -13,8 +15,11 @@ public class PanelInicial extends javax.swing.JPanel {
 	 * Creates new form PanelInicial
 	 */
 	public PanelInicial() {
-		initComponents();
 		controller = new PanelInicialController(this);
+		initComponents();
+		Curso curso = this.controller.getCursos().get(0);
+		Curso[] cursos = {curso,curso};
+		this.comboboxCurso = new JComboBox<Curso>(cursos);
 	}
 
 	/**

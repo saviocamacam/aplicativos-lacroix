@@ -77,7 +77,10 @@ public class FrameInicial extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
             	PanelInicial panelInicial = new PanelInicial();
-                new FrameInicial().add(panelInicial).setVisible(true);
+            	FrameInicial frame = new FrameInicial();
+            	panelInicial.setVisible(true);
+                frame.add(panelInicial);
+                frame.setVisible(true);
             }
         });
     }

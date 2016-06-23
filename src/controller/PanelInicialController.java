@@ -12,16 +12,22 @@ import model.Usuario;
 import view.PanelInicial;
 
 public class PanelInicialController {
-	private JPanel panel;
+	private PanelInicial panel;
 	private List<Usuario> usuarios;
 	private List<Curso> cursos;
 	
-	public PanelInicialController(JPanel panelInicial) {
+	public PanelInicialController(PanelInicial panelInicial) {
 		this.panel = panelInicial;
 		usuarios = UsuarioDao.getUsuarios("nomeusuario", "Savio Camacam");
 		cursos = CursoDao.recuperarCurso(usuarios.get(0));	
-		System.out.println(usuarios.get(0).getNome());
-		System.out.println(cursos.get(0).getNomeCurso());
+	}
+	
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
 }
