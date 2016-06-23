@@ -30,7 +30,6 @@ create table if not exists curso(
     idUsuario integer not null,
     nivel varchar(50),
     regime varchar(50),
-    
     nomeCurso varchar(50),
     qtdPeriodos integer,
     
@@ -128,7 +127,7 @@ create table if not exists materiaPeriodo(
 
 INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES ('Savio Camacam', 1648160, '21-01-1995');
 INSERT INTO instituicao(nomeInstituicao, cidade) VALUES ('UTFPR', 'Campo Mourao');
-INSERT INTO curso(idInstituicao, idUsuario, nivel, regime, nomeCurso, qtdPeriodos) VALUES(1, 1, 'Graduacao', 'Graduacao', 'Bacharelado em Ciencia da Computacao', 8);
+INSERT INTO curso(idInstituicao, idUsuario, nivel, regime, nomeCurso, qtdPeriodos) VALUES(1, 1, 'Graduacao', 'SEMESTRAL', 'Bacharelado em Ciencia da Computacao', 8);
 
 INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '15-09-2014', '20-12-2014');
 INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '9-03-2015', '18-7-2015');
