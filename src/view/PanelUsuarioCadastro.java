@@ -11,7 +11,7 @@ import controller.Submitable;
 import controller.UsuarioController;
 import model.Usuario;
 
-public class CadastroUsuario extends JPanel{
+public class PanelUsuarioCadastro extends JPanel{
 	private JTextField txtNome;
 	private JTextField txtRA;
 	private JTextField fmtTxtNascimento;
@@ -20,7 +20,7 @@ public class CadastroUsuario extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public CadastroUsuario() {
+	public PanelUsuarioCadastro() {
 		controller = new UsuarioController(this);
 		JPanel panelUsuario = new JPanel();
 		

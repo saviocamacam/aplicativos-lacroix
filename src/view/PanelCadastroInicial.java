@@ -15,13 +15,10 @@ import controller.Submitable;
 
 public class PanelCadastroInicial extends JPanel{
 
-	CadastroUsuario cadastroUsuario;
+	PanelUsuarioCadastro panelUsuarioCadastro;
 	PanelInstituicaoCadastro panelInstituicaoCadastro;
 	PanelCursoCadastro panelCursoCadastro;
 	
-	/**
-	 * Create the panel.
-	 */
 	public PanelCadastroInicial() {
 		
 		JTabbedPane panelAbas = new JTabbedPane(JTabbedPane.TOP);
@@ -58,10 +55,10 @@ public class PanelCadastroInicial extends JPanel{
 					.addContainerGap())
 		);
 		
-		cadastroUsuario = new CadastroUsuario();
+		panelUsuarioCadastro = new PanelUsuarioCadastro();
 		panelInstituicaoCadastro = new PanelInstituicaoCadastro();
 		panelCursoCadastro = new PanelCursoCadastro();
-		panelAbas.addTab("Usuário", null, cadastroUsuario, null);
+		panelAbas.addTab("Usuário", null, panelUsuarioCadastro, null);
 		panelAbas.addTab("Instituição", null, panelInstituicaoCadastro, null);
 		panelAbas.addTab("Curso", null, panelCursoCadastro, null);
 

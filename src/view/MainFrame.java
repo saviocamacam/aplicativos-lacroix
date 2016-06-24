@@ -8,12 +8,8 @@ public class MainFrame {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 
-		// Ativa o Nimbus look and feel caso exista
 		try {
 			javax.swing.UIManager.LookAndFeelInfo[] installedLookAndFeels = javax.swing.UIManager
 					.getInstalledLookAndFeels();
@@ -48,16 +44,10 @@ public class MainFrame {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public MainFrame() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);

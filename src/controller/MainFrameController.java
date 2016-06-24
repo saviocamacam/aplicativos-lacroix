@@ -17,7 +17,7 @@ public class MainFrameController {
 	
 	public MainFrameController(JFrame frame){
 		this.frame = frame;
-		this.usuario = UsuarioDao.getUsuarios("'nomeusuario'", "'Savio Camacam'").get(0);
+		this.usuario = UsuarioDao.getBy("'nomeusuario'", "'Savio Camacam'").get(0);
 		this.curso = CursoDao.recuperarCurso(usuario).get(0);
 		this.instituicao = InstituicaoDao.getInstituicao(1);
 	}

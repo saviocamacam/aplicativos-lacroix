@@ -18,7 +18,7 @@ public class PanelInicialController {
 	
 	public PanelInicialController(PanelInicial panelInicial) {
 		this.panel = panelInicial;
-		usuarios = UsuarioDao.getUsuarios("1", "1");
+		usuarios = UsuarioDao.getBy("1", "1");
 		cursos = CursoDao.recuperarCurso(usuarios.get(0));	
 	}
 	
