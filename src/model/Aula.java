@@ -5,14 +5,17 @@ import java.sql.Time;
 public class Aula {
 	private int idAula;
 	private int idMateria;
+	private String nomeMateria;
 	private int idPeriodo;
 	private String diaSemana;
 	private Time horaInicial;
 	private Time horaFinal;
 	private String sala;
 	
-	public Aula(int idMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
+	
+	public Aula(int idMateria, String nomeMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
 		this.idMateria = idMateria;
+		this.nomeMateria = nomeMateria;
 		this.idPeriodo = idPeriodo;
 		this.diaSemana = diaSemana;
 		this.horaInicial = horaInicial;
@@ -65,5 +68,13 @@ public class Aula {
 
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
+	}
+
+	public String getNomeMateria() {
+		return nomeMateria;
+	}
+
+	public void setNomeMateria(String nomeMateria) {
+		this.nomeMateria = nomeMateria;
 	}
 }

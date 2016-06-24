@@ -18,15 +18,16 @@ public class AulaDao {
 
 	public static void inserirAula(Aula aula) {
 		Connection conn = daoHelper.getConnection();
-        String sql = "INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?,?)";
         try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);	
 			stmt.setInt(1, aula.getIdMateria());
-			stmt.setInt(2, aula.getIdPeriodo());
-			stmt.setString(3, aula.getDiaSemana());
-			stmt.setTime(4, aula.getHoraInicial());
-			stmt.setTime(5, aula.getHoraFinal());
-			stmt.setString(6, aula.getLocal());
+			stmt.setString(2, aula.getNomeMateria());
+			stmt.setInt(3, aula.getIdPeriodo());
+			stmt.setString(4, aula.getDiaSemana());
+			stmt.setTime(5, aula.getHoraInicial());
+			stmt.setTime(6, aula.getHoraFinal());
+			stmt.setString(7, aula.getLocal());
 			stmt.executeQuery();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -54,6 +55,7 @@ public class AulaDao {
 			while( rs.next() )
 			{
 				Aula a = new Aula(rs.getInt("idMateria"),
+									rs.getString("nomeMateria"),
 								  rs.getInt("idperiodo"),
 								  rs.getString("diasemana"),
 								  rs.getTime("horainicial"),

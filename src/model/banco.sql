@@ -70,6 +70,7 @@ create table if not exists materia(
 create table if not exists aula(
     idAula serial,
     idMateria integer not null,
+    nomeMateria varchar(50),
     idPeriodo integer not null,
     diaSemana varchar(15),
     horaInicial time,
@@ -143,12 +144,12 @@ INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Analise d
 INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Programacao de Aplicativos', 4);
 INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Banco de Dados 2', 4);
 
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,1,'segunda-feira', '19:30', '21:10', 'E101');
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,1,'quinta-feira', '13:50', '15:30', 'E105');
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(2,1,'terça-feira', '19:30', '21:10', 'D104');
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(2,1,'quarta-feira', '19:30', '21:10', 'E003');
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(4,1,'terça-feira', '13:50', '15:30', 'E105');
-INSERT INTO aula(idMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(4,1,'quinta-feira', '19:30', '21:10', 'E102');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,'Programacao de Aplicativos',1,'segunda-feira', '19:30', '21:10', 'E101');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,'Programacao de Aplicativos',1,'quinta-feira', '13:50', '15:30', 'E105');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(2,'Analise de Algoritmos',1,'terça-feira', '19:30', '21:10', 'D104');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(2,'Analise de Algoritmos',1,'quarta-feira', '19:30', '21:10', 'E003');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(4,'Banco de Dados 2',1,'terça-feira', '13:50', '15:30', 'E105');
+INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(4,'Banco de Dados 2',1,'quinta-feira', '19:30', '21:10', 'E102');
 
 INSERT INTO professorMateria VALUES(1,1);
 INSERT INTO professorMateria VALUES(1,2);
