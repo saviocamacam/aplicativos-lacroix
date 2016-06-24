@@ -50,6 +50,12 @@ public class Usuario {
 	public void setRegistro(int registro) {
 		this.registro = registro;
 	}
+
+	@Override
+	public String toString() {
+		return nomeUsuario;
+	}
+	
 	
 	
 }
