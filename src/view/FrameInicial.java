@@ -201,6 +201,7 @@ public class FrameInicial extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+
 				FrameInicial frame = new FrameInicial();
 				frame.setVisible(true);
 			}
