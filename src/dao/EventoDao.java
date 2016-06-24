@@ -45,6 +45,7 @@ public class EventoDao {
 		return getBy("1", 1);
 	}
 	public static <T1> ArrayList<Evento> getBy(String nomeCampo, T1 valorCampo ) {
+		daoHelper = new DaoHelper();
 		ArrayList<Evento> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM evento where "+nomeCampo+" = '"+valorCampo+"'";

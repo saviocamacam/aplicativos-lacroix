@@ -156,10 +156,12 @@ public class FrameInicial extends javax.swing.JFrame {
 	}// GEN-LAST:event_comboboxCursoActionPerformed
 
 	private void botaoCarregarProgramaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_botaoCarregarProgramaActionPerformed
-		ModeloMainFrame frame = new ModeloMainFrame();
-		frame.requestFocus();
-		frame.setVisible(true);
 		this.dispose();
+		ModeloMainFrame frame = new ModeloMainFrame((Usuario) comboboxUsuario.getSelectedItem(),
+				(Curso) comboboxCurso.getSelectedItem());
+		frame.toFront();
+		frame.setVisible(true);
+
 	}// GEN-LAST:event_botaoCarregarProgramaActionPerformed
 
 	/**
