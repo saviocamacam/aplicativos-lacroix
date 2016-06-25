@@ -61,7 +61,7 @@ public class MateriaDao {
 
 		ArrayList<Materia> listaMaterias = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
+		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
 		try {
 			listaMaterias = new ArrayList<>();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -93,7 +93,7 @@ public class MateriaDao {
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		
-		String sql = "select m.idMateria, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargahoraria, mp.estadomateria from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo =" + idPeriodo;
+		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargahoraria, mp.estadomateria from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo =" + idPeriodo;
 		
 		try {
 			listaMaterias = new ArrayList<>();

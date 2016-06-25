@@ -242,6 +242,8 @@ public class FrameInicial extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				DaoHelper daoHelper = new DaoHelper();
+				if(daoHelper.checkDBExists());
 				FrameInicial frame = new FrameInicial();
 				frame.setVisible(true);
 			}
