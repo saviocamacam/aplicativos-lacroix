@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.spi.CalendarDataProvider;
 
 import dao.AulaDao;
+import dao.DaoHelper;
 import dao.EventoDao;
 import model.Aula;
 import model.Curso;
@@ -46,11 +47,18 @@ public class ModeloMainFrameController {
 		return eventos;
 	}
 	
-	public List<Aula> getAulas() {
+	public List<Aula> getTodasAulas() {
 		if(this.aulas == null){
 			this.aulas = AulaDao.getAll();
 		}
 		return aulas;
+	}
+	
+	public List<Aula> getAulasDia(){
+		DiaSemana dia = getDiaSemana();
+		List<Aula> aulasDoDia = new ArrayList<>();
+		aulasDoDia.addAll(AulaDao.getBy("diasemana", dia.getDiaSemanaBanco()));
+		return aulasDoDia;
 	}
 	
 	public DiaSemana getDiaSemana(){

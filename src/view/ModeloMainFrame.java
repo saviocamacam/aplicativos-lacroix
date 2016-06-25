@@ -52,7 +52,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 			
 			@Override
 			public void run() {
-				for(Aula aula : controller.getAulas()){
+				for(Aula aula : controller.getAulasDia()){
 					((AulaTableModel)tableAulasDoDia.getModel()).addRow(aula);
 				}
 				

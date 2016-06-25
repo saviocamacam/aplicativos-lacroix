@@ -27,6 +27,10 @@ public enum DiaSemana {
 		return null;
 	}
 	
+	public String getDiaSemanaBanco() {
+		return this.diaSemana;
+	}
+	
 	@Override
 	public String toString() {
 		return diaSemanaTxt;
