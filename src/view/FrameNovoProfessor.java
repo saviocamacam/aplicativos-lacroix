@@ -1,6 +1,5 @@
 package view;
 
-//@author savio
 public class FrameNovoProfessor extends javax.swing.JFrame {
 
     public FrameNovoProfessor() {
@@ -8,6 +7,7 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
     }
 
     //@SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         campoNomeProfessor = new javax.swing.JTextField();
@@ -91,7 +91,7 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
         );
 
         pack();
-    }                        
+    }// </editor-fold>                        
 
     private void campoNomeProfessorActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         
@@ -103,9 +103,9 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
 
     private void botaoConcluirHorarioActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         
+        this.dispose();
     }                                                    
 
-    //@param args the command line arguments
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -131,10 +131,12 @@ public class FrameNovoProfessor extends javax.swing.JFrame {
         });
     }
 
+    // Variables declaration - do not modify                     
     private javax.swing.JButton botaoConcluirHorario;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNomeProfessor;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelNomeProfessor;
     private javax.swing.JLabel labelSetDependencias;
+    // End of variables declaration                   
 }
