@@ -58,6 +58,7 @@ create table if not exists professor(
 
 create table if not exists materia(
     idMateria serial,
+    nomeProfessor varchar(40),
     idCurso integer not null,
     nomeMateria varchar(60),
     periodoAssociado integer,

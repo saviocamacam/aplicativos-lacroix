@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import model.EstadoMateria;
 import model.Materia;
-import model.Periodo;
 
 public class MateriaDao {
 	private static DaoHelper daoHelper;

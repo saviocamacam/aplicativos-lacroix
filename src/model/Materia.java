@@ -15,7 +15,7 @@ public class Materia {
 	
 	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
 		this.idMateria = idMateria;
-		this.nomeProfessor = nomeProfessor;
+		this.setNomeProfessor(nomeProfessor);
 		this.idCurso = idCurso;
 		this.estado = estado;
 		this.nomeMateria = nomeMateria;
@@ -24,7 +24,7 @@ public class Materia {
 	}
 	
 	public Materia(String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
-		this.nomeProfessor = nomeProfessor;
+		this.setNomeProfessor(nomeProfessor);
 		this.idCurso = idCurso;
 		this.estado = estado;
 		this.nomeMateria = nomeMateria;
@@ -121,5 +121,13 @@ public class Materia {
 
 	public void setCursadaUltimaVez(Date cursadaUltimaVez) {
 		this.cursadaUltimaVez = cursadaUltimaVez;
+	}
+
+	public String getNomeProfessor() {
+		return nomeProfessor;
+	}
+
+	public void setNomeProfessor(String nomeProfessor) {
+		this.nomeProfessor = nomeProfessor;
 	}
 }
