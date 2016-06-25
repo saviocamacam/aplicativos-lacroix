@@ -84,28 +84,15 @@ public class DaoHelper {
 		}
 	}
 	
-	public boolean checkDBExists(String dbName){
+	public boolean checkDBExists(){
 		boolean retorno = false;
 	    try{
 	        Connection conn = DriverManager.getConnection(urlConnection, user, password); //Open a connection
-
-	        ResultSet resultSet = conn.getMetaData().getCatalogs();
-
-	        while (resultSet.next()) {
-
-	          String databaseName = resultSet.getString(1);
-	            if(databaseName.equals(dbName)){
-	                retorno =  true;
-	            }
-	        }
-	        resultSet.close();
-
+	        retorno = true;
 	    }
 	    catch(Exception e){
-	        e.printStackTrace();
-	    }
-	    if(!retorno) {
 	    	this.createDatabase();
+	    	return true;
 	    }
 	    return retorno;
 	}
