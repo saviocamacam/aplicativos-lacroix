@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,6 +45,40 @@ public class EventoDao {
 	public static ArrayList<Evento> getAll(){
 		return getBy("1", 1);
 	}
+	
+	public static ArrayList<Evento> getEventoMaiorQue(Date dataAtual) {
+		daoHelper = new DaoHelper();
+		ArrayList<Evento> listaEventos = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "select * from evento where dataEvento > '" + dataAtual +"'";
+		
+		try {
+			listaEventos = new ArrayList<>();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Evento usr = new Evento(
+						rs.getInt("idmateria"),
+						TipoEvento.valueOf(rs.getString("tipoevento").toUpperCase() ),
+						rs.getDate("dataevento"),
+						rs.getString("descricao"),
+						rs.getString("detalhes"),
+						rs.getFloat("valornota"),
+						rs.getString("localevento")
+						);
+				listaEventos.add(usr);
+			}
+			daoHelper.releaseAll(rs, stmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return listaEventos;
+	}
+	
 	public static <T1> ArrayList<Evento> getBy(String nomeCampo, T1 valorCampo ) {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> lista = new ArrayList<>();
