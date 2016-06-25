@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import dao.UsuarioDao;
+import model.Aula;
 import model.Curso;
 import model.Usuario;
 import model.Evento;
@@ -43,6 +44,16 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 			public void run() {
 				for(Evento evento : controller.getEventos()){
 					((EventoTableModel)tableProximosEventos.getModel()).addRow(evento);
+				}
+				
+			}
+		});
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(Aula aula : controller.getAulas()){
+					((AulaTableModel)tableAulasDoDia.getModel()).addRow(aula);
 				}
 				
 			}
@@ -279,24 +290,11 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 
         panelDiaDaSemana.setBackground(new java.awt.Color(200, 198, 198));
 
-        tableAulasDoDia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Horario", "Materia", "Sala"
-            }
-        ));
+        tableAulasDoDia.setModel(new AulaTableModel());
         jScrollPane2.setViewportView(tableAulasDoDia);
 
         diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        diaDaSemanaLabel.setText(" Segunda-Feira");
+        diaDaSemanaLabel.setText(controller.getDiaSemana().toString());
 
         javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
         panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);

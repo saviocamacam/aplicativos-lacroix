@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-
 import model.Evento;
 
 public class EventoTableModel extends AbstractTableModel {
@@ -19,7 +17,7 @@ public class EventoTableModel extends AbstractTableModel {
 	List<Evento> eventos;
 	
 	public EventoTableModel(List<Evento> eventos) {
-		this.eventos = new ArrayList<>(eventos);
+		this.eventos.addAll(eventos);
 	}
 
 	public EventoTableModel() {
@@ -36,8 +34,8 @@ public class EventoTableModel extends AbstractTableModel {
 		this.fireTableRowsDeleted(linha, linha);
 	}
 
-	public void get(int linha){
-		this.eventos.get(linha);
+	public Evento get(int linha){
+		return this.eventos.get(linha);
 	}
 	
 	@Override

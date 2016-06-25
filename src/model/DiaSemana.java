@@ -1,26 +1,34 @@
 package model;
 
 public enum DiaSemana {
-	SEGUNDA("segunda-feira", 2),
-	TERCA("terca-feira", 3),
-	QUARTA("quarta-feira", 4),
-	QUINTA("quinta-feira", 5),
-	SEXTA("sexta-feira", 6),
-	SABADO("sabado", 7);
+	DOMINGO(1,"domingo", "Domingo"),
+	SEGUNDA(2,"segunda-feira", "Segunda-Feira"),
+	TERCA(3,"terca-feira", "Terça-Feira"),
+	QUARTA(4,"quarta-feira", "Quarta-Feira"),
+	QUINTA(5,"quinta-feira", "Quinta-Feira"),
+	SEXTA(6,"sexta-feira", "Sexta-Feira"),
+	SABADO(7,"sabado", "Sábado");
 	
-	String diaSemana;
-	int diaSemanaInt;
+	private final String diaSemana;
+	private final String diaSemanaTxt;
+	private final int diaSemanaInt;
 	
-	DiaSemana(String diaSemana, int diaSemanaInt) {
+	DiaSemana(int diaSemanaInt, String diaSemana, String diaSemanaTxt) {
 		this.diaSemana = diaSemana;
 		this.diaSemanaInt = diaSemanaInt;
+		this.diaSemanaTxt = diaSemanaTxt;
 	}
 	
-	DiaSemana(String diaSemana) {
-		this.diaSemana = diaSemana;
+	public static DiaSemana getDiaSemana( int value ){
+		for( DiaSemana dia : values() ){
+			if(dia.diaSemanaInt == value)
+				return dia;
+		}
+		return null;
 	}
 	
-	DiaSemana(int diaSemana) {
-		this.diaSemanaInt = diaSemana;
+	@Override
+	public String toString() {
+		return diaSemanaTxt;
 	}
 }

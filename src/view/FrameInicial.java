@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -160,6 +162,7 @@ public class FrameInicial extends javax.swing.JFrame {
 		ModeloMainFrame frame = new ModeloMainFrame((Usuario) comboboxUsuario.getSelectedItem(),
 				(Curso) comboboxCurso.getSelectedItem());
 		frame.toFront();
+		frame.requestFocusInWindow();
 		frame.setVisible(true);
 
 	}// GEN-LAST:event_botaoCarregarProgramaActionPerformed

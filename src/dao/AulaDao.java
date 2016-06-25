@@ -46,6 +46,7 @@ public class AulaDao {
 	public static <T> ArrayList<Aula> getBy(String nomeCampo, T valorCampo)
 	{
 		ArrayList<Aula> lista = new ArrayList<>();
+		daoHelper = new DaoHelper();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM aula where "+nomeCampo+" = '"+valorCampo+"'";
 		
