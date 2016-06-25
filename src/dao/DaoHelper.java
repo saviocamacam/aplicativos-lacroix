@@ -1,11 +1,16 @@
 package dao;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,5 +82,55 @@ public class DaoHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean checkDBExists(String dbName){
+
+	    try{
+	        Connection conn = DriverManager.getConnection(urlConnection, user, password); //Open a connection
+
+	        ResultSet resultSet = conn.getMetaData().getCatalogs();
+
+	        while (resultSet.next()) {
+
+	          String databaseName = resultSet.getString(1);
+	            if(databaseName.equals(dbName)){
+	                return true;
+	            }
+	        }
+	        resultSet.close();
+
+	    }
+	    catch(Exception e){
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
+	
+	public void createDatabase() {
+		List<String> linhas = new ArrayList<>();
+		PreparedStatement stmt = null;
+		Connection conn;
+		try {
+			linhas = Files.readAllLines(Paths.get("banco.sql", ""));
+		} catch (IOException e) {
+			System.out.println("Erro na leitura do arquivo de Banco de Dados");
+			e.printStackTrace();
+		}
+		String sql = "";
+		for(String l : linhas) {
+			sql = sql.concat(l);
+		}
+		try {
+			conn = DriverManager.getConnection(urlConnection, user, password);
+			stmt = conn.prepareStatement(sql);
+			stmt.executeUpdate();
+			releaseAll(stmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
