@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 public class Materia {
 	private int idMateria;
 	private int idCurso;
@@ -8,6 +10,7 @@ public class Materia {
 	private int periodoAssociado;
 	private float nota;
 	private int cargaHoraria;
+	private Date cursadaUltimaVez;
 	
 	public Materia(int idMateria, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
 		this.idMateria = idMateria;
@@ -26,8 +29,15 @@ public class Materia {
 		this.periodoAssociado = periodoAssociado;
 		this.nota = nota;
 		this.cargaHoraria = cargaHoraria;
+		this.setEstado();
 	}
-	
+
+	private void setEstado() {
+		if(this.nota >= 6)
+			this.estado = EstadoMateria.APROVADA;
+		else
+			this.estado = EstadoMateria.DEPENDENTE;
+	}
 
 	public Materia(int idMateria, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
 		super();
@@ -92,5 +102,13 @@ public class Materia {
 	@Override
 	public String toString() {
 		return this.nomeMateria;
+	}
+
+	public Date getCursadaUltimaVez() {
+		return cursadaUltimaVez;
+	}
+
+	public void setCursadaUltimaVez(Date cursadaUltimaVez) {
+		this.cursadaUltimaVez = cursadaUltimaVez;
 	}
 }

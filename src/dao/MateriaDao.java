@@ -70,6 +70,17 @@ public class MateriaDao {
 			while(rs.next()) {
 				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
 			}
+			for(Materia m : listaMaterias) {
+				if(m.getEstado().equals(EstadoMateria.DEPENDENTE)) {
+					sql = "select max(p.dataInicio) AS ultimaVez from periodo p where p.idPeriodo in (select mp.idPeriodo from materiaPeriodo mp, materia m where mp.idMateria =" + m.getIdMateria();
+					PreparedStatement stmt2 = conn.prepareStatement(sql);
+					ResultSet rs2 = stmt2.executeQuery();
+					rs2.next();
+					m.setCursadaUltimaVez(rs.getDate("ultimaVez"));
+					daoHelper.release(rs2);
+					daoHelper.release(stmt2);
+				}
+			}
 			
 			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {

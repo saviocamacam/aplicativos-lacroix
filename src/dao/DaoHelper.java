@@ -87,7 +87,7 @@ public class DaoHelper {
 	public boolean checkDBExists(){
 		boolean retorno = false;
 	    try{
-	        Connection conn = DriverManager.getConnection(urlConnection, user, password); //Open a connection
+	        Connection conn = DriverManager.getConnection(urlConnection, user, password);
 	        retorno = true;
 	    }
 	    catch(Exception e){
