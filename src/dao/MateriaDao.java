@@ -48,7 +48,7 @@ public class MateriaDao {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
-			materia = new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"));
+			materia = new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria")), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"));
 			daoHelper.releaseAll(rs, stmt, conn);
 			
 		} catch (SQLException e) {
@@ -68,7 +68,7 @@ public class MateriaDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
 			}
 			for(Materia m : listaMaterias) {
 				if(m.getEstado().equals(EstadoMateria.DEPENDENTE)) {
@@ -101,7 +101,14 @@ public class MateriaDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
+				listaMaterias.add(new Materia(
+						rs.getInt("idMateria"), 
+						rs.getString("nomeProfessor"), 
+						rs.getInt("idCurso"), 
+						rs.getString("nomeMateria"), 
+						EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), 
+						rs.getInt("periodoAssociado"), 
+						rs.getInt("cargaHoraria")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -124,11 +131,13 @@ public class MateriaDao {
 			while( rs.next() )
 			{
 				Materia usr = new Materia(
-						rs.getInt("idmateria"),
-						rs.getInt("idcurso"),
-						rs.getString("nomemateria"),
-						rs.getInt("periodoassociado"),
-						rs.getInt("cargahoraria")
+						rs.getInt("idMateria"), 
+						rs.getString("nomeProfessor"), 
+						rs.getInt("idCurso"), 
+						rs.getString("nomeMateria"), 
+						EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), 
+						rs.getInt("periodoAssociado"), 
+						rs.getInt("cargaHoraria")
 						);
 				lista.add(usr);
 			}

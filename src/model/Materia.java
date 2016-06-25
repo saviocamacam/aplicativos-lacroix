@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Materia {
 	private int idMateria;
+	private String nomeProfessor;
 	private int idCurso;
 	private EstadoMateria estado;
 	private String nomeMateria;
@@ -12,8 +13,18 @@ public class Materia {
 	private int cargaHoraria;
 	private Date cursadaUltimaVez;
 	
-	public Materia(int idMateria, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
+	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
 		this.idMateria = idMateria;
+		this.nomeProfessor = nomeProfessor;
+		this.idCurso = idCurso;
+		this.estado = estado;
+		this.nomeMateria = nomeMateria;
+		this.periodoAssociado = periodoAssociado;
+		this.cargaHoraria = cargaHoraria;
+	}
+	
+	public Materia(String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
+		this.nomeProfessor = nomeProfessor;
 		this.idCurso = idCurso;
 		this.estado = estado;
 		this.nomeMateria = nomeMateria;
@@ -32,13 +43,6 @@ public class Materia {
 		this.setEstado();
 	}
 
-	private void setEstado() {
-		if(this.nota >= 6)
-			this.estado = EstadoMateria.APROVADA;
-		else
-			this.estado = EstadoMateria.DEPENDENTE;
-	}
-
 	public Materia(int idMateria, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
 		super();
 		this.idMateria = idMateria;
@@ -46,6 +50,13 @@ public class Materia {
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
+	}
+	
+	private void setEstado() {
+		if(this.nota >= 6)
+			this.estado = EstadoMateria.APROVADA;
+		else
+			this.estado = EstadoMateria.DEPENDENTE;
 	}
 
 	public int getIdMateria() {
