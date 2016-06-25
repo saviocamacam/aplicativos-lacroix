@@ -22,6 +22,9 @@ public class Evento {
 		this.valorNota = valorNota;
 		this.localEvento = local;
 	}
+	
+	public Evento() {}
+	
 	public int getIdEvento() {
 		return idEvento;
 	}
@@ -75,5 +78,12 @@ public class Evento {
 	}
 	public void setLocalEvento(String localEvento) {
 		this.localEvento = localEvento;
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [idEvento=" + idEvento + ", idMateria=" + idMateria + ", tipoEvento=" + tipoEvento
+				+ ", dataEvento=" + dataEvento + ", descricao=" + descricao + ", detalhes=" + detalhes + ", valorNota="
+				+ valorNota + ", notaRecebida=" + notaRecebida + ", localEvento=" + localEvento + "]";
 	}
 }

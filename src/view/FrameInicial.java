@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -29,6 +30,18 @@ public class FrameInicial extends javax.swing.JFrame {
 	 */
 	public FrameInicial() {
 		initComponents();
+
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				FrameInicialController controller = new FrameInicialController();
+				for (Usuario usuario : controller.getUsuarios()) {
+					comboboxUsuario.addItem(usuario);
+				}
+			}
+		});
+
 	}
 
 	/**
@@ -38,97 +51,126 @@ public class FrameInicial extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-		java.awt.GridBagConstraints gridBagConstraints;
 
 		mainPanel = new javax.swing.JPanel();
-		labelTitulo = new javax.swing.JLabel();
-		labelUsuario = new javax.swing.JLabel();
-		comboboxUsuario = new javax.swing.JComboBox<>();
-		labelCurso = new javax.swing.JLabel();
-		comboboxCurso = new javax.swing.JComboBox<>();
+		jPanel4 = new javax.swing.JPanel();
 		botaoCarregarPrograma = new javax.swing.JButton();
+		labelTitulo = new javax.swing.JLabel();
+		jPanel3 = new javax.swing.JPanel();
+		jPanel2 = new javax.swing.JPanel();
+		comboboxUsuario = new javax.swing.JComboBox<>();
+		jPanel1 = new javax.swing.JPanel();
+		comboboxCurso = new javax.swing.JComboBox<>();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setMinimumSize(new java.awt.Dimension(820, 570));
-		getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
+		setMinimumSize(new java.awt.Dimension(840, 600));
+		setResizable(false);
+		getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-		mainPanel.setLayout(new java.awt.GridBagLayout());
-
-		labelTitulo.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
-		labelTitulo.setText("Lacroix");
-		labelTitulo.setVerifyInputWhenFocusTarget(false);
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 0;
-		gridBagConstraints.gridwidth = 3;
-		gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-		gridBagConstraints.insets = new java.awt.Insets(0, 0, 18, 0);
-		mainPanel.add(labelTitulo, gridBagConstraints);
-
-		labelUsuario.setText("Usuário");
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 2;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		mainPanel.add(labelUsuario, gridBagConstraints);
-		comboboxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>());
-
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				FrameInicialController controller = new FrameInicialController();
-				for (Usuario usuario : controller.getUsuarios()) {
-					comboboxUsuario.addItem(usuario);
-				}
-				comboboxUsuario.setSelectedIndex(-1);
-			}
-		});
-
-		comboboxUsuario.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				comboboxUsuarioActionPerformed(evt);
-			}
-		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 4;
-		mainPanel.add(comboboxUsuario, gridBagConstraints);
-
-		labelCurso.setText("Curso");
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 2;
-		gridBagConstraints.gridy = 2;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		mainPanel.add(labelCurso, gridBagConstraints);
-
-		comboboxCurso.setEnabled(false);
-		comboboxCurso.setModel(new javax.swing.DefaultComboBoxModel<>());
-		comboboxCurso.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				comboboxCursoActionPerformed(evt);
-			}
-		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 2;
-		gridBagConstraints.gridy = 4;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		mainPanel.add(comboboxCurso, gridBagConstraints);
+		mainPanel.setMinimumSize(new java.awt.Dimension(840, 600));
+		mainPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
 		botaoCarregarPrograma.setText("Iniciar");
-		botaoCarregarPrograma.setEnabled(false);
 		botaoCarregarPrograma.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				botaoCarregarProgramaActionPerformed(evt);
 			}
 		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 5;
-		gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
-		gridBagConstraints.insets = new java.awt.Insets(33, 0, 0, 0);
-		mainPanel.add(botaoCarregarPrograma, gridBagConstraints);
+
+		labelTitulo.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
+		labelTitulo.setText("Lacroix");
+		labelTitulo.setVerifyInputWhenFocusTarget(false);
+
+		jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuario"));
+
+		comboboxUsuario.setModel(new DefaultComboBoxModel<>());
+		comboboxUsuario.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				comboboxUsuarioActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+		jPanel2.setLayout(jPanel2Layout);
+		jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel2Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxUsuario,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel2Layout.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxUsuario,
+						javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+						javax.swing.GroupLayout.PREFERRED_SIZE)));
+
+		jPanel3.add(jPanel2);
+
+		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Curso"));
+
+		comboboxCurso.setModel(new DefaultComboBoxModel<>());
+		comboboxCurso.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				comboboxCursoActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+		jPanel1.setLayout(jPanel1Layout);
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxCurso,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(comboboxCurso, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel3.add(jPanel1);
+
+		javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+		jPanel4.setLayout(jPanel4Layout);
+		jPanel4Layout.setHorizontalGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel4Layout.createSequentialGroup()
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(jPanel4Layout.createSequentialGroup()
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(botaoCarregarPrograma)
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+						jPanel4Layout.createSequentialGroup()
+								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(labelTitulo)
+								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		jPanel4Layout.setVerticalGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel4Layout.createSequentialGroup().addContainerGap(31, Short.MAX_VALUE)
+						.addComponent(labelTitulo).addGap(18, 18, Short.MAX_VALUE)
+						.addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+						.addComponent(botaoCarregarPrograma).addContainerGap(21, Short.MAX_VALUE)));
+
+		javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+		mainPanel.setLayout(mainPanelLayout);
+		mainPanelLayout
+				.setHorizontalGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		mainPanelLayout.setVerticalGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+						mainPanelLayout.createSequentialGroup().addContainerGap(184, Short.MAX_VALUE)
+								.addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(183, 183, 183)));
 
 		getContentPane().add(mainPanel);
 
@@ -166,7 +208,6 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		frame.setVisible(true);
 		frame.setFocusableWindowState(true);
-		frame.requestFocus();
 
 	}// GEN-LAST:event_botaoCarregarProgramaActionPerformed
 
@@ -220,9 +261,11 @@ public class FrameInicial extends javax.swing.JFrame {
 	private javax.swing.JButton botaoCarregarPrograma;
 	private javax.swing.JComboBox<Curso> comboboxCurso;
 	private javax.swing.JComboBox<Usuario> comboboxUsuario;
-	private javax.swing.JLabel labelCurso;
+	private javax.swing.JPanel jPanel1;
+	private javax.swing.JPanel jPanel2;
+	private javax.swing.JPanel jPanel3;
+	private javax.swing.JPanel jPanel4;
 	private javax.swing.JLabel labelTitulo;
-	private javax.swing.JLabel labelUsuario;
 	private javax.swing.JPanel mainPanel;
 	// End of variables declaration//GEN-END:variables
 }
