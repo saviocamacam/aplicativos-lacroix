@@ -48,6 +48,22 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 	public int getRowCount() {
 		return aulas.size();
 	}
+	
+	@Override
+	public String getColumnName(int column) {
+		switch (column) {
+		case COL_DIA:
+			return "Dia";
+		case COL_LOCAL:
+			return "Local";
+		case COL_INICIO:
+			return "Início";
+		case COL_FIM:
+			return "Fim";
+		default:
+			return "";
+		}
+	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {

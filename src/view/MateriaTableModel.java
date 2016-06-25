@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import dao.MateriaDao;
+import model.EstadoMateria;
 import model.Evento;
 import model.Materia;
 import model.Professor;
@@ -19,6 +21,7 @@ public class MateriaTableModel extends AbstractTableModel {
 	
 	public MateriaTableModel() {
 		this.materias = new ArrayList<>();
+		this.materias = MateriaDao.materiasEstado(EstadoMateria.PENDENTE);
 	}
 	
 	public MateriaTableModel(List<Materia> materias){
@@ -48,6 +51,20 @@ public class MateriaTableModel extends AbstractTableModel {
 	public int getRowCount() {
 		return materias.size();
 	}
+	
+	@Override
+	public String getColumnName(int column) {
+		switch (column) {
+		case COL_MATERIA:
+			return "Matéria";
+		case COL_PROFESSOR:
+			return "Professor";
+		case COL_CARGA:
+			return "Carga";
+		default:
+			return "";
+		}
+	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -56,7 +73,7 @@ public class MateriaTableModel extends AbstractTableModel {
 		case COL_MATERIA:
 			return materia.getNomeMateria();
 		case COL_PROFESSOR:
-			return materia.getEstado();
+			return materia.getNomeProfessor();
 		case COL_CARGA:
 			return materia.getCargaHoraria();
 		default:

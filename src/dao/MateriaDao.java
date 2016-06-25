@@ -60,8 +60,9 @@ public class MateriaDao {
 	public static ArrayList<Materia> materiasEstado(EstadoMateria estado) {
 
 		ArrayList<Materia> listaMaterias = null;
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria =" + estado.getNomeEstado();
+		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargaHoraria from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria ='" + estado.getNomeEstado()+"'";
 		try {
 			listaMaterias = new ArrayList<>();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -121,6 +122,7 @@ public class MateriaDao {
 	
 	public static <T1> ArrayList<Materia> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Materia> lista = new ArrayList<>();
+		daoHelper = new DaoHelper();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM materia where "+nomeCampo+" = '"+valorCampo+"'";
 		
