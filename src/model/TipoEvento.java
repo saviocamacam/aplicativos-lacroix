@@ -12,4 +12,9 @@ public enum TipoEvento {
 	public String getNomeTipoEvento() {
 		return this.nomeTipo;
 	}
+	
+	@Override
+	public String toString() {
+		return this.nomeTipo;
+	}
 }

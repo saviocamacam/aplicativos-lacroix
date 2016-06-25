@@ -62,7 +62,7 @@ public class PeriodoDao {
 	public static Periodo periodoAtual(int idCurso, Date currentDate) {
 		Periodo periodo = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select * from periodo where dataTermino >" + currentDate + "and idCurso ="  + idCurso;
+		String sql = "select * from periodo where dataTermino > '" + currentDate + "' and idCurso ="  + idCurso;
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);

@@ -9,8 +9,10 @@ import controller.MainFrameController;
 import controller.ModeloMainFrameController;
 
 import java.awt.Color;
+import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -71,12 +73,20 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        panelCabecalho = new java.awt.Panel();
+        panelColunaAulas = new javax.swing.JPanel();
+        panelDiaDaSemana = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableAulasDoDia = new javax.swing.JTable();
+        diaDaSemanaLabel = new java.awt.Label();
+        panelDiaDaSemana2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableAulasDoDia3 = new javax.swing.JTable();
+        diaDaSemanaLabel3 = new java.awt.Label();
+        panelCabecalho = new javax.swing.JPanel();
         nomeUsuarioLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        panelColuna = new java.awt.Panel();
+        jLabel3 = new javax.swing.JLabel();
+        panelColuna = new javax.swing.JPanel();
         eventoPanel = new javax.swing.JPanel();
         novoEventoButton = new javax.swing.JToggleButton();
         esperaEventoButton = new javax.swing.JButton();
@@ -90,54 +100,102 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         novoPeriodoButton = new javax.swing.JButton();
         cursoPanel = new javax.swing.JPanel();
         informacoesCursoButton = new javax.swing.JButton();
-        panelProximosEventos = new java.awt.Panel();
+        panelProximosEventos = new javax.swing.JPanel();
         proximosEventosPanel = new javax.swing.JPanel();
         proximosEventosLabel = new java.awt.Label();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
         tableProximosEventos = new javax.swing.JTable();
         eventosFinalizadosPanel = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
         tableEventosFinalizados = new javax.swing.JTable();
         eventosFinalizadosLabel = new java.awt.Label();
         novoEventoPanel = new javax.swing.JPanel();
         novoEventoLabel = new java.awt.Label();
         botaoConcluirEvento = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
         comboboxTipoEvento = new javax.swing.JComboBox<>();
-        labelTipoEvento = new javax.swing.JLabel();
-        scrollPaneTextObservacoes = new javax.swing.JScrollPane();
-        textObservacoes = new javax.swing.JTextPane();
-        labelDescricao = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
         comboboxMaterias = new javax.swing.JComboBox<>();
+        jPanel11 = new javax.swing.JPanel();
         dateEvento = new com.toedter.calendar.JDateChooser();
-        labelMaterias = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
         campoDescricao = new javax.swing.JTextField();
-        labelDataFinal = new javax.swing.JLabel();
-        labelObservacoes = new javax.swing.JLabel();
-        labelLocal = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
         campoLocal = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        panelDiaDaSemana = new java.awt.Panel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableAulasDoDia = new javax.swing.JTable();
-        diaDaSemanaLabel = new java.awt.Label();
-        panelDiaDaSemana1 = new java.awt.Panel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tableAulasDoDia1 = new javax.swing.JTable();
-        diaDaSemanaLabel1 = new java.awt.Label();
+        jPanel14 = new javax.swing.JPanel();
+        scrollPaneTextObservacoes = new javax.swing.JScrollPane();
+        textObservacoes = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setFocusableWindowState(false);
-        setMinimumSize(new java.awt.Dimension(840, 600));
+        setMinimumSize(new java.awt.Dimension(977, 606));
         setName("mainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(840, 600));
 
-        panelCabecalho.setBackground(new java.awt.Color(200, 198, 198));
-        panelCabecalho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelColunaAulas.setLayout(new javax.swing.BoxLayout(panelColunaAulas, javax.swing.BoxLayout.Y_AXIS));
+
+        tableAulasDoDia.setModel(new AulaTableModel());
+        jScrollPane3.setViewportView(tableAulasDoDia);
+        tableAulasDoDia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        diaDaSemanaLabel.setText(controller.getDiaSemana().toString());
+
+        javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
+        panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);
+        panelDiaDaSemanaLayout.setHorizontalGroup(
+            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelDiaDaSemanaLayout.setVerticalGroup(
+            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+        );
+
+        panelColunaAulas.add(panelDiaDaSemana);
+
+        tableAulasDoDia3.setModel(new AulaTableModel());
+        jScrollPane5.setViewportView(tableAulasDoDia3);
+        tableAulasDoDia3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        diaDaSemanaLabel3.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        diaDaSemanaLabel3.setText(controller.getDiaSemana().toString());
+
+        javax.swing.GroupLayout panelDiaDaSemana2Layout = new javax.swing.GroupLayout(panelDiaDaSemana2);
+        panelDiaDaSemana2.setLayout(panelDiaDaSemana2Layout);
+        panelDiaDaSemana2Layout.setHorizontalGroup(
+            panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemana2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(diaDaSemanaLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelDiaDaSemana2Layout.setVerticalGroup(
+            panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiaDaSemana2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(diaDaSemanaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+        );
+
+        panelColunaAulas.add(panelDiaDaSemana2);
+
+        getContentPane().add(panelColunaAulas, java.awt.BorderLayout.EAST);
 
         nomeUsuarioLabel.setText("Nome Do Usuário");
 
-        jLabel2.setText("jLabel2");
+        jLabel3.setText("jLabel2");
 
         javax.swing.GroupLayout panelCabecalhoLayout = new javax.swing.GroupLayout(panelCabecalho);
         panelCabecalho.setLayout(panelCabecalhoLayout);
@@ -147,7 +205,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(jLabel3)
                 .addGap(45, 45, 45))
         );
         panelCabecalhoLayout.setVerticalGroup(
@@ -156,13 +214,12 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel3))
                 .addContainerGap())
         );
 
         getContentPane().add(panelCabecalho, java.awt.BorderLayout.NORTH);
 
-        panelColuna.setBackground(new java.awt.Color(200, 198, 198));
         panelColuna.setLayout(new javax.swing.BoxLayout(panelColuna, javax.swing.BoxLayout.Y_AXIS));
 
         eventoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Eventos"));
@@ -259,15 +316,13 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelColuna, java.awt.BorderLayout.WEST);
 
-        panelProximosEventos.setBackground(new java.awt.Color(200, 198, 198));
         panelProximosEventos.setLayout(new java.awt.CardLayout());
 
         proximosEventosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
         proximosEventosLabel.setText(" Próximos Eventos");
 
         tableProximosEventos.setModel(new EventoTableModel());
-        tableProximosEventos.setColumnSelectionAllowed(true);
-        jScrollPane3.setViewportView(tableProximosEventos);
+        jScrollPane6.setViewportView(tableProximosEventos);
         tableProximosEventos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout proximosEventosPanelLayout = new javax.swing.GroupLayout(proximosEventosPanel);
@@ -278,7 +333,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(proximosEventosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(proximosEventosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
                 .addContainerGap())
         );
         proximosEventosPanelLayout.setVerticalGroup(
@@ -287,15 +342,14 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(proximosEventosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelProximosEventos.add(proximosEventosPanel, "ProximosEventos");
 
         tableEventosFinalizados.setModel(new EventoTableModel());
-        tableEventosFinalizados.setColumnSelectionAllowed(true);
-        jScrollPane5.setViewportView(tableEventosFinalizados);
+        jScrollPane7.setViewportView(tableEventosFinalizados);
         tableEventosFinalizados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         eventosFinalizadosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
@@ -309,7 +363,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(eventosFinalizadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         eventosFinalizadosPanelLayout.setVerticalGroup(
@@ -318,17 +372,14 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelProximosEventos.add(eventosFinalizadosPanel, "EventosFinalizados");
 
-        novoEventoPanel.setLayout(new javax.swing.BoxLayout(novoEventoPanel, javax.swing.BoxLayout.Y_AXIS));
-
         novoEventoLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
         novoEventoLabel.setText("  Novo Evento");
-        novoEventoPanel.add(novoEventoLabel);
 
         botaoConcluirEvento.setText("Concluir");
         botaoConcluirEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -336,25 +387,30 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 botaoConcluirEventoActionPerformed(evt);
             }
         });
-        novoEventoPanel.add(botaoConcluirEvento);
 
-        comboboxTipoEvento.setModel(new javax.swing.DefaultComboBoxModel<>());
-        comboboxTipoEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboboxTipoEventoActionPerformed(evt);
-            }
-        });
-        novoEventoPanel.add(comboboxTipoEvento);
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
 
-        labelTipoEvento.setText("Tipo");
-        novoEventoPanel.add(labelTipoEvento);
+        comboboxTipoEvento.setModel(new DefaultComboBoxModel<>()
+        );
 
-        scrollPaneTextObservacoes.setViewportView(textObservacoes);
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(comboboxTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(comboboxTipoEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
-        novoEventoPanel.add(scrollPaneTextObservacoes);
-
-        labelDescricao.setText("Nome");
-        novoEventoPanel.add(labelDescricao);
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Matéria"));
 
         comboboxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>());
         comboboxMaterias.addActionListener(new java.awt.event.ActionListener() {
@@ -362,129 +418,188 @@ public class ModeloMainFrame extends javax.swing.JFrame {
                 comboboxMateriasActionPerformed(evt);
             }
         });
-        novoEventoPanel.add(comboboxMaterias);
-        novoEventoPanel.add(dateEvento);
 
-        labelMaterias.setText("Materia");
-        novoEventoPanel.add(labelMaterias);
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(comboboxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 66, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(comboboxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
-        campoDescricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDescricaoActionPerformed(evt);
-            }
-        });
-        novoEventoPanel.add(campoDescricao);
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
 
-        labelDataFinal.setText("Data Final");
-        novoEventoPanel.add(labelDataFinal);
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(dateEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(dateEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
-        labelObservacoes.setText("Observações");
-        novoEventoPanel.add(labelObservacoes);
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
 
-        labelLocal.setText("Local");
-        novoEventoPanel.add(labelLocal);
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
-        campoLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLocalActionPerformed(evt);
-            }
-        });
-        novoEventoPanel.add(campoLocal);
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Local"));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(campoLocal, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações"));
+
+        textObservacoes.setColumns(20);
+        textObservacoes.setRows(5);
+        scrollPaneTextObservacoes.setViewportView(textObservacoes);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollPaneTextObservacoes)
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollPaneTextObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout novoEventoPanelLayout = new javax.swing.GroupLayout(novoEventoPanel);
+        novoEventoPanel.setLayout(novoEventoPanelLayout);
+        novoEventoPanelLayout.setHorizontalGroup(
+            novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(novoEventoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(77, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, novoEventoPanelLayout.createSequentialGroup()
+                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botaoConcluirEvento)))
+                        .addGap(61, 61, 61))))
+        );
+        novoEventoPanelLayout.setVerticalGroup(
+            novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(novoEventoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(novoEventoPanelLayout.createSequentialGroup()
+                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(botaoConcluirEvento)
+                .addContainerGap())
+        );
 
         panelProximosEventos.add(novoEventoPanel, "NovoEvento");
 
         getContentPane().add(panelProximosEventos, java.awt.BorderLayout.CENTER);
 
-        panelDiaDaSemana.setBackground(new java.awt.Color(200, 198, 198));
-
-        tableAulasDoDia.setModel(new AulaTableModel());
-        tableAulasDoDia.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(tableAulasDoDia);
-        tableAulasDoDia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        diaDaSemanaLabel.setText(controller.getDiaSemana().toString());
-
-        javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
-        panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);
-        panelDiaDaSemanaLayout.setHorizontalGroup(
-            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelDiaDaSemanaLayout.setVerticalGroup(
-            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelDiaDaSemana1.setBackground(new java.awt.Color(200, 198, 198));
-
-        tableAulasDoDia1.setModel(new AulaTableModel());
-        jScrollPane4.setViewportView(tableAulasDoDia1);
-        tableAulasDoDia1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        diaDaSemanaLabel1.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        diaDaSemanaLabel1.setText(controller.getDiaSemana().toString());
-
-        javax.swing.GroupLayout panelDiaDaSemana1Layout = new javax.swing.GroupLayout(panelDiaDaSemana1);
-        panelDiaDaSemana1.setLayout(panelDiaDaSemana1Layout);
-        panelDiaDaSemana1Layout.setHorizontalGroup(
-            panelDiaDaSemana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemana1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDiaDaSemana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diaDaSemanaLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelDiaDaSemana1Layout.setVerticalGroup(
-            panelDiaDaSemana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemana1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(diaDaSemanaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDiaDaSemana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelDiaDaSemana1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(panelDiaDaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(panelDiaDaSemana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.EAST);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void novoEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoEventoButtonActionPerformed
+        if(novoEventoButton.isSelected()){
+        	CardLayout layout = (CardLayout) panelProximosEventos.getLayout();
+        	layout.show(panelProximosEventos, "NovoEvento");
+        	
+        	SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(TipoEvento evento : TipoEvento.values()){
+						comboboxTipoEvento.addItem(evento);
+					}
+					for(Materia materia : controller.getTodasMaterias()){
+						comboboxMaterias.addItem(materia);
+					}
+				}
+			});
+        }
+    }//GEN-LAST:event_novoEventoButtonActionPerformed
 
     private void esperaEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esperaEventoButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_esperaEventoButtonActionPerformed
+
+    private void finalizadosEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizadosEventoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_finalizadosEventoButtonActionPerformed
 
     private void novaMateriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaMateriaButtonActionPerformed
         // TODO add your handling code here:
@@ -510,42 +625,33 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_informacoesCursoButtonActionPerformed
 
-    private void finalizadosEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizadosEventoButtonActionPerformed
-        CardLayout layout = (CardLayout) panelProximosEventos.getLayout();
-        if( finalizadosEventoButton.isSelected()){
-            layout.show(panelProximosEventos, "EventosFinalizados" );
-        } else {
-            layout.show(panelProximosEventos, "ProximosEventos");
-        }
-    }//GEN-LAST:event_finalizadosEventoButtonActionPerformed
-
     private void botaoConcluirEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConcluirEventoActionPerformed
-        // TODO add your handling code here:
+    	Evento novoEvento = new Evento();
+    	novoEvento.setDescricao(campoDescricao.getText());
+    	novoEvento.setTipoEvento((TipoEvento) comboboxTipoEvento.getSelectedItem());
+    	novoEvento.setIdMateria(((Materia)comboboxMaterias.getSelectedItem()).getIdMateria());
+    	novoEvento.setDataEvento(new Date(dateEvento.getDate().getTime()));
+    	novoEvento.setLocalEvento(campoLocal.getText());
+    	novoEvento.setDetalhes(textObservacoes.getText());
+    	
+    	controller.gravaEvento(novoEvento);
+    	
+    	limparCamposNovoEvento();
+    
     }//GEN-LAST:event_botaoConcluirEventoActionPerformed
 
-    private void comboboxTipoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxTipoEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboboxTipoEventoActionPerformed
-
+    private void limparCamposNovoEvento(){
+    	campoDescricao.setText("");
+    	comboboxTipoEvento.setSelectedIndex(-1);
+    	comboboxMaterias.setSelectedIndex(-1);
+    	dateEvento.setDate(null);
+    	campoLocal.setText("");
+    	textObservacoes.setText("");
+    }
+    
     private void comboboxMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxMateriasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboboxMateriasActionPerformed
-
-    private void campoDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDescricaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDescricaoActionPerformed
-
-    private void campoLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLocalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoLocalActionPerformed
-
-    private void novoEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoEventoButtonActionPerformed
-
-        if( novoEventoButton.isSelected()){
-            CardLayout layout = (CardLayout) panelProximosEventos.getLayout();
-            layout.show(panelProximosEventos, "NovoEvento" );
-        }
-    }//GEN-LAST:event_novoEventoButtonActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -557,7 +663,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel cursoPanel;
     private com.toedter.calendar.JDateChooser dateEvento;
     private java.awt.Label diaDaSemanaLabel;
-    private java.awt.Label diaDaSemanaLabel1;
+    private java.awt.Label diaDaSemanaLabel3;
     private javax.swing.JButton esperaEventoButton;
     private javax.swing.JPanel eventoPanel;
     private java.awt.Label eventosFinalizadosLabel;
@@ -565,18 +671,17 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton finalizadosEventoButton;
     private javax.swing.JButton historicoPeriodoButton;
     private javax.swing.JButton informacoesCursoButton;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel labelDataFinal;
-    private javax.swing.JLabel labelDescricao;
-    private javax.swing.JLabel labelLocal;
-    private javax.swing.JLabel labelMaterias;
-    private javax.swing.JLabel labelObservacoes;
-    private javax.swing.JLabel labelTipoEvento;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel materiaPanel;
     private javax.swing.JLabel nomeUsuarioLabel;
     private javax.swing.JButton novaMateriaButton;
@@ -584,21 +689,22 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private java.awt.Label novoEventoLabel;
     private javax.swing.JPanel novoEventoPanel;
     private javax.swing.JButton novoPeriodoButton;
-    private java.awt.Panel panelCabecalho;
-    private java.awt.Panel panelColuna;
-    private java.awt.Panel panelDiaDaSemana;
-    private java.awt.Panel panelDiaDaSemana1;
-    private java.awt.Panel panelProximosEventos;
+    private javax.swing.JPanel panelCabecalho;
+    private javax.swing.JPanel panelColuna;
+    private javax.swing.JPanel panelColunaAulas;
+    private javax.swing.JPanel panelDiaDaSemana;
+    private javax.swing.JPanel panelDiaDaSemana2;
+    private javax.swing.JPanel panelProximosEventos;
     private javax.swing.JPanel periodoPanel;
     private javax.swing.JButton professoresMateriaButton;
     private java.awt.Label proximosEventosLabel;
     private javax.swing.JPanel proximosEventosPanel;
     private javax.swing.JScrollPane scrollPaneTextObservacoes;
     private javax.swing.JTable tableAulasDoDia;
-    private javax.swing.JTable tableAulasDoDia1;
+    private javax.swing.JTable tableAulasDoDia3;
     private javax.swing.JTable tableEventosFinalizados;
     private javax.swing.JTable tableProximosEventos;
-    private javax.swing.JTextPane textObservacoes;
+    private javax.swing.JTextArea textObservacoes;
     private javax.swing.JButton todasMateriaButton;
     // End of variables declaration//GEN-END:variables
 }

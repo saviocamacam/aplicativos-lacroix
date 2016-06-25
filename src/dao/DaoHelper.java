@@ -116,7 +116,7 @@ public class DaoHelper {
 		Statement stmt2 = null;
 		Connection conn;
 		try {
-			linhas = Files.readAllLines(Paths.get("banco.sql", ""));
+			linhas = Files.readAllLines( Paths.get("src/dao/banco.sql"));
 		} catch (IOException e) {
 			System.out.println("Erro na leitura do arquivo de Banco de Dados");
 			e.printStackTrace();
@@ -128,7 +128,7 @@ public class DaoHelper {
 		try {
 			Connection conn2 = DriverManager.getConnection("jdbc:postgresql://" + host + ":" + port + "/", user, password);
 			stmt2 = conn2.createStatement();
-			String sqlCreate = "CREATE DATABASE" + nomeBancoDados;
+			String sqlCreate = "CREATE DATABASE " + nomeBancoDados;
       		stmt2.executeUpdate(sqlCreate);
 			releaseAll(stmt, conn2);
 			

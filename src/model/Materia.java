@@ -88,4 +88,9 @@ public class Materia {
 	public void setCargaHoraria(int cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
+	
+	@Override
+	public String toString() {
+		return this.nomeMateria;
+	}
 }
