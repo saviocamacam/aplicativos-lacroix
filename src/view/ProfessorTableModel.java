@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import dao.ProfessorDao;
 import model.Materia;
 import model.Professor;
 
@@ -17,6 +18,7 @@ public class ProfessorTableModel extends AbstractTableModel {
 	
 	public ProfessorTableModel() {
 		this.professores = new ArrayList<>();
+		this.professores = ProfessorDao.getProfessores();
 	}
 	
 	public ProfessorTableModel(List<Professor> professores) {
@@ -45,6 +47,18 @@ public class ProfessorTableModel extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		return professores.size();
+	}
+	
+	@Override
+	public String getColumnName(int column) {
+		switch (column) {
+		case COL_NOME:
+			return "Nome";
+		case COL_EMAIL:
+			return "Email";
+		default:
+			return "";
+		}
 	}
 
 	@Override

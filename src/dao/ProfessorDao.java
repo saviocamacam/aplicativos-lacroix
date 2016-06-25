@@ -36,6 +36,7 @@ public class ProfessorDao {
 	
 	public static ArrayList<Professor> getProfessores() {
 		ArrayList<Professor> listaProfessores = null;
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM professor";
 		try {
@@ -75,6 +76,7 @@ public class ProfessorDao {
 	
 	public static <T1> ArrayList<Professor> getBy(String nomeCampo, T1 valorCampo ) {
 		ArrayList<Professor> lista = new ArrayList<>();
+		daoHelper = new DaoHelper();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM professor where "+nomeCampo+" = '"+valorCampo+"'";
 		
