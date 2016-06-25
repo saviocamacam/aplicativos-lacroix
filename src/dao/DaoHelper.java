@@ -85,7 +85,7 @@ public class DaoHelper {
 	}
 	
 	public boolean checkDBExists(String dbName){
-
+		boolean retorno = false;
 	    try{
 	        Connection conn = DriverManager.getConnection(urlConnection, user, password); //Open a connection
 
@@ -95,7 +95,7 @@ public class DaoHelper {
 
 	          String databaseName = resultSet.getString(1);
 	            if(databaseName.equals(dbName)){
-	                return true;
+	                retorno =  true;
 	            }
 	        }
 	        resultSet.close();
@@ -104,13 +104,16 @@ public class DaoHelper {
 	    catch(Exception e){
 	        e.printStackTrace();
 	    }
-
-	    return false;
+	    if(!retorno) {
+	    	this.createDatabase();
+	    }
+	    return retorno;
 	}
 	
 	public void createDatabase() {
 		List<String> linhas = new ArrayList<>();
 		PreparedStatement stmt = null;
+		Statement stmt2 = null;
 		Connection conn;
 		try {
 			linhas = Files.readAllLines(Paths.get("banco.sql", ""));
@@ -123,6 +126,12 @@ public class DaoHelper {
 			sql = sql.concat(l);
 		}
 		try {
+			Connection conn2 = DriverManager.getConnection("jdbc:postgresql://" + host + ":" + port + "/", user, password);
+			stmt2 = conn2.createStatement();
+			String sqlCreate = "CREATE DATABASE" + nomeBancoDados;
+      		stmt2.executeUpdate(sqlCreate);
+			releaseAll(stmt, conn2);
+			
 			conn = DriverManager.getConnection(urlConnection, user, password);
 			stmt = conn.prepareStatement(sql);
 			stmt.executeUpdate();
