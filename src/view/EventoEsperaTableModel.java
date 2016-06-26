@@ -1,5 +1,7 @@
 package view;
 
+import java.util.List;
+
 import model.Evento;
 
 public class EventoEsperaTableModel extends EventoTableModel {
@@ -7,6 +9,10 @@ public class EventoEsperaTableModel extends EventoTableModel {
 
 	public EventoEsperaTableModel() {
 		super();
+	}
+
+	public EventoEsperaTableModel(List<Evento> eventosEspera) {
+		super(eventosEspera);
 	}
 
 	@Override

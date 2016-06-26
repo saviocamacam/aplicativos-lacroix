@@ -39,6 +39,7 @@ public class InstituicaoDao {
 	
 	public static Instituicao getInstituicao(int idInstituicao) {
 		Instituicao instituicao = null;
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM instituicao i WHERE i.idInstituicao = " + idInstituicao;
 		

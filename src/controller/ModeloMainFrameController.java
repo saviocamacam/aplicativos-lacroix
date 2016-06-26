@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import dao.AulaDao;
 import dao.DaoHelper;
 import dao.EventoDao;
+import dao.InstituicaoDao;
 import dao.MateriaDao;
 import dao.PeriodoDao;
 import model.Aula;
@@ -49,6 +50,14 @@ public class ModeloMainFrameController {
 	
 	public Usuario getUsuario() {
 		return usuario;
+	}
+	
+	public Date getDataFinalPeriodo(){
+		return (Date) periodo.getDataDeTermino();
+	}
+	
+	public Date getDataInicialPeriodo(){
+		return (Date) periodo.getDataDeTermino();
 	}
 
 	public List<Evento> getEventos() {
@@ -101,7 +110,7 @@ public class ModeloMainFrameController {
 	}
 	
 	public DiaSemana getProximoDiaSemana(){
-		return DiaSemana.getDiaSemana(calendar.get((Calendar.DAY_OF_WEEK+1)%8));
+		return DiaSemana.getDiaSemana(((Calendar.DAY_OF_WEEK+1)%7)+1);
 	}
 
 	public void gravaEvento(Evento novoEvento) {
@@ -109,5 +118,12 @@ public class ModeloMainFrameController {
 		System.out.println(novoEvento);
 	}
 
+	public String getNomeCurso() {
+		return this.curso.getNomeCurso();
+	}
+
+	public String getNomeInstituicao() {
+		return (InstituicaoDao.getInstituicao(this.curso.getIdInstituicao())).getNomeInstituicao();
+	}
 
 }
