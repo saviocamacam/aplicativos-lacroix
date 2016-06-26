@@ -46,11 +46,11 @@ public class EventoDao {
 		return getBy("1", 1);
 	}
 	
-	public static ArrayList<Evento> getEventoMaiorQue(Date dataAtual) {
+	public static ArrayList<Evento> getEventoTalQue(char operator, Date dataAtual) {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> listaEventos = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select * from evento where dataEvento > '" + dataAtual +"'";
+		String sql = "select * from evento where dataEvento" + operator + "'" + dataAtual +"'";
 		
 		try {
 			listaEventos = new ArrayList<>();
@@ -73,9 +73,6 @@ public class EventoDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 		return listaEventos;
 	}
 	
