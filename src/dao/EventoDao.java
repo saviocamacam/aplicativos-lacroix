@@ -58,6 +58,7 @@ public class EventoDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Evento usr = new Evento(
+						rs.getInt("idEvento"),
 						rs.getInt("idmateria"),
 						TipoEvento.valueOf(rs.getString("tipoevento").toUpperCase() ),
 						rs.getDate("dataevento"),
