@@ -84,8 +84,19 @@ public class ModeloMainFrameController {
 		return aulasDoDia;
 	}
 	
+	public List<Aula> getAulasProximoDia(){
+		DiaSemana dia = getProximoDiaSemana();
+		List<Aula> aulasDoDia = new ArrayList<>();
+		aulasDoDia.addAll(AulaDao.getBy("diasemana", dia.getDiaSemanaBanco()));
+		return aulasDoDia;
+	}
+	
 	public DiaSemana getDiaSemana(){
 		return DiaSemana.getDiaSemana(calendar.get(Calendar.DAY_OF_WEEK));
+	}
+	
+	public DiaSemana getProximoDiaSemana(){
+		return DiaSemana.getDiaSemana(calendar.get((Calendar.DAY_OF_WEEK+1)%8));
 	}
 
 	public void gravaEvento(Evento novoEvento) {
