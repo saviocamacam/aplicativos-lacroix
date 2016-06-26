@@ -20,7 +20,7 @@ public class EventoDao {
 	
 	public static void inserirEvento(Evento evento) {
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, notaRecebida, localEvento) VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES(?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -30,8 +30,7 @@ public class EventoDao {
 			stmt.setString(4, evento.getDescricao());
 			stmt.setString(5, evento.getDetalhes());
 			stmt.setFloat(6, evento.getValorNota());
-			stmt.setNull(7, (Integer) null);
-			stmt.setString(8, evento.getLocalEvento());
+			stmt.setString(7, evento.getLocalEvento());
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -51,7 +50,7 @@ public class EventoDao {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> listaEventos = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select * from evento where dataEvento";
+		String sql = "select * from evento where notaRecebida is not null";
 		
 		try {
 			listaEventos = new ArrayList<>();
@@ -80,7 +79,7 @@ public class EventoDao {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> listaEventos = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select * from evento where dataEvento" + operator + "'" + dataAtual +"'";
+		String sql = "select * from evento where dataEvento" + operator + "'" + dataAtual +"'" + "and notaRecebida is null";
 		
 		try {
 			listaEventos = new ArrayList<>();
@@ -134,6 +133,10 @@ public class EventoDao {
 			e.printStackTrace();
 		}
 		return lista;
+	}
+	
+	public void updateNotaRecebida(Evento evento) {
+		//Atualizar campo 'notaRecebida' - dado o id desse rapaz
 	}
 
 }
