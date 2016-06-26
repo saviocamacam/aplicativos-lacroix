@@ -63,6 +63,11 @@ public class ModeloMainFrameController {
 		return evts;
 	}
 	
+	public List<Evento> getEventosFinalizados() {
+		List<Evento> evts = EventoDao.getEventoFinalizado();
+		return evts;
+	}
+	
 	public List<Aula> getTodasAulas() {
 		if(this.aulas == null){
 			this.aulas = AulaDao.getAll();
@@ -103,5 +108,6 @@ public class ModeloMainFrameController {
 		EventoDao.inserirEvento(novoEvento);
 		System.out.println(novoEvento);
 	}
+
 
 }

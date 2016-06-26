@@ -58,6 +58,9 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 					((EventoTableModel) tableEventosEspera.getModel()).addRow(evento);
 				}
 
+				for (Evento evento : controller.getEventosFinalizados()) {
+					((EventoTableModel) tableEventosEspera.getModel()).addRow(evento);
+				}
 			}
 		});
 		SwingUtilities.invokeLater(new Runnable() {

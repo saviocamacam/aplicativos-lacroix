@@ -4,37 +4,39 @@ import model.Evento;
 
 public class EventoEsperaTableModel extends EventoTableModel {
 	protected static final int COL_NOTA = 5;
-	
+
 	public EventoEsperaTableModel() {
 		super();
 	}
-	
+
 	@Override
 	public int getColumnCount() {
 		return super.getColumnCount() + 1;
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		switch(columnIndex){
-			case COL_NOTA:
-				return true;
-			default:
-				return super.isCellEditable(rowIndex, columnIndex);
+		switch (columnIndex) {
+		case COL_NOTA:
+			return true;
+		default:
+			return super.isCellEditable(rowIndex, columnIndex);
 		}
 	}
-	
+
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Evento evento = eventos.get(rowIndex);
 		switch (columnIndex) {
 		case COL_NOTA:
-			evento.setNotaRecebida((float) aValue);
-			System.out.println(evento);
-			fireTableCellUpdated(rowIndex, columnIndex);
+			if (evento.getNotaRecebida() != (float) aValue) {
+				evento.setNotaRecebida((float) aValue);
+				fireTableCellUpdated(rowIndex, columnIndex);
+			}
+			break;
 		}
 	}
-	
+
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		switch (columnIndex) {
@@ -44,7 +46,7 @@ public class EventoEsperaTableModel extends EventoTableModel {
 			return super.getColumnClass(columnIndex);
 		}
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		switch (column) {
@@ -64,7 +66,7 @@ public class EventoEsperaTableModel extends EventoTableModel {
 			return "";
 		}
 	}
-	
+
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Evento evento = eventos.get(rowIndex);

@@ -51,7 +51,7 @@ public class EventoDao {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> listaEventos = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "select * from evento where dataEvento";
+		String sql = "select * from evento where dataEvento is not null";
 		
 		try {
 			listaEventos = new ArrayList<>();
