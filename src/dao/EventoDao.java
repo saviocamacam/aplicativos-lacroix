@@ -46,7 +46,7 @@ public class EventoDao {
 		return getBy("1", 1);
 	}
 	
-	public static ArrayList<Evento> getEventoTalQue(char operator, Date dataAtual) {
+	public static ArrayList<Evento> getEventoTalQue(String operator, Date dataAtual) {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> listaEventos = null;
 		Connection conn = daoHelper.getConnection();
