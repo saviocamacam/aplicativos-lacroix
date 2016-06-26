@@ -53,9 +53,14 @@ public class ModeloMainFrameController {
 
 	public List<Evento> getEventos() {
 		if(this.eventos == null){
-			this.eventos = EventoDao.getAll();
+			this.eventos = EventoDao.getEventoTalQue(">=", (new Date(calendar.getTimeInMillis())));
 		}
 		return eventos;
+	}
+	
+	public List<Evento> getEventosEspera() {
+		List<Evento> evts = EventoDao.getEventoTalQue("<", (new Date(calendar.getTimeInMillis())));
+		return evts;
 	}
 	
 	public List<Aula> getTodasAulas() {
@@ -84,7 +89,8 @@ public class ModeloMainFrameController {
 	}
 
 	public void gravaEvento(Evento novoEvento) {
+		EventoDao.inserirEvento(novoEvento);
 		System.out.println(novoEvento);
-		//EventoDao.inserirEvento(novoEvento);
 	}
+
 }

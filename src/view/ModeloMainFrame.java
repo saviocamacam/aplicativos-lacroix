@@ -54,6 +54,9 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 				for (Evento evento : controller.getEventos()) {
 					((EventoTableModel) tableProximosEventos.getModel()).addRow(evento);
 				}
+				for( Evento evento : controller.getEventosEspera()){
+					((EventoTableModel) tableEventosEspera.getModel()).addRow(evento);	
+				}
 
 			}
 		});
@@ -97,10 +100,10 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableAulasDoDia = new javax.swing.JTable();
         diaDaSemanaLabel = new java.awt.Label();
-        panelDiaDaSemana2 = new javax.swing.JPanel();
+        panelProximoDiaDaSemana = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tableAulasDoDia3 = new javax.swing.JTable();
-        diaDaSemanaLabel3 = new java.awt.Label();
+        tableAulasDoProximoDia = new javax.swing.JTable();
+        proximoDiaDaSemanaLabel = new java.awt.Label();
         panelCabecalho = new javax.swing.JPanel();
         nomeUsuarioLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -166,6 +169,10 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         professoresLabel = new java.awt.Label();
         jScrollPane9 = new javax.swing.JScrollPane();
         tableProfessores = new javax.swing.JTable();
+        eventosEsperaPanel = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tableEventosEspera = new javax.swing.JTable();
+        eventosEsperaLabel = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -203,34 +210,34 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 
         panelColunaAulas.add(panelDiaDaSemana);
 
-        tableAulasDoDia3.setModel(new AulaTableModel());
-        jScrollPane5.setViewportView(tableAulasDoDia3);
-        tableAulasDoDia3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableAulasDoProximoDia.setModel(new AulaTableModel());
+        jScrollPane5.setViewportView(tableAulasDoProximoDia);
+        tableAulasDoProximoDia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        diaDaSemanaLabel3.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        diaDaSemanaLabel3.setText(controller.getDiaSemana().toString());
+        proximoDiaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        proximoDiaDaSemanaLabel.setText(controller.getDiaSemana().toString());
 
-        javax.swing.GroupLayout panelDiaDaSemana2Layout = new javax.swing.GroupLayout(panelDiaDaSemana2);
-        panelDiaDaSemana2.setLayout(panelDiaDaSemana2Layout);
-        panelDiaDaSemana2Layout.setHorizontalGroup(
-            panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemana2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelProximoDiaDaSemanaLayout = new javax.swing.GroupLayout(panelProximoDiaDaSemana);
+        panelProximoDiaDaSemana.setLayout(panelProximoDiaDaSemanaLayout);
+        panelProximoDiaDaSemanaLayout.setHorizontalGroup(
+            panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diaDaSemanaLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addGroup(panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panelDiaDaSemana2Layout.setVerticalGroup(
-            panelDiaDaSemana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemana2Layout.createSequentialGroup()
+        panelProximoDiaDaSemanaLayout.setVerticalGroup(
+            panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(diaDaSemanaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
         );
 
-        panelColunaAulas.add(panelDiaDaSemana2);
+        panelColunaAulas.add(panelProximoDiaDaSemana);
 
         getContentPane().add(panelColunaAulas, java.awt.BorderLayout.EAST);
 
@@ -841,6 +848,37 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 
         panelProximosEventos.add(professoresPanel, "Professores");
 
+        tableEventosEspera.setModel(new EventoTableModel());
+        tableEventosEspera.setColumnSelectionAllowed(true);
+        jScrollPane10.setViewportView(tableEventosEspera);
+        tableEventosEspera.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        eventosEsperaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        eventosEsperaLabel.setText("  Eventos em Espera");
+
+        javax.swing.GroupLayout eventosEsperaPanelLayout = new javax.swing.GroupLayout(eventosEsperaPanel);
+        eventosEsperaPanel.setLayout(eventosEsperaPanelLayout);
+        eventosEsperaPanelLayout.setHorizontalGroup(
+            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        eventosEsperaPanelLayout.setVerticalGroup(
+            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelProximosEventos.add(eventosEsperaPanel, "EsperaEventos");
+
         getContentPane().add(panelProximosEventos, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -901,6 +939,8 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 		novoEvento.setDetalhes(textObservacoes.getText());
 
 		controller.gravaEvento(novoEvento);
+		EventoTableModel model = (EventoTableModel) tableProximosEventos.getModel();
+		model.addRow(novoEvento);
 
 		limparCamposNovoEvento();
 
@@ -1030,9 +1070,10 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel cursoPanel;
     private com.toedter.calendar.JDateChooser dateEvento;
     private java.awt.Label diaDaSemanaLabel;
-    private java.awt.Label diaDaSemanaLabel3;
     private javax.swing.JToggleButton esperaEventoButton;
     private javax.swing.JPanel eventoPanel;
+    private java.awt.Label eventosEsperaLabel;
+    private javax.swing.JPanel eventosEsperaPanel;
     private java.awt.Label eventosFinalizadosLabel;
     private javax.swing.JPanel eventosFinalizadosPanel;
     private javax.swing.JToggleButton finalizadosEventoButton;
@@ -1050,6 +1091,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1072,17 +1114,19 @@ public class ModeloMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelColuna;
     private javax.swing.JPanel panelColunaAulas;
     private javax.swing.JPanel panelDiaDaSemana;
-    private javax.swing.JPanel panelDiaDaSemana2;
+    private javax.swing.JPanel panelProximoDiaDaSemana;
     private javax.swing.JPanel panelProximosEventos;
     private javax.swing.JPanel periodoPanel;
     private java.awt.Label professoresLabel;
     private javax.swing.JToggleButton professoresMateriaButton;
     private javax.swing.JPanel professoresPanel;
+    private java.awt.Label proximoDiaDaSemanaLabel;
     private java.awt.Label proximosEventosLabel;
     private javax.swing.JPanel proximosEventosPanel;
     private javax.swing.JScrollPane scrollPaneTextObservacoes;
     private javax.swing.JTable tableAulasDoDia;
-    private javax.swing.JTable tableAulasDoDia3;
+    private javax.swing.JTable tableAulasDoProximoDia;
+    private javax.swing.JTable tableEventosEspera;
     private javax.swing.JTable tableEventosFinalizados;
     private javax.swing.JTable tableHorariosAula;
     private javax.swing.JTable tableMaterias;

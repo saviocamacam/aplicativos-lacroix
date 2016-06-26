@@ -17,7 +17,7 @@ public class EventoTableModel extends AbstractTableModel {
 	List<Evento> eventos;
 	
 	public EventoTableModel(List<Evento> eventos) {
-		this.eventos.addAll(eventos);
+		this.eventos = eventos;
 	}
 
 	public EventoTableModel() {
