@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Instituicao;
-import model.Instituicao;
 
 public class InstituicaoDao {
 	private static DaoHelper daoHelper;
