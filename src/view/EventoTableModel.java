@@ -8,13 +8,13 @@ import model.Evento;
 
 public class EventoTableModel extends AbstractTableModel {
 	
-	private static final int COL_DATA = 0;
-	private static final int COL_LOCAL = 1;
-	private static final int COL_TIPO = 2;
-	private static final int COL_DESCRICAO = 3;
-	private static final int COL_DETALHES = 4;
+	protected static final int COL_DATA = 0;
+	protected static final int COL_LOCAL = 1;
+	protected static final int COL_TIPO = 2;
+	protected static final int COL_DESCRICAO = 3;
+	protected static final int COL_DETALHES = 4;
 	
-	List<Evento> eventos;
+	protected List<Evento> eventos;
 	
 	public EventoTableModel(List<Evento> eventos) {
 		this.eventos = eventos;

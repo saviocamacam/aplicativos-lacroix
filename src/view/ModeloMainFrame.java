@@ -126,6 +126,10 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         proximosEventosLabel = new java.awt.Label();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableProximosEventos = new javax.swing.JTable();
+        eventosEsperaPanel = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tableEventosEspera = new javax.swing.JTable();
+        eventosEsperaLabel = new java.awt.Label();
         eventosFinalizadosPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tableEventosFinalizados = new javax.swing.JTable();
@@ -169,10 +173,6 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         professoresLabel = new java.awt.Label();
         jScrollPane9 = new javax.swing.JScrollPane();
         tableProfessores = new javax.swing.JTable();
-        eventosEsperaPanel = new javax.swing.JPanel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tableEventosEspera = new javax.swing.JTable();
-        eventosEsperaLabel = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -395,6 +395,37 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         );
 
         panelProximosEventos.add(proximosEventosPanel, "ProximosEventos");
+
+        tableEventosEspera.setModel(new EventoEsperaTableModel());
+        tableEventosEspera.setColumnSelectionAllowed(true);
+        jScrollPane10.setViewportView(tableEventosEspera);
+        tableEventosEspera.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        eventosEsperaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        eventosEsperaLabel.setText("  Eventos em Espera");
+
+        javax.swing.GroupLayout eventosEsperaPanelLayout = new javax.swing.GroupLayout(eventosEsperaPanel);
+        eventosEsperaPanel.setLayout(eventosEsperaPanelLayout);
+        eventosEsperaPanelLayout.setHorizontalGroup(
+            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        eventosEsperaPanelLayout.setVerticalGroup(
+            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelProximosEventos.add(eventosEsperaPanel, "EsperaEventos");
 
         tableEventosFinalizados.setModel(new EventoTableModel());
         jScrollPane7.setViewportView(tableEventosFinalizados);
@@ -847,37 +878,6 @@ public class ModeloMainFrame extends javax.swing.JFrame {
         );
 
         panelProximosEventos.add(professoresPanel, "Professores");
-
-        tableEventosEspera.setModel(new EventoTableModel());
-        tableEventosEspera.setColumnSelectionAllowed(true);
-        jScrollPane10.setViewportView(tableEventosEspera);
-        tableEventosEspera.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        eventosEsperaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        eventosEsperaLabel.setText("  Eventos em Espera");
-
-        javax.swing.GroupLayout eventosEsperaPanelLayout = new javax.swing.GroupLayout(eventosEsperaPanel);
-        eventosEsperaPanel.setLayout(eventosEsperaPanelLayout);
-        eventosEsperaPanelLayout.setHorizontalGroup(
-            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        eventosEsperaPanelLayout.setVerticalGroup(
-            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(eventosEsperaPanel, "EsperaEventos");
 
         getContentPane().add(panelProximosEventos, java.awt.BorderLayout.CENTER);
 
