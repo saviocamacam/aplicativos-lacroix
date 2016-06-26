@@ -20,7 +20,7 @@ public class EventoDao {
 	
 	public static void inserirEvento(Evento evento) {
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, notaRecebida, localEvento) VALUES(?,?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -30,7 +30,8 @@ public class EventoDao {
 			stmt.setString(4, evento.getDescricao());
 			stmt.setString(5, evento.getDetalhes());
 			stmt.setFloat(6, evento.getValorNota());
-			stmt.setString(7, evento.getLocalEvento());
+			stmt.setNull(7, (Integer) null);
+			stmt.setString(8, evento.getLocalEvento());
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -44,6 +45,35 @@ public class EventoDao {
 	
 	public static ArrayList<Evento> getAll(){
 		return getBy("1", 1);
+	}
+	
+	public static ArrayList<Evento> getEventoFinalizado() {
+		daoHelper = new DaoHelper();
+		ArrayList<Evento> listaEventos = null;
+		Connection conn = daoHelper.getConnection();
+		String sql = "select * from evento where dataEvento";
+		
+		try {
+			listaEventos = new ArrayList<>();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Evento usr = new Evento(
+						rs.getInt("idmateria"),
+						TipoEvento.valueOf(rs.getString("tipoevento").toUpperCase() ),
+						rs.getDate("dataevento"),
+						rs.getString("descricao"),
+						rs.getString("detalhes"),
+						rs.getFloat("valornota"),
+						rs.getString("localevento")
+						);
+				listaEventos.add(usr);
+			}
+			daoHelper.releaseAll(rs, stmt, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaEventos;
 	}
 	
 	public static ArrayList<Evento> getEventoTalQue(String operator, Date dataAtual) {
@@ -71,7 +101,6 @@ public class EventoDao {
 			}
 			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listaEventos;
