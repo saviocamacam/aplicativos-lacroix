@@ -23,6 +23,17 @@ public class Evento {
 		this.localEvento = local;
 	}
 	
+	public Evento(int idEvento, int idMateria, TipoEvento tipo, Date data, String descricao, String detalhes, float valorNota, String local) {
+		this.idEvento = idEvento;
+		this.idMateria = idMateria;
+		this.tipoEvento = tipo;
+		this.dataEvento = data;
+		this.descricao = descricao;
+		this.detalhes = detalhes;
+		this.valorNota = valorNota;
+		this.localEvento = local;
+	}
+	
 	public Evento() {}
 	
 	public int getIdEvento() {

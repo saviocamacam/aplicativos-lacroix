@@ -63,6 +63,11 @@ public class ModeloMainFrameController {
 		return evts;
 	}
 	
+	public List<Evento> getEventosFinalizados() {
+		List<Evento> evts = EventoDao.getEventoFinalizado();
+		return evts;
+	}
+	
 	public List<Aula> getTodasAulas() {
 		if(this.aulas == null){
 			this.aulas = AulaDao.getAll();
@@ -84,13 +89,25 @@ public class ModeloMainFrameController {
 		return aulasDoDia;
 	}
 	
+	public List<Aula> getAulasProximoDia(){
+		DiaSemana dia = getProximoDiaSemana();
+		List<Aula> aulasDoDia = new ArrayList<>();
+		aulasDoDia.addAll(AulaDao.getBy("diasemana", dia.getDiaSemanaBanco()));
+		return aulasDoDia;
+	}
+	
 	public DiaSemana getDiaSemana(){
 		return DiaSemana.getDiaSemana(calendar.get(Calendar.DAY_OF_WEEK));
+	}
+	
+	public DiaSemana getProximoDiaSemana(){
+		return DiaSemana.getDiaSemana(calendar.get((Calendar.DAY_OF_WEEK+1)%8));
 	}
 
 	public void gravaEvento(Evento novoEvento) {
 		EventoDao.inserirEvento(novoEvento);
 		System.out.println(novoEvento);
 	}
+
 
 }
