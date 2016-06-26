@@ -104,7 +104,8 @@ public class EventoDao {
 		}
 		return listaEventos;
 	}
-	
+
+
 	public static <T1> ArrayList<Evento> getBy(String nomeCampo, T1 valorCampo ) {
 		daoHelper = new DaoHelper();
 		ArrayList<Evento> lista = new ArrayList<>();
@@ -136,8 +137,23 @@ public class EventoDao {
 		return lista;
 	}
 	
-	public void updateNotaRecebida(Evento evento) {
-		//Atualizar campo 'notaRecebida' - dado o id desse rapaz
+	
+	public int updateNotaRecebida(Evento evento) {
+		return updateBy("notarecebida", evento.getNotaRecebida(),"idevento", evento.getIdEvento() );
+	}
+	public static <T> int updateBy( String campo, T novoValor, String campoComparacao, T valorComparacao){
+		daoHelper = new DaoHelper();
+		Connection c = daoHelper.getConnection();
+		String sql = "UPDATE evento set "+campo+"="+novoValor+" where "+campoComparacao+" = "+valorComparacao+";";
+		int nAlteracoes = 0;
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			nAlteracoes = ps.executeUpdate();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return nAlteracoes;
 	}
 
 }
