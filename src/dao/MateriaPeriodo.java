@@ -14,6 +14,7 @@ public class MateriaPeriodo {
 	}
 	
 	public static void inserirProfessorMateria(Professor professor, Materia materia) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professorMateria(idProfessor, idMateria) VALUES (?,?)";
 		
@@ -30,6 +31,7 @@ public class MateriaPeriodo {
 	}
 	
 	public static void inserirProfessorPeriodo(Professor professor, Periodo periodo) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professorPeriodo(idProfessor, idPeriodo) VALUES (?,?)";
 		
@@ -46,6 +48,7 @@ public class MateriaPeriodo {
 	}
 	
 	public static void inserirMateriaPeriodo(Materia materia, Periodo periodo) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materiaPeriodo(idMateria, idPeriodo, nota, estadoMateria) VALUES (?, ?, ?, ?)";
 		

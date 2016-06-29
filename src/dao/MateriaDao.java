@@ -17,8 +17,8 @@ public class MateriaDao {
 		MateriaDao.daoHelper = new DaoHelper();
 	}
 	
-	public static void inserirMateria(Materia materia) {
-		
+	public static void inserirMateria(Materia materia) {	
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado, cargaHoraria) VALUES(?, ?, ?, ?)";
 		
@@ -38,7 +38,32 @@ public class MateriaDao {
 		}		
 	}
 	
+	
+	public static int updateMateria( Materia materia )
+	{
+		daoHelper = new DaoHelper();
+		Connection conn = daoHelper.getConnection();
+		String sql = "UPDATE materia SET"
+				+ " idcurso=?, nomeMateria=?,"
+				+ " periodoAssocioado=?, cargaHoraria=?,"
+				+ " where idmateria = ?";
+		int alteracoes = 0;
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, materia.getIdCurso());
+			stmt.setString(2, materia.getNomeMateria());
+			stmt.setInt(3, materia.getPeriodoAssociado());
+			stmt.setInt(4, materia.getCargaHoraria());
+			stmt.setInt(5, materia.getIdMateria());
+			alteracoes = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return alteracoes;
+	}
+	
 	public static Materia getMateria(int idMateria) {
+		daoHelper = new DaoHelper();
 		Materia materia = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM materia WHERE materia.idMateria = " + idMateria;

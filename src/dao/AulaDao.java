@@ -77,7 +77,8 @@ public class AulaDao {
 	
 	public static int updateAula( Aula aula )
 	{
-		Connection conn = new DaoHelper().getConnection();
+		daoHelper = new DaoHelper();
+		Connection conn = daoHelper.getConnection();
 		String sql = "UPDATE aula set idmateria=?,"
 					+ "nomeMateria=?, idperiodo=?,"
 					+ "diasemana=?, horainicial=?,"
