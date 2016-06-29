@@ -16,12 +16,14 @@ import dao.EventoDao;
 import dao.InstituicaoDao;
 import dao.MateriaDao;
 import dao.PeriodoDao;
+import dao.ProfessorDao;
 import model.Aula;
 import model.Curso;
 import model.DiaSemana;
 import model.Evento;
 import model.Materia;
 import model.Periodo;
+import model.Professor;
 import model.Usuario;
 
 public class ModeloMainFrameController {
@@ -33,6 +35,7 @@ public class ModeloMainFrameController {
 	private List<Aula> aulas;
 	private Calendar calendar;
 	private List<Materia> materias;
+	private List<Professor> professores;
 
 	public ModeloMainFrameController(Usuario usuario, Curso curso) {
 		this.calendar = Calendar.getInstance();
@@ -42,6 +45,7 @@ public class ModeloMainFrameController {
 		this.eventos = null;
 		this.aulas = null;
 		this.materias = null;
+		this.professores = null;
 	}
 	
 	public Curso getCurso() {
@@ -124,6 +128,17 @@ public class ModeloMainFrameController {
 
 	public String getNomeInstituicao() {
 		return (InstituicaoDao.getInstituicao(this.curso.getIdInstituicao())).getNomeInstituicao();
+	}
+
+	public List<Professor> getProfessores() {
+		if(this.professores == null){
+			this.professores = ProfessorDao.getAll();
+		}
+		return professores;
+	}
+
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
 	}
 
 }

@@ -4,12 +4,14 @@ import java.util.Date;
 
 public class Periodo {
 	private int idPeriodo;
+	private String nomePeriodo;
 	private int idCurso;
 	private Date dataDeInicio;
 	private Date dataDeTermino;
 	
-	public Periodo(int idPeriodo, int idCurso, Date dataDeInicio, Date dataDeTermino) {
+	public Periodo(int idPeriodo, String nomePeriodo, int idCurso, Date dataDeInicio, Date dataDeTermino) {
 		this.idPeriodo = idPeriodo;
+		this.nomePeriodo = nomePeriodo;
 		this.idCurso = idCurso;
 		this.dataDeInicio = dataDeInicio;
 		this.dataDeTermino = dataDeTermino;
@@ -46,6 +48,14 @@ public class Periodo {
 
 	public void setIdPeriodo(int idPeriodo) {
 		this.idPeriodo = idPeriodo;
+	}
+
+	public String getNomePeriodo() {
+		return nomePeriodo;
+	}
+
+	public void setNomePeriodo(String nomePeriodo) {
+		this.nomePeriodo = nomePeriodo;
 	}
 	
 	

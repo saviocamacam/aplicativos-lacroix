@@ -102,9 +102,16 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 				for (TipoEvento evento : TipoEvento.values()) {
 					comboboxTipoEvento.addItem(evento);
 				}
-				for (Materia materia : controller.getTodasMaterias()) {
+				
+				ComboModel<Materia> modelMateria = new ComboModel<>(controller.getTodasMaterias());
+				comboboxMaterias.setModel(modelMateria);
+				
+				ComboModel<Professor> modelProfessores = new ComboModel<>(controller.getProfessores());
+				comboboxProfessor.setModel(modelProfessores);
+				
+				/*for (Materia materia : controller.getTodasMaterias()) {
 					comboboxMaterias.addItem(materia);
-				}
+				}*/
 			}
 		});
 	}

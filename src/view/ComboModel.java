@@ -20,7 +20,7 @@ public class ComboModel<T> extends AbstractListModel<T> implements ComboBoxModel
 	
 	public ComboModel(List<T> elementos ) {
 		super();
-		this.elementos.addAll(elementos);
+		this.elementos = elementos;
 		if(getSize() > 0){
 			setSelectedItem(elementos.get(0));
 		}

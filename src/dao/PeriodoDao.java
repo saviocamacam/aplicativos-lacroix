@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import model.Periodo;
 
@@ -17,15 +18,27 @@ public class PeriodoDao {
 		PeriodoDao.daoHelper = new DaoHelper();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void inserirPeriodo(Periodo periodo) {
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(?, ?, ?)";
+		Date dataTeste = new Date(periodo.getDataDeInicio().getYear(), 6, 30);
+		String nomePeriodo;
+		if(periodo.getDataDeInicio().before(dataTeste)) {
+			nomePeriodo = "" + periodo.getDataDeInicio().getYear() + ".1";
+		}
+		else {
+			nomePeriodo = "" + periodo.getDataDeInicio().getYear() + ".2";
+		}
+		periodo.setNomePeriodo(nomePeriodo);
+		
+		String sql = "INSERT INTO periodo(idCurso, nomePeriodo, dataInicio, dataTermino) VALUES(?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, periodo.getIdCurso());
-			stmt.setDate(2, (Date) periodo.getDataDeInicio());
-			stmt.setDate(2, (Date) periodo.getDataDeTermino());
+			stmt.setString(2, periodo.getNomePeriodo());
+			stmt.setDate(3, (Date) periodo.getDataDeInicio());
+			stmt.setDate(4, (Date) periodo.getDataDeTermino());
 			stmt.executeQuery();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -48,7 +61,7 @@ public class PeriodoDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaPeriodo.add(new Periodo(rs.getInt("idPeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino")));
+				listaPeriodo.add(new Periodo(rs.getInt("idPeriodo"), rs.getString("nomePeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino")));
 			}
 			
 			daoHelper.releaseAll(rs, stmt, conn);
@@ -68,7 +81,7 @@ public class PeriodoDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			rs.next();
-			periodo = new Periodo(rs.getInt("idPeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino"));
+			periodo = new Periodo(rs.getInt("idPeriodo"), rs.getString("nomePeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino"));
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,6 +106,7 @@ public class PeriodoDao {
 			{
 				Periodo usr = new Periodo(
 								rs.getInt("idperiodo"),
+								rs.getString("nomePeriodo"),
 								rs.getInt("idcurso"),
 								rs.getDate("datainicio"), rs.getDate("datatermino")
 								);
