@@ -86,4 +86,19 @@ public class UsuarioDao {
 		}
 		return lista;
 	}
+	
+	public static <T> int updateBy( String campo, T novoValor, String campoComparacao, T valorComparacao){
+		daoHelper = new DaoHelper();
+		Connection c = daoHelper.getConnection();
+		String sql = "UPDATE usuario set "+campo+"="+novoValor+" where "+campoComparacao+" = "+valorComparacao+";";
+		int nAlteracoes = 0;
+		try{
+			PreparedStatement ps = c.prepareStatement(sql);
+			nAlteracoes = ps.executeUpdate();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return nAlteracoes;
+	}
 }
