@@ -2,6 +2,11 @@ package view;
 
 import java.awt.CardLayout;
 
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 public class FrameCadastroInicial extends javax.swing.JFrame {
 
     private int screen = 1;
@@ -60,6 +65,21 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
 
         panelNomeUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome de Usuário"));
 
+        campoRegistroAcademico.setInputVerifier( new InputVerifier() {
+			
+			@Override
+			public boolean verify(JComponent arg0) {
+				try{
+					Integer.parseInt(((JTextField)arg0).getText());
+					return true;
+				}catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, "Registro Acadenico contém caracteres inválidos");
+					return false;
+				}
+			}
+		});
+        
         javax.swing.GroupLayout panelNomeUsuarioLayout = new javax.swing.GroupLayout(panelNomeUsuario);
         panelNomeUsuario.setLayout(panelNomeUsuarioLayout);
         panelNomeUsuarioLayout.setHorizontalGroup(
