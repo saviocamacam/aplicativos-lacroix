@@ -19,6 +19,7 @@ public class EventoDao {
 	}
 	
 	public static void inserirEvento(Evento evento) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO evento(idMateria, tipoEvento, dataEvento, descricao, detalhes, valorNota, localEvento) VALUES(?,?,?,?,?,?,?)";
 		
@@ -43,6 +44,7 @@ public class EventoDao {
 	}
 	
 	public static int updateEvento( Evento evento){
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "UPDATE evento SET idmateria=?,"
 									+ "tipoevento=?,dataevento=?,"
@@ -178,6 +180,7 @@ public class EventoDao {
 		try{
 			PreparedStatement ps = c.prepareStatement(sql);
 			nAlteracoes = ps.executeUpdate();
+			daoHelper.releaseAll(ps, c);
 		}
 		catch(SQLException e){
 			e.printStackTrace();

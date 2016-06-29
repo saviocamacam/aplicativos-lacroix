@@ -20,6 +20,7 @@ public class PeriodoDao {
 	
 	@SuppressWarnings("deprecation")
 	public static void inserirPeriodo(Periodo periodo) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		Date dataTeste = new Date(periodo.getDataDeInicio().getYear(), 6, 30);
 		String nomePeriodo;
@@ -51,7 +52,7 @@ public class PeriodoDao {
 	}
 	
 	public static ArrayList<Periodo> listaPeriodos(int idCurso) {
-		
+		daoHelper = new DaoHelper();
 		ArrayList<Periodo> listaPeriodo = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM periodo WHERE periodo.idCurso = " + idCurso;
@@ -72,7 +73,10 @@ public class PeriodoDao {
 		return listaPeriodo;
 	}
 	
+	
+	
 	public static Periodo periodoAtual(int idCurso, Date currentDate) {
+		daoHelper = new DaoHelper();
 		Periodo periodo = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "select * from periodo where dataTermino > '" + currentDate + "' and idCurso ="  + idCurso;
@@ -95,6 +99,7 @@ public class PeriodoDao {
 	}
 	
 	public static <T1> ArrayList<Periodo> getBy(String nomeCampo, T1 valorCampo ) {
+		daoHelper = new DaoHelper();
 		ArrayList<Periodo> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM periodo where "+nomeCampo+" = '"+valorCampo+"'";

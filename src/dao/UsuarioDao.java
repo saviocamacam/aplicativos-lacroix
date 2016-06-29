@@ -41,6 +41,7 @@ public class UsuarioDao {
 	}
 	
 	public static Usuario recuperaUsuario(String nomeUsuario) {
+		daoHelper = new DaoHelper();
 		Usuario usuario = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM usuario WHERE usuario.nomeUsuario = " + "'" + nomeUsuario + "'";

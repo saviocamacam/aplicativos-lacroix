@@ -17,6 +17,7 @@ public class ProfessorDao {
 	}
 	
 	public static void inserirProfessor(Professor professor) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO professor(nomeProfessor, email) VALUES(?, ?)";
 		PreparedStatement stmt = null;
@@ -36,6 +37,7 @@ public class ProfessorDao {
 	
 	public static int updateProfessor( Professor professor )
 	{
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "UPDATE professor SET nomeProfessor=?, email=? where idProfessor=?";
 		PreparedStatement stmt = null;
@@ -73,6 +75,7 @@ public class ProfessorDao {
 	}
 	
 	public static Professor getProfessor(String nome) {
+		daoHelper = new DaoHelper();
 		Professor professor = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM professor WHERE professor.nomeProfessor = "+ nome;

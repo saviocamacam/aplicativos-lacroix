@@ -89,6 +89,7 @@ public class CursoDao {
 	}
 	
 	public static <T1> ArrayList<Curso> getBy(String nomeCampo, T1 valorCampo ) {
+		daoHelper = new DaoHelper();
 		ArrayList<Curso> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM curso where "+nomeCampo+" = '"+valorCampo+"'";

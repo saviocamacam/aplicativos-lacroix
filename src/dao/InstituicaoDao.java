@@ -59,6 +59,7 @@ public class InstituicaoDao {
 		return getBy("1", 1);
 	}
 	public static <T1> ArrayList<Instituicao> getBy(String nomeCampo, T1 valorCampo ) {
+		daoHelper = new DaoHelper();
 		ArrayList<Instituicao> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM instituicao where "+nomeCampo+" = '"+valorCampo+"'";
