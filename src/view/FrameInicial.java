@@ -5,25 +5,22 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
-import java.awt.event.WindowListener;
-import java.lang.reflect.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 
 import controller.FrameInicialController;
 import dao.DaoHelper;
 import model.Curso;
 import model.Instituicao;
+import model.Materia;
 import model.Nivel;
+import model.Periodo;
 import model.Regime;
 import model.Usuario;
 
@@ -44,16 +41,12 @@ public class FrameInicial extends javax.swing.JFrame {
 		this.controller = new FrameInicialController();
 
 		SwingUtilities.invokeLater(new Runnable() {
-
 			@Override
 			public void run() {
-				FrameInicialController controller = new FrameInicialController();
-				for (Usuario usuario : controller.getUsuarios()) {
-					comboboxUsuario.addItem(usuario);
-				}
+				ComboModel<Usuario> modelUsuario = new ComboModel<>(controller.getUsuarios());
+				comboboxUsuario.setModel(modelUsuario);
 			}
 		});
-
 	}
 
 	/**
@@ -146,6 +139,7 @@ public class FrameInicial extends javax.swing.JFrame {
 		mainPanel.setMinimumSize(new java.awt.Dimension(840, 600));
 		mainPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
+		botaoCarregarPrograma.setEnabled(false);
 		botaoCarregarPrograma.setText("Iniciar");
 		botaoCarregarPrograma.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -800,6 +794,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		cadastroInicialPanel.add(panelPrincipal1);
 
+		voltarPanel1.setEnabled(false);
 		voltarPanel1.setText("Voltar");
 		voltarPanel1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -851,16 +846,37 @@ public class FrameInicial extends javax.swing.JFrame {
 	}// GEN-LAST:event_removerMateriaActionPerformed
 
 	private void voltarPanelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voltarPanelActionPerformed
-		if (voltarPanel.isEnabled()) {
-			CardLayout layout = (CardLayout) panelPrincipal.getLayout();
-			layout.previous(panelPrincipal);
+		CardLayout layout = (CardLayout) panelPrincipal.getLayout();
+		layout.previous(panelPrincipal);
+		if (indexCadastroInicial-- == 0) {
+			voltarPanel.setEnabled(false);
 		}
 	}// GEN-LAST:event_voltarPanelActionPerformed
 
 	private void avancarPanelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_avancarPanelActionPerformed
-		if (avancarPanel.isEnabled()) {
-			CardLayout layout = (CardLayout) panelPrincipal.getLayout();
+		CardLayout layout = (CardLayout) panelPrincipal.getLayout();
+		if (indexCadastroInicial == 2) {
+			Periodo periodo = new Periodo();
+			List<Materia> materias = new ArrayList<>();
+
+			periodo.setDataDeInicio(new Date(selecDataInicial.getDate().getTime()));
+			periodo.setDataTermino(new Date(selecDataFinal.getDate().getTime()));
+
+			controller.cadastrarPeriodo(periodo);
+			controller.cadastrarMateriasPeriodo(materias);
+
+			indexCadastroInicial = 0;
+
+			ComboModel<Usuario> modelUsuario = new ComboModel<>(controller.getUsuarios());
+			comboboxUsuario.setModel(modelUsuario);
+
+			layout = (CardLayout) this.getContentPane().getLayout();
+			layout.show(this.getContentPane(), "card2");
+
+		} else {
 			layout.next(panelPrincipal);
+			indexCadastroInicial++;
+			voltarPanel.setEnabled(true);
 		}
 	}// GEN-LAST:event_avancarPanelActionPerformed
 
@@ -873,14 +889,15 @@ public class FrameInicial extends javax.swing.JFrame {
 	}// GEN-LAST:event_comboBoxRegimeActionPerformed
 
 	private void voltarPanel1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voltarPanel1ActionPerformed
-		if (voltarPanel1.isEnabled()) {
-			CardLayout layout = (CardLayout) panelPrincipal1.getLayout();
-			layout.previous(panelPrincipal1);
+		CardLayout layout = (CardLayout) panelPrincipal1.getLayout();
+		layout.previous(panelPrincipal1);
+		indexCadastroInicial--;
+		if (indexCadastroInicial == 0) {
+			voltarPanel1.setEnabled(false);
 		}
 	}// GEN-LAST:event_voltarPanel1ActionPerformed
 
 	private void avancarPanel1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_avancarPanel1ActionPerformed
-
 		CardLayout layout = (CardLayout) panelPrincipal1.getLayout();
 		if (indexCadastroInicial == 2) {
 			Usuario usuario = new Usuario();
@@ -902,26 +919,31 @@ public class FrameInicial extends javax.swing.JFrame {
 			controller.cadastrarUsuario(usuario);
 			controller.cadastrarInstituicao(instituicao);
 			controller.cadastrarCurso(usuario, instituicao, curso);
+
+			indexCadastroInicial = 0;
+			layout = (CardLayout) this.getContentPane().getLayout();
+			layout.show(this.getContentPane(), "ResetPeriodo");
 		} else {
 			layout.next(panelPrincipal1);
 			indexCadastroInicial++;
+			voltarPanel1.setEnabled(true);
 		}
 
 	}// GEN-LAST:event_avancarPanel1ActionPerformed
 
 	private void comboboxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_comboboxUsuarioActionPerformed
 		SwingUtilities.invokeLater(new Runnable() {
-
 			@Override
 			public void run() {
-				FrameInicialController controller = new FrameInicialController();
 				if (comboboxUsuario.getSelectedIndex() != -1) {
-					for (Curso curso : controller.getCursos((Usuario) comboboxUsuario.getSelectedItem())) {
-						comboboxCurso.addItem(curso);
-					}
+					ComboModel<Curso> modelCurso = new ComboModel<>(
+							controller.getCursos((Usuario) comboboxUsuario.getSelectedItem()));
+					comboboxCurso.setModel(modelCurso);
 					if (comboboxCurso.getItemCount() > 0) {
 						comboboxCurso.setEnabled(true);
 						botaoCarregarPrograma.setEnabled(true);
+					} else {
+						comboboxCurso.setEnabled(false);
 					}
 				}
 			}
