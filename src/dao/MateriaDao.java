@@ -20,14 +20,16 @@ public class MateriaDao {
 	public static void inserirMateria(Materia materia) {	
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO materia(idCurso, nomeMateria, periodoAssociado, cargaHoraria) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO materia(nomeProfessor, idCurso, nomeMateria, periodoAssociado, cargaHoraria, cursadaUltimaVez) VALUES(?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, materia.getIdCurso());
-			stmt.setString(2, materia.getNomeMateria());
-			stmt.setInt(3, materia.getPeriodoAssociado());
-			stmt.setInt(4, materia.getCargaHoraria());
+			stmt.setInt(2, materia.getIdCurso());
+			stmt.setString(3, materia.getNomeMateria());
+			stmt.setInt(4, materia.getPeriodoAssociado());
+			stmt.setInt(5, materia.getCargaHoraria());
+			stmt.setString(6, materia.getCursadaUltimaVez());
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
@@ -66,13 +68,13 @@ public class MateriaDao {
 		daoHelper = new DaoHelper();
 		Materia materia = null;
 		Connection conn = daoHelper.getConnection();
-		String sql = "SELECT * FROM materia WHERE materia.idMateria = " + idMateria;
+		String sql = "SELECT m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargaHoraria, m.cursadaUltimaVez, mp.estadoMateria FROM materia m, materiaPeriodo mp, periodo p WHERE m.idMateria = " + idMateria + " and mp.idMateria = " + idMateria + " and m.cursadaUltimaVez = p.nomePeriodo and mp.idPeriodo = p.idPeriodo";
 		
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
-			materia = new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"));
+			materia = new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"), rs.getString("cursadaUltimaVez"));
 			daoHelper.releaseAll(rs, stmt, conn);
 			
 		} catch (SQLException e) {
@@ -91,25 +93,28 @@ public class MateriaDao {
 		ArrayList<Materia> listaMaterias = null;
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargaHoraria from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria ='" + estado.getNomeEstado()+"'";
+		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargaHoraria, m.cursadaUltimaVez from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.estadoMateria ='" + estado.getNomeEstado()+"'";
 		try {
 			listaMaterias = new ArrayList<>();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria")));
+				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"), rs.getString("cursadaUltimaVez")));
 			}
+			ResultSet rs2 = null;
+			PreparedStatement stmt2 = null;
+			daoHelper.release(rs);
+			daoHelper.release(stmt);
 			for(Materia m : listaMaterias) {
-				sql = "select p.nomePeriodo from periodo p where p.idPeriodo in (select mp.idPeriodo from materiaPeriodo mp, materia m where mp.idMateria =" + m.getIdMateria();
-				PreparedStatement stmt2 = conn.prepareStatement(sql);
-				ResultSet rs2 = stmt2.executeQuery();
+				String sql2 = "select p2.nomePeriodo from periodo p2 where p2.dataInicio = (select max(p.dataInicio) AS ultimaVez from periodo p where p.idPeriodo in (select mp.idPeriodo from materiaPeriodo mp, materia m where mp.idMateria = " + m.getIdMateria() + "))";
+				stmt2 = conn.prepareStatement(sql2);
+				rs2 = stmt2.executeQuery();
 				rs2.next();
-				m.setCursadaUltimaVez(rs.getString("nomePeriodo"));
+				m.setCursadaUltimaVez(rs2.getString("nomePeriodo"));
 				m.setEstado(estado);
-				daoHelper.release(rs2);
-				daoHelper.release(stmt2);
 			}
-			
+			daoHelper.release(rs2);
+			daoHelper.release(stmt2);
 			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -122,7 +127,7 @@ public class MateriaDao {
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		
-		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargahoraria, mp.estadomateria from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo =" + idPeriodo;
+		String sql = "select m.idMateria, m.nomeProfessor, m.idCurso, m.nomeMateria, m.periodoAssociado, m.cargahoraria, mp.estadomateria, m.cursadaUltimaVez from materia m, materiaPeriodo mp where m.idMateria = mp.idMateria and mp.idPeriodo =" + idPeriodo;
 		
 		try {
 			listaMaterias = new ArrayList<>();
@@ -134,11 +139,13 @@ public class MateriaDao {
 						rs.getString("nomeProfessor"), 
 						rs.getInt("idCurso"), 
 						rs.getString("nomeMateria"), 
-						//EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), 
+						EstadoMateria.valueOf(rs.getString("estadoMateria").toUpperCase()), 
 						rs.getInt("periodoAssociado"), 
-						rs.getInt("cargaHoraria")));
+						rs.getInt("cargaHoraria"),
+						rs.getString("cursadaUltimaVez"))
+						);
 			}
-			String sql2 = "";
+			/*String sql2 = "";
 			PreparedStatement stmt2 = null;
 			ResultSet rs2 = null;
 			for(Materia m : listaMaterias) {
@@ -146,10 +153,10 @@ public class MateriaDao {
 				stmt2 = conn.prepareStatement(sql2);
 				rs2 = stmt2.executeQuery();
 				rs2.next();
-				m.setEstado(EstadoMateria.valueOf(rs2.getString("estadoMateria")));
+				m.setEstado(EstadoMateria.valueOf(rs2.getString("estadoMateria").toUpperCase()));
 			}
 			daoHelper.release(rs2);
-			daoHelper.release(stmt2);
+			daoHelper.release(stmt2);*/
 			daoHelper.releaseAll(rs, stmt, conn); 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -176,8 +183,10 @@ public class MateriaDao {
 						rs.getString("nomeProfessor"), 
 						rs.getInt("idCurso"), 
 						rs.getString("nomeMateria"),
+						EstadoMateria.DEPENDENTE,
 						rs.getInt("periodoAssociado"), 
-						rs.getInt("cargaHoraria")
+						rs.getInt("cargaHoraria"),
+						rs.getString("cursadaUltimaVez")
 						);
 				lista.add(usr);
 			}

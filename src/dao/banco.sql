@@ -64,6 +64,7 @@ create table if not exists materia(
     nomeMateria varchar(60),
     periodoAssociado integer,
     cargaHoraria integer,
+    cursadaUltimaVez varchar(60),
 
     constraint pk_materia primary key(idMateria),
     constraint fk_materia_curso foreign key (idCurso) references curso(idCurso)
@@ -141,10 +142,10 @@ INSERT INTO professor(nomeProfessor, email) VALUES('Juliano Foleiss', 'julianofo
 INSERT INTO professor(nomeProfessor, email) VALUES('Igor Wiese', 'igorwiese@gmail.com');
 INSERT INTO professor(nomeProfessor, email) VALUES('Andre Luiz', 'andreluiz@gmail.com');
 
-INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Logica Matematica', 1);
-INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Analise de Algoritmos', 4);
-INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Programacao de Aplicativos', 4);
-INSERT INTO materia(idCurso, nomeMateria, periodoAssociado) VALUES(1, 'Banco de Dados 2', 4);
+INSERT INTO materia(nomeProfessor, idCurso, nomeMateria, periodoAssociado, cargaHoraria, cursadaUltimaVez) VALUES('Juliano Foleiss', 1, 'Logica Matematica', 1, 4, '2014.2');
+INSERT INTO materia(nomeProfessor, idCurso, nomeMateria, periodoAssociado, cargaHoraria, cursadaUltimaVez) VALUES('Juliano Foleiss', 1, 'Analise de Algoritmos', 4, 4, '2016.1');
+INSERT INTO materia(nomeProfessor, idCurso, nomeMateria, periodoAssociado, cargaHoraria, cursadaUltimaVez) VALUES('Igor Wiese', 1, 'Programacao de Aplicativos', 4, 4, '2016.1');
+INSERT INTO materia(nomeProfessor, idCurso, nomeMateria, periodoAssociado, cargaHoraria, cursadaUltimaVez) VALUES('Andre Luiz', 1, 'Banco de Dados 2', 4, 4, '2016.1');
 
 INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,'Programacao de Aplicativos',1,'segunda-feira', '19:30', '21:10', 'E101');
 INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES(3,'Programacao de Aplicativos',1,'quinta-feira', '13:50', '15:30', 'E105');
@@ -165,7 +166,7 @@ INSERT INTO professorPeriodo VALUES(3,4);
 
 INSERT INTO materiaPeriodo VALUES(1,1, 6.4, 'Aprovada');
 INSERT INTO materiaPeriodo VALUES(2,3, 0.0, 'Pendente');
-INSERT INTO materiaPeriodo VALUES(2,4, 0.0, 'Pendente');
+INSERT INTO materiaPeriodo VALUES(2,4, 0.0, 'Dependente');
 INSERT INTO materiaPeriodo VALUES(3,4, 0.0, 'Pendente');
 INSERT INTO materiaPeriodo VALUES(4,4, 0.0, 'Pendente');
 

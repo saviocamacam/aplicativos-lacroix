@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 public class Materia {
 	private int idMateria;
 	private String nomeProfessor;
@@ -13,32 +11,37 @@ public class Materia {
 	private int cargaHoraria;
 	private String cursadaUltimaVez;
 	
-	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
+	
+	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estadoMateria, int periodoAssociado, int cargaHoraria, String cursadaUltimavez) {
 		this.idMateria = idMateria;
-		this.setNomeProfessor(nomeProfessor);
+		this.nomeProfessor = nomeProfessor;
 		this.idCurso = idCurso;
-		//this.estado = estado;
 		this.nomeMateria = nomeMateria;
+		this.estado = estadoMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
+		this.cursadaUltimaVez = cursadaUltimavez;
 	}
 	
-	public Materia(String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
+	public Materia(String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria, String cursadaUltimavez) {
 		this.setNomeProfessor(nomeProfessor);
 		this.idCurso = idCurso;
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
+		this.cursadaUltimaVez = cursadaUltimavez;
 	}
 
-	public Materia(int idMateria, int idCurso, String nomeMateria, int periodoAssociado, float nota, int cargaHoraria) {
+	public Materia(String nomeProfessor, int idMateria, int idCurso, String nomeMateria, int periodoAssociado, float nota, int cargaHoraria, String cursadaUltimavez) {
 		super();
+		this.nomeProfessor = nomeProfessor;
 		this.idMateria = idMateria;
 		this.idCurso = idCurso;
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.nota = nota;
 		this.cargaHoraria = cargaHoraria;
+		this.cursadaUltimaVez = cursadaUltimavez;
 		this.setEstado();
 	}
 
