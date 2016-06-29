@@ -24,7 +24,7 @@ public class ProfessorDao {
 			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, professor.getNomeProfessor());
 			stmt.setString(2, professor.getEmail());
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			professor.setIdProfessor(rs.getInt(1));
@@ -32,6 +32,24 @@ public class ProfessorDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static int updateProfessor( Professor professor )
+	{
+		Connection conn = daoHelper.getConnection();
+		String sql = "UPDATE professor SET nomeProfessor=?, email=? where idProfessor=?";
+		PreparedStatement stmt = null;
+		int qtd_alteracoes=0;
+		try {
+			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, professor.getNomeProfessor());
+			stmt.setString(2, professor.getEmail());
+			stmt.setInt(3, professor.getIdProfessor() );
+			qtd_alteracoes = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return qtd_alteracoes;
 	}
 	
 	public static ArrayList<Professor> getProfessores() {

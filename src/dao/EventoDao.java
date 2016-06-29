@@ -42,6 +42,33 @@ public class EventoDao {
 		}
 	}
 	
+	public static int updateEvento( Evento evento){
+		Connection conn = daoHelper.getConnection();
+		String sql = "UPDATE evento SET idmateria=?,"
+									+ "tipoevento=?,dataevento=?,"
+									+ "descricao=?,detalhes=?,"
+									+ "valornota=?,localevento=?"
+									+ "WHERE idevento=?";
+		int numAlteracoes=0;
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, evento.getIdMateria());
+			stmt.setString(2, evento.getTipoEvento());
+			stmt.setDate(3, evento.getDataEvento());
+			stmt.setString(4, evento.getDescricao());
+			stmt.setString(5, evento.getDetalhes());
+			stmt.setFloat(6, evento.getValorNota());
+			stmt.setString(7, evento.getLocalEvento());
+			stmt.setInt(8, evento.getIdEvento() );
+
+			numAlteracoes = stmt.executeUpdate();
+			daoHelper.releaseAll(stmt, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return numAlteracoes;
+	}
+	
 	public static ArrayList<Evento> getAll(){
 		return getBy("1", 1);
 	}
@@ -119,6 +146,7 @@ public class EventoDao {
 			while( rs.next() )
 			{
 				Evento usr = new Evento(
+						rs.getInt("idevento"),
 						rs.getInt("idmateria"),
 						TipoEvento.valueOf(rs.getString("tipoevento").toUpperCase() ),
 						rs.getDate("dataevento"),

@@ -23,6 +23,17 @@ public class Aula {
 		this.sala = local;
 	}
 	
+	public Aula(int idAula, int idMateria, String nomeMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
+		this.idAula = idAula;
+		this.idMateria = idMateria;
+		this.nomeMateria = nomeMateria;
+		this.idPeriodo = idPeriodo;
+		this.diaSemana = diaSemana;
+		this.horaInicial = horaInicial;
+		this.horaFinal = horaFinal;
+		this.sala = local;
+	}
+	
 	public int getIdAula() {
 		return idAula;
 	}

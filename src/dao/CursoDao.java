@@ -6,8 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import model.Curso;
 import model.Evento;
+import model.Instituicao;
 import model.Nivel;
 import model.Periodo;
 import model.Regime;
@@ -19,6 +23,15 @@ public class CursoDao {
 	
 	public CursoDao() {
 		CursoDao.daoHelper = new DaoHelper();
+	}
+	
+	public static void inserirCurso( Usuario usuario, Instituicao instituicao, Curso curso )
+	{
+		curso.setIdUsuario(usuario.getId());
+		curso.setIdInstituicao( instituicao.getIdInstituicao() );
+		inserirCurso(curso);
+		new JOptionPane();
+		JOptionPane.showConfirmDialog(null, "Henrique Viado");
 	}
 	
 	public static void inserirCurso(Curso curso) {
