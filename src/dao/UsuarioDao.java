@@ -18,6 +18,7 @@ public class UsuarioDao {
 	}
 	
 	public static void cadastrarUsuario(Usuario usuario) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES(?, ?, ?)";
 		

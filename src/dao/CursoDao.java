@@ -31,10 +31,10 @@ public class CursoDao {
 		curso.setIdInstituicao( instituicao.getIdInstituicao() );
 		inserirCurso(curso);
 		new JOptionPane();
-		JOptionPane.showConfirmDialog(null, "Henrique Viado");
 	}
 	
 	public static void inserirCurso(Curso curso) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO curso(nivel, regime, idInstituicao, idUsuario, nomeCurso, qtdPeriodos) VALUES(?, ?, ?, ?, ?, ?)";
 		try {

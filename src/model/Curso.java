@@ -31,6 +31,10 @@ public class Curso {
 		this.qtdPeriodos = qtdPeriodos;
 	}
 	
+	public Curso() {
+		this.periodos = new ArrayList<>();
+	}
+
 	public int getIdCurso() {
 		return idCurso;
 	}

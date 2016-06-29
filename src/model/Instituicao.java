@@ -17,6 +17,8 @@ public class Instituicao {
 		this.nomeCidade = cidade;
 	}
 	
+	public Instituicao() {}
+
 	public String getNomeCidade() {
 		return this.nomeCidade;
 	}
@@ -34,4 +36,12 @@ public class Instituicao {
 		this.nomeInstituicao = nomeInstituicao;
 	}
 	
+	public void setNomeCidade(String nomeCidade) {
+		this.nomeCidade = nomeCidade;
+	}
+	
+	@Override
+	public String toString() {
+		return this.nomeInstituicao;
+	}
 }

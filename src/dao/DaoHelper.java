@@ -91,8 +91,7 @@ public class DaoHelper {
 	        retorno = true;
 	    }
 	    catch(Exception e){
-	    	this.createDatabase();
-	    	return true;
+	    	return false;
 	    }
 	    return retorno;
 	}

@@ -17,7 +17,7 @@ public class InstituicaoDao {
 	}
 
 	public static void inserirInstituicao(Instituicao instituicao) {
-		
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		
         String sql = "INSERT INTO instituicao (nomeinstituicao, cidade) VALUES(? ,?)";
