@@ -40,6 +40,7 @@ create table if not exists curso(
 
 create table if not exists periodo(
     idPeriodo serial,
+    nomePeriodo varchar(50),
     idCurso integer not null,
     dataInicio date,
     dataTermino date,
@@ -131,10 +132,10 @@ INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES ('Savio Camaca
 INSERT INTO instituicao(nomeInstituicao, cidade) VALUES ('UTFPR', 'Campo Mourao');
 INSERT INTO curso(idInstituicao, idUsuario, nivel, regime, nomeCurso, qtdPeriodos) VALUES(1, 1, 'Graduacao', 'SEMESTRAL', 'Bacharelado em Ciencia da Computacao', 8);
 
-INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '15-09-2014', '20-12-2014');
-INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '9-03-2015', '18-7-2015');
-INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '17-8-2015', '17-12-2015');
-INSERT INTO periodo(idCurso, dataInicio, dataTermino) VALUES(1, '28-02-2016', '7-7-2016');
+INSERT INTO periodo(idCurso, nomePeriodo, dataInicio, dataTermino) VALUES(1, '2014.2', '15-09-2014', '20-12-2014');
+INSERT INTO periodo(idCurso, nomePeriodo, dataInicio, dataTermino) VALUES(1, '2015.1', '9-03-2015', '18-7-2015');
+INSERT INTO periodo(idCurso, nomePeriodo, dataInicio, dataTermino) VALUES(1, '2015.2', '17-8-2015', '17-12-2015');
+INSERT INTO periodo(idCurso, nomePeriodo, dataInicio, dataTermino) VALUES(1, '2016.1', '28-02-2016', '7-7-2016');
 
 INSERT INTO professor(nomeProfessor, email) VALUES('Juliano Foleiss', 'julianofoleiss@gmail.com');
 INSERT INTO professor(nomeProfessor, email) VALUES('Igor Wiese', 'igorwiese@gmail.com');
