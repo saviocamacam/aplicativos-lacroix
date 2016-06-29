@@ -18,6 +18,7 @@ public class UsuarioDao {
 	}
 	
 	public static void cadastrarUsuario(Usuario usuario) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES(?, ?, ?)";
 		
@@ -40,6 +41,7 @@ public class UsuarioDao {
 	}
 	
 	public static Usuario recuperaUsuario(String nomeUsuario) {
+		daoHelper = new DaoHelper();
 		Usuario usuario = null;
 		Connection conn = daoHelper.getConnection();
 		String sql = "SELECT * FROM usuario WHERE usuario.nomeUsuario = " + "'" + nomeUsuario + "'";

@@ -114,7 +114,9 @@ public class ModeloMainFrameController {
 	}
 	
 	public DiaSemana getProximoDiaSemana(){
-		return DiaSemana.getDiaSemana(((Calendar.DAY_OF_WEEK+1)%7)+1);
+		Calendar c = Calendar.getInstance();
+		c.add(c.DATE, 1);
+		return DiaSemana.getDiaSemana( c.get(Calendar.DAY_OF_WEEK) );
 	}
 
 	public void gravaEvento(Evento novoEvento) {

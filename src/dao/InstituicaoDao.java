@@ -17,7 +17,7 @@ public class InstituicaoDao {
 	}
 
 	public static void inserirInstituicao(Instituicao instituicao) {
-		
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
 		
         String sql = "INSERT INTO instituicao (nomeinstituicao, cidade) VALUES(? ,?)";
@@ -59,6 +59,7 @@ public class InstituicaoDao {
 		return getBy("1", 1);
 	}
 	public static <T1> ArrayList<Instituicao> getBy(String nomeCampo, T1 valorCampo ) {
+		daoHelper = new DaoHelper();
 		ArrayList<Instituicao> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
 		String sql = "SELECT * FROM instituicao where "+nomeCampo+" = '"+valorCampo+"'";
