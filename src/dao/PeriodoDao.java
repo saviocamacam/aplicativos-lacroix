@@ -72,6 +72,8 @@ public class PeriodoDao {
 		return listaPeriodo;
 	}
 	
+	
+	
 	public static Periodo periodoAtual(int idCurso, Date currentDate) {
 		Periodo periodo = null;
 		Connection conn = daoHelper.getConnection();

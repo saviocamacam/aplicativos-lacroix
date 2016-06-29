@@ -11,22 +11,21 @@ public class Materia {
 	private int periodoAssociado;
 	private float nota;
 	private int cargaHoraria;
-	private Date cursadaUltimaVez;
+	private String cursadaUltimaVez;
 	
-	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
+	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
 		this.idMateria = idMateria;
 		this.setNomeProfessor(nomeProfessor);
 		this.idCurso = idCurso;
-		this.estado = estado;
+		//this.estado = estado;
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
 	}
 	
-	public Materia(String nomeProfessor, int idCurso, String nomeMateria, EstadoMateria estado, int periodoAssociado, int cargaHoraria) {
+	public Materia(String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria) {
 		this.setNomeProfessor(nomeProfessor);
 		this.idCurso = idCurso;
-		this.estado = estado;
 		this.nomeMateria = nomeMateria;
 		this.periodoAssociado = periodoAssociado;
 		this.cargaHoraria = cargaHoraria;
@@ -87,6 +86,7 @@ public class Materia {
 	}
 
 	public EstadoMateria getEstado() {
+		
 		return estado;
 	}
 
@@ -115,11 +115,11 @@ public class Materia {
 		return this.nomeMateria;
 	}
 
-	public Date getCursadaUltimaVez() {
+	public String getCursadaUltimaVez() {
 		return cursadaUltimaVez;
 	}
 
-	public void setCursadaUltimaVez(Date cursadaUltimaVez) {
+	public void setCursadaUltimaVez(String cursadaUltimaVez) {
 		this.cursadaUltimaVez = cursadaUltimaVez;
 	}
 

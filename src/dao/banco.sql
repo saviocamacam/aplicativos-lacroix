@@ -164,6 +164,7 @@ INSERT INTO professorPeriodo VALUES(2,4);
 INSERT INTO professorPeriodo VALUES(3,4);
 
 INSERT INTO materiaPeriodo VALUES(1,1, 6.4, 'Aprovada');
+INSERT INTO materiaPeriodo VALUES(2,3, 0.0, 'Pendente');
 INSERT INTO materiaPeriodo VALUES(2,4, 0.0, 'Pendente');
 INSERT INTO materiaPeriodo VALUES(3,4, 0.0, 'Pendente');
 INSERT INTO materiaPeriodo VALUES(4,4, 0.0, 'Pendente');
