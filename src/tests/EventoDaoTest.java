@@ -18,7 +18,6 @@ public class EventoDaoTest {
 		EventoDao dao = new EventoDao();
 		ArrayList<Evento> evts = dao.getBy("tipoevento", "Prova");
 		for( Evento e : evts){
-			System.out.println(e.getTipoEvento());
 		}
 		assertTrue(evts.size() > 0);
 	}
@@ -33,5 +32,15 @@ public class EventoDaoTest {
 	public void updatenotarecebida(){
 		Evento evento = new Evento(1, 0, null, null, null, null, 0, null);
 		new EventoDao().updateNotaRecebida(evento);
+	}
+	
+	@Test
+	public void updateEvento()
+	{
+		Evento e = new EventoDao().getAll().get(1);
+		e.setDescricao("jiksdljsbjbs");
+		System.out.println(e.toString());
+		assertTrue( new EventoDao().updateEvento(e) > 0 );
+		
 	}
 }
