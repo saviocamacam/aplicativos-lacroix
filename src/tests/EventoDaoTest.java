@@ -16,7 +16,7 @@ public class EventoDaoTest {
 	@Test
 	public void test() {
 		EventoDao dao = new EventoDao();
-		ArrayList<Evento> evts = dao.getBy("tipoevento", "Prova");
+		ArrayList<Evento> evts = EventoDao.getBy("tipoevento", "Prova");
 		for( Evento e : evts){
 		}
 		assertTrue(evts.size() > 0);
@@ -24,8 +24,10 @@ public class EventoDaoTest {
 
 	@Test
 	public void test2(){
-		new EventoDao().updateBy("idMateria", 1, "idevento", 1);
-		assertTrue( new EventoDao().updateBy("idMateria", 2, "idevento", 1) > 0);	
+		new EventoDao();
+		EventoDao.updateBy("idMateria", 1, "idevento", 1);
+		new EventoDao();
+		assertTrue( EventoDao.updateBy("idMateria", 2, "idevento", 1) > 0);	
 	}
 	
 	@Test
@@ -37,10 +39,12 @@ public class EventoDaoTest {
 	@Test
 	public void updateEvento()
 	{
-		Evento e = new EventoDao().getAll().get(1);
+		new EventoDao();
+		Evento e = EventoDao.getAll().get(0);
 		e.setDescricao("jiksdljsbjbs");
-		System.out.println(e.toString());
-		assertTrue( new EventoDao().updateEvento(e) > 0 );
+		e.setLocalEvento("TESTET");
+		e.setNotaRecebida(12);
+		assertTrue( EventoDao.updateEvento(e) > 0 );
 		
 	}
 }
