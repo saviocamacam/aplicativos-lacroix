@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Component;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 
 import javax.swing.AbstractCellEditor;
@@ -28,16 +29,13 @@ public class TimeCellEditor extends AbstractCellEditor implements TableCellEdito
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		JPanel c = new JPanel();
 
-        if (value instanceof Date)
+		
+        if (value instanceof Time)
         {
             final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-
             final JTextField textField = new JTextField();
-
             textField.setText(dateFormat.format(value));
-
             textField.addCaretListener(new CaretListenerForDate(this, textField));
-
             c.add(textField);       
         }
 

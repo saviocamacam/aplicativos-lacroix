@@ -18,6 +18,7 @@ public class AulaDao {
 	}
 
 	public static void inserirAula(Aula aula) {
+		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
         String sql = "INSERT INTO aula(idMateria, nomeMateria, idPeriodo, diaSemana, horaInicial, horaFinal, sala) VALUES (?,?,?,?,?,?,?)";
         try {
@@ -29,7 +30,7 @@ public class AulaDao {
 			stmt.setTime(5, aula.getHoraInicial());
 			stmt.setTime(6, aula.getHoraFinal());
 			stmt.setString(7, aula.getLocal());
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			aula.setIdAula(rs.getInt(1));

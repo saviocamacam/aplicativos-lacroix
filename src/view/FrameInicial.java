@@ -552,6 +552,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		tableHorarioAulasMateria.setModel(new HorarioAulaTableModel());
 		tableHorarioAulasMateria.setColumnSelectionAllowed(true);
+		tableHorarioAulasMateria.setRowHeight(30);
 		TableColumn colunaHoraInicial = tableHorarioAulasMateria.getColumnModel().getColumn(2);
 		TableColumn colunaHoraFinal = tableHorarioAulasMateria.getColumnModel().getColumn(3);
 		TableColumn colunaDiaSemana = tableHorarioAulasMateria.getColumnModel().getColumn(0);
@@ -1083,6 +1084,9 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
 		controller.cadastrarAulas(modelAulas.getAulas(), novaMateria);
+
+		MateriaTableModel modelMateria = (MateriaTableModel) tabelaMateriasPeriodo.getModel();
+		modelMateria.addRow(novaMateria);
 
 	}// GEN-LAST:event_buttonConcluirCadastroMateriaActionPerformed
 
