@@ -121,7 +121,6 @@ public class ModeloMainFrameController {
 
 	public void gravaEvento(Evento novoEvento) {
 		EventoDao.inserirEvento(novoEvento);
-		System.out.println(novoEvento);
 	}
 
 	public String getNomeCurso() {
@@ -141,6 +140,10 @@ public class ModeloMainFrameController {
 
 	public void setProfessores(List<Professor> professores) {
 		this.professores = professores;
+	}
+
+	public void updateEvento(Evento evento) {
+		EventoDao.updateEvento(evento);
 	}
 
 }

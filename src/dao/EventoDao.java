@@ -69,7 +69,6 @@ public class EventoDao {
 			stmt.setInt(9, evento.getIdEvento() );
 
 			numAlteracoes = stmt.executeUpdate();
-			
 			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();

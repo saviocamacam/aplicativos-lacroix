@@ -92,6 +92,7 @@ public class FrameInicialController {
 		for( Aula aula : aulas ){
 			aula.setIdMateria(novaMateria.getIdMateria());
 			aula.setIdPeriodo(periodos.get(periodos.size()-1).getIdPeriodo());
+			aula.setNomeMateria(novaMateria.getNomeMateria());
 			AulaDao.inserirAula(aula);
 		}
 	}
@@ -101,12 +102,12 @@ public class FrameInicialController {
 		MateriaDao.inserirMateria(novaMateria);
 		MateriaPeriodo.inserirMateriaPeriodo(novaMateria, this.periodos.get(this.periodos.size()-1));
 		MateriaPeriodo.inserirProfessorMateria(professor, novaMateria);
-		MateriaPeriodo.inserirProfessorPeriodo(professor, this.periodos.get(this.periodos.size()-1));
 		materias.add(novaMateria);
 	}
 
 	public void cadastrarProfessor(Professor professor) {
 		ProfessorDao.inserirProfessor(professor);
+		MateriaPeriodo.inserirProfessorPeriodo(professor, this.periodos.get(this.periodos.size()-1));
 		this.professores.add(professor);
 	}
 }

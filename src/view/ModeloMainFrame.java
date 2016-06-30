@@ -74,8 +74,7 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 				modelFinalizado.addTableModelListener(new TableModelListener() {
 					@Override
 					public void tableChanged(TableModelEvent e) {
-						System.out.println("[DEBUG][Inserir no Banco]: " + modelFinalizado.get(e.getFirstRow()));
-
+						controller.updateEvento(modelFinalizado.get(e.getFirstRow()));
 					}
 				});
 			}
@@ -102,16 +101,17 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 				for (TipoEvento evento : TipoEvento.values()) {
 					comboboxTipoEvento.addItem(evento);
 				}
-				
+
 				ComboModel<Materia> modelMateria = new ComboModel<>(controller.getTodasMaterias());
 				comboboxMaterias.setModel(modelMateria);
-				
+
 				ComboModel<Professor> modelProfessores = new ComboModel<>(controller.getProfessores());
 				comboboxProfessor.setModel(modelProfessores);
-				
-				/*for (Materia materia : controller.getTodasMaterias()) {
-					comboboxMaterias.addItem(materia);
-				}*/
+
+				/*
+				 * for (Materia materia : controller.getTodasMaterias()) {
+				 * comboboxMaterias.addItem(materia); }
+				 */
 			}
 		});
 	}
@@ -128,810 +128,835 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        panelColunaAulas = new javax.swing.JPanel();
-        panelDiaDaSemana = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableAulasDoDia = new javax.swing.JTable();
-        diaDaSemanaLabel = new java.awt.Label();
-        panelProximoDiaDaSemana = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tableAulasDoProximoDia = new javax.swing.JTable();
-        proximoDiaDaSemanaLabel = new java.awt.Label();
-        panelCabecalho = new javax.swing.JPanel();
-        nomeUsuarioLabel = new javax.swing.JLabel();
-        dataFinalPeriodoLabel = new javax.swing.JLabel();
-        nomeInstituiçãoLabel = new javax.swing.JLabel();
-        nomeCursoLabel = new javax.swing.JLabel();
-        panelColuna = new javax.swing.JPanel();
-        eventoPanel = new javax.swing.JPanel();
-        novoEventoButton = new javax.swing.JToggleButton();
-        esperaEventoButton = new javax.swing.JToggleButton();
-        finalizadosEventoButton = new javax.swing.JToggleButton();
-        materiaPanel = new javax.swing.JPanel();
-        novaMateriaButton = new javax.swing.JToggleButton();
-        todasMateriaButton = new javax.swing.JToggleButton();
-        professoresMateriaButton = new javax.swing.JToggleButton();
-        periodoPanel = new javax.swing.JPanel();
-        historicoPeriodoButton = new javax.swing.JToggleButton();
-        novoPeriodoButton = new javax.swing.JToggleButton();
-        cursoPanel = new javax.swing.JPanel();
-        informacoesCursoButton = new javax.swing.JToggleButton();
-        panelProximosEventos = new javax.swing.JPanel();
-        proximosEventosPanel = new javax.swing.JPanel();
-        proximosEventosLabel = new java.awt.Label();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tableProximosEventos = new javax.swing.JTable();
-        eventosEsperaPanel = new javax.swing.JPanel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tableEventosEspera = new javax.swing.JTable();
-        eventosEsperaLabel = new java.awt.Label();
-        eventosFinalizadosPanel = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tableEventosFinalizados = new javax.swing.JTable();
-        eventosFinalizadosLabel = new java.awt.Label();
-        novoEventoPanel = new javax.swing.JPanel();
-        novoEventoLabel = new java.awt.Label();
-        botaoConcluirEvento = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        comboboxTipoEvento = new javax.swing.JComboBox<>();
-        jPanel10 = new javax.swing.JPanel();
-        comboboxMaterias = new javax.swing.JComboBox<>();
-        jPanel11 = new javax.swing.JPanel();
-        dateEvento = new com.toedter.calendar.JDateChooser();
-        jPanel12 = new javax.swing.JPanel();
-        campoDescricao = new javax.swing.JTextField();
-        jPanel13 = new javax.swing.JPanel();
-        campoLocal = new javax.swing.JTextField();
-        jPanel14 = new javax.swing.JPanel();
-        scrollPaneTextObservacoes = new javax.swing.JScrollPane();
-        textObservacoes = new javax.swing.JTextArea();
-        novaMateriaPanel = new javax.swing.JPanel();
-        novaMateriaLabel = new java.awt.Label();
-        botaoConcluirEvento1 = new javax.swing.JButton();
-        jPanel18 = new javax.swing.JPanel();
-        campoNomeMateria = new javax.swing.JTextField();
-        jPanel15 = new javax.swing.JPanel();
-        comboboxPeriodo = new javax.swing.JComboBox<>();
-        jPanel16 = new javax.swing.JPanel();
-        comboboxProfessor = new javax.swing.JComboBox<>();
-        novoProfessorButton = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        campoCargaHorariaSemanal = new javax.swing.JTextField();
-        jPanel20 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableHorariosAula = new javax.swing.JTable();
-        materiasPanel = new javax.swing.JPanel();
-        todasMateriasLabel = new java.awt.Label();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        tableMaterias = new javax.swing.JTable();
-        professoresPanel = new javax.swing.JPanel();
-        professoresLabel = new java.awt.Label();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        tableProfessores = new javax.swing.JTable();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(977, 606));
-        setName("mainFrame"); // NOI18N
-
-        panelColunaAulas.setLayout(new javax.swing.BoxLayout(panelColunaAulas, javax.swing.BoxLayout.Y_AXIS));
-
-        tableAulasDoDia.setModel(new AulaTableModel());
-        jScrollPane3.setViewportView(tableAulasDoDia);
-        tableAulasDoDia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        diaDaSemanaLabel.setText(controller.getDiaSemana().toString());
-
-        javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
-        panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);
-        panelDiaDaSemanaLayout.setHorizontalGroup(
-            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelDiaDaSemanaLayout.setVerticalGroup(
-            panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDiaDaSemanaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-        );
-
-        panelColunaAulas.add(panelDiaDaSemana);
-
-        tableAulasDoProximoDia.setModel(new AulaTableModel());
-        jScrollPane5.setViewportView(tableAulasDoProximoDia);
-        tableAulasDoProximoDia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        proximoDiaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        proximoDiaDaSemanaLabel.setText(controller.getProximoDiaSemana().toString());
-
-        javax.swing.GroupLayout panelProximoDiaDaSemanaLayout = new javax.swing.GroupLayout(panelProximoDiaDaSemana);
-        panelProximoDiaDaSemana.setLayout(panelProximoDiaDaSemanaLayout);
-        panelProximoDiaDaSemanaLayout.setHorizontalGroup(
-            panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelProximoDiaDaSemanaLayout.setVerticalGroup(
-            panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-        );
-
-        panelColunaAulas.add(panelProximoDiaDaSemana);
-
-        getContentPane().add(panelColunaAulas, java.awt.BorderLayout.EAST);
-
-        nomeUsuarioLabel.setText(controller.getUsuario().getNome());
-
-        dataFinalPeriodoLabel.setText(controller.getDataFinalPeriodo().toString());
-
-        nomeInstituiçãoLabel.setText(controller.getNomeInstituicao());
-
-        nomeCursoLabel.setText(controller.getNomeCurso());
-
-        javax.swing.GroupLayout panelCabecalhoLayout = new javax.swing.GroupLayout(panelCabecalho);
-        panelCabecalho.setLayout(panelCabecalhoLayout);
-        panelCabecalhoLayout.setHorizontalGroup(
-            panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCabecalhoLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeInstituiçãoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nomeCursoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(dataFinalPeriodoLabel)
-                .addContainerGap())
-        );
-        panelCabecalhoLayout.setVerticalGroup(
-            panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabecalhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(dataFinalPeriodoLabel)
-                    .addComponent(nomeCursoLabel)
-                    .addComponent(nomeInstituiçãoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        getContentPane().add(panelCabecalho, java.awt.BorderLayout.NORTH);
-
-        panelColuna.setLayout(new javax.swing.BoxLayout(panelColuna, javax.swing.BoxLayout.Y_AXIS));
-
-        eventoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Eventos"));
-        eventoPanel.setLayout(new javax.swing.BoxLayout(eventoPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        novoEventoButton.setText("Novo");
-        novoEventoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoEventoButtonActionPerformed(evt);
-            }
-        });
-        eventoPanel.add(novoEventoButton);
-
-        esperaEventoButton.setText("Espera");
-        esperaEventoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                esperaEventoButtonActionPerformed(evt);
-            }
-        });
-        eventoPanel.add(esperaEventoButton);
-
-        finalizadosEventoButton.setText("Finalizados");
-        finalizadosEventoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalizadosEventoButtonActionPerformed(evt);
-            }
-        });
-        eventoPanel.add(finalizadosEventoButton);
-
-        panelColuna.add(eventoPanel);
-
-        materiaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Matérias"));
-        materiaPanel.setLayout(new javax.swing.BoxLayout(materiaPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        novaMateriaButton.setText("Nova");
-        novaMateriaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novaMateriaButtonActionPerformed(evt);
-            }
-        });
-        materiaPanel.add(novaMateriaButton);
-
-        todasMateriaButton.setText("Todas");
-        todasMateriaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                todasMateriaButtonActionPerformed(evt);
-            }
-        });
-        materiaPanel.add(todasMateriaButton);
-
-        professoresMateriaButton.setText("Professores");
-        professoresMateriaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                professoresMateriaButtonActionPerformed(evt);
-            }
-        });
-        materiaPanel.add(professoresMateriaButton);
-
-        panelColuna.add(materiaPanel);
-
-        periodoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Períodos"));
-        periodoPanel.setLayout(new javax.swing.BoxLayout(periodoPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        historicoPeriodoButton.setText("Histórico");
-        historicoPeriodoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historicoPeriodoButtonActionPerformed(evt);
-            }
-        });
-        periodoPanel.add(historicoPeriodoButton);
-
-        novoPeriodoButton.setText("Novo");
-        novoPeriodoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoPeriodoButtonActionPerformed(evt);
-            }
-        });
-        periodoPanel.add(novoPeriodoButton);
-
-        panelColuna.add(periodoPanel);
-
-        cursoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Cursos"));
-        cursoPanel.setLayout(new javax.swing.BoxLayout(cursoPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        informacoesCursoButton.setText("Informações");
-        informacoesCursoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                informacoesCursoButtonActionPerformed(evt);
-            }
-        });
-        cursoPanel.add(informacoesCursoButton);
-
-        panelColuna.add(cursoPanel);
-
-        getContentPane().add(panelColuna, java.awt.BorderLayout.WEST);
-
-        panelProximosEventos.setLayout(new java.awt.CardLayout());
-
-        proximosEventosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        proximosEventosLabel.setText(" Próximos Eventos");
-
-        tableProximosEventos.setModel(new EventoTableModel());
-        jScrollPane6.setViewportView(tableProximosEventos);
-        tableProximosEventos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        javax.swing.GroupLayout proximosEventosPanelLayout = new javax.swing.GroupLayout(proximosEventosPanel);
-        proximosEventosPanel.setLayout(proximosEventosPanelLayout);
-        proximosEventosPanelLayout.setHorizontalGroup(
-            proximosEventosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(proximosEventosPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(proximosEventosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(proximosEventosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        proximosEventosPanelLayout.setVerticalGroup(
-            proximosEventosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(proximosEventosPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(proximosEventosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(proximosEventosPanel, "ProximosEventos");
-
-        tableEventosEspera.setModel(new EventoEsperaTableModel());
-        tableEventosEspera.setColumnSelectionAllowed(true);
-        jScrollPane10.setViewportView(tableEventosEspera);
-        tableEventosEspera.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        eventosEsperaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        eventosEsperaLabel.setText("  Eventos em Espera");
-
-        javax.swing.GroupLayout eventosEsperaPanelLayout = new javax.swing.GroupLayout(eventosEsperaPanel);
-        eventosEsperaPanel.setLayout(eventosEsperaPanelLayout);
-        eventosEsperaPanelLayout.setHorizontalGroup(
-            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        eventosEsperaPanelLayout.setVerticalGroup(
-            eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosEsperaPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(eventosEsperaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(eventosEsperaPanel, "EsperaEventos");
-
-        tableEventosFinalizados.setModel(new EventoFinalizadoTableModel());
-        tableEventosFinalizados.setColumnSelectionAllowed(true);
-        jScrollPane7.setViewportView(tableEventosFinalizados);
-        tableEventosFinalizados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        eventosFinalizadosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        eventosFinalizadosLabel.setText("  Eventos Finalizados");
-
-        javax.swing.GroupLayout eventosFinalizadosPanelLayout = new javax.swing.GroupLayout(eventosFinalizadosPanel);
-        eventosFinalizadosPanel.setLayout(eventosFinalizadosPanelLayout);
-        eventosFinalizadosPanelLayout.setHorizontalGroup(
-            eventosFinalizadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosFinalizadosPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(eventosFinalizadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        eventosFinalizadosPanelLayout.setVerticalGroup(
-            eventosFinalizadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventosFinalizadosPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(eventosFinalizadosPanel, "EventosFinalizados");
-
-        novoEventoLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        novoEventoLabel.setText("  Novo Evento");
-
-        botaoConcluirEvento.setText("Concluir");
-        botaoConcluirEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoConcluirEventoActionPerformed(evt);
-            }
-        });
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
-
-        comboboxTipoEvento.setModel(new DefaultComboBoxModel<>()
-        );
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxTipoEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Matéria"));
-
-        comboboxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>());
-        comboboxMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboboxMateriasActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(dateEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(dateEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Local"));
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoLocal, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações"));
-
-        textObservacoes.setColumns(20);
-        textObservacoes.setRows(5);
-        scrollPaneTextObservacoes.setViewportView(textObservacoes);
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollPaneTextObservacoes)
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollPaneTextObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout novoEventoPanelLayout = new javax.swing.GroupLayout(novoEventoPanel);
-        novoEventoPanel.setLayout(novoEventoPanelLayout);
-        novoEventoPanelLayout.setHorizontalGroup(
-            novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(novoEventoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, novoEventoPanelLayout.createSequentialGroup()
-                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botaoConcluirEvento)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        novoEventoPanelLayout.setVerticalGroup(
-            novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(novoEventoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(novoEventoPanelLayout.createSequentialGroup()
-                        .addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(botaoConcluirEvento)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(novoEventoPanel, "NovoEvento");
-
-        novaMateriaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        novaMateriaLabel.setText("Nova Materia");
-
-        botaoConcluirEvento1.setText("Concluir");
-        botaoConcluirEvento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoConcluirEvento1ActionPerformed(evt);
-            }
-        });
-
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
-
-        campoNomeMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeMateriaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoNomeMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoNomeMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Período"));
-
-        comboboxPeriodo.setModel(new DefaultComboBoxModel<>()
-        );
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Professor"));
-
-        comboboxProfessor.setModel(new javax.swing.DefaultComboBoxModel<>());
-        comboboxProfessor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboboxProfessorActionPerformed(evt);
-            }
-        });
-
-        novoProfessorButton.setText("Novo");
-        novoProfessorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoProfessorButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(comboboxProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(novoProfessorButton)
-                .addGap(0, 0, 0))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboboxProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(novoProfessorButton))
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Carga Horária Semanal"));
-
-        campoCargaHorariaSemanal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCargaHorariaSemanalActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(campoCargaHorariaSemanal, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(campoCargaHorariaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Horários da Aula"));
-        jPanel20.setLayout(new java.awt.BorderLayout());
-
-        tableHorariosAula.setModel(new HorarioAulaTableModel());
-        jScrollPane2.setViewportView(tableHorariosAula);
-
-        jPanel20.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout novaMateriaPanelLayout = new javax.swing.GroupLayout(novaMateriaPanel);
-        novaMateriaPanel.setLayout(novaMateriaPanelLayout);
-        novaMateriaPanelLayout.setHorizontalGroup(
-            novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(novaMateriaPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(novaMateriaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botaoConcluirEvento1)
-                        .addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, novaMateriaPanelLayout.createSequentialGroup()
-                                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, novaMateriaPanelLayout.createSequentialGroup()
-                                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        novaMateriaPanelLayout.setVerticalGroup(
-            novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(novaMateriaPanelLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(novaMateriaPanelLayout.createSequentialGroup()
-                        .addComponent(novaMateriaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoConcluirEvento1)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(novaMateriaPanel, "NovaMateria");
-
-        todasMateriasLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        todasMateriasLabel.setText("Matérias");
-
-        tableMaterias.setModel(new MateriaTableModel());
-        tableMaterias.setColumnSelectionAllowed(true);
-        jScrollPane8.setViewportView(tableMaterias);
-        tableMaterias.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        javax.swing.GroupLayout materiasPanelLayout = new javax.swing.GroupLayout(materiasPanel);
-        materiasPanel.setLayout(materiasPanelLayout);
-        materiasPanelLayout.setHorizontalGroup(
-            materiasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(materiasPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(materiasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(todasMateriasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        materiasPanelLayout.setVerticalGroup(
-            materiasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(materiasPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(todasMateriasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(materiasPanel, "Materias");
-
-        professoresLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        professoresLabel.setText("Professores");
-
-        tableProfessores.setModel(new ProfessorTableModel());
-        jScrollPane9.setViewportView(tableProfessores);
-        tableProfessores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        javax.swing.GroupLayout professoresPanelLayout = new javax.swing.GroupLayout(professoresPanel);
-        professoresPanel.setLayout(professoresPanelLayout);
-        professoresPanelLayout.setHorizontalGroup(
-            professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(professoresPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(professoresLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        professoresPanelLayout.setVerticalGroup(
-            professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(professoresPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(professoresLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelProximosEventos.add(professoresPanel, "Professores");
-
-        getContentPane().add(panelProximosEventos, java.awt.BorderLayout.CENTER);
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
+
+		panelColunaAulas = new javax.swing.JPanel();
+		panelDiaDaSemana = new javax.swing.JPanel();
+		jScrollPane3 = new javax.swing.JScrollPane();
+		tableAulasDoDia = new javax.swing.JTable();
+		diaDaSemanaLabel = new java.awt.Label();
+		panelProximoDiaDaSemana = new javax.swing.JPanel();
+		jScrollPane5 = new javax.swing.JScrollPane();
+		tableAulasDoProximoDia = new javax.swing.JTable();
+		proximoDiaDaSemanaLabel = new java.awt.Label();
+		panelCabecalho = new javax.swing.JPanel();
+		nomeUsuarioLabel = new javax.swing.JLabel();
+		dataFinalPeriodoLabel = new javax.swing.JLabel();
+		nomeInstituiçãoLabel = new javax.swing.JLabel();
+		nomeCursoLabel = new javax.swing.JLabel();
+		panelColuna = new javax.swing.JPanel();
+		eventoPanel = new javax.swing.JPanel();
+		novoEventoButton = new javax.swing.JToggleButton();
+		esperaEventoButton = new javax.swing.JToggleButton();
+		finalizadosEventoButton = new javax.swing.JToggleButton();
+		materiaPanel = new javax.swing.JPanel();
+		novaMateriaButton = new javax.swing.JToggleButton();
+		todasMateriaButton = new javax.swing.JToggleButton();
+		professoresMateriaButton = new javax.swing.JToggleButton();
+		periodoPanel = new javax.swing.JPanel();
+		historicoPeriodoButton = new javax.swing.JToggleButton();
+		novoPeriodoButton = new javax.swing.JToggleButton();
+		cursoPanel = new javax.swing.JPanel();
+		informacoesCursoButton = new javax.swing.JToggleButton();
+		panelProximosEventos = new javax.swing.JPanel();
+		proximosEventosPanel = new javax.swing.JPanel();
+		proximosEventosLabel = new java.awt.Label();
+		jScrollPane6 = new javax.swing.JScrollPane();
+		tableProximosEventos = new javax.swing.JTable();
+		eventosEsperaPanel = new javax.swing.JPanel();
+		jScrollPane10 = new javax.swing.JScrollPane();
+		tableEventosEspera = new javax.swing.JTable();
+		eventosEsperaLabel = new java.awt.Label();
+		eventosFinalizadosPanel = new javax.swing.JPanel();
+		jScrollPane7 = new javax.swing.JScrollPane();
+		tableEventosFinalizados = new javax.swing.JTable();
+		eventosFinalizadosLabel = new java.awt.Label();
+		novoEventoPanel = new javax.swing.JPanel();
+		novoEventoLabel = new java.awt.Label();
+		botaoConcluirEvento = new javax.swing.JButton();
+		jPanel9 = new javax.swing.JPanel();
+		comboboxTipoEvento = new javax.swing.JComboBox<>();
+		jPanel10 = new javax.swing.JPanel();
+		comboboxMaterias = new javax.swing.JComboBox<>();
+		jPanel11 = new javax.swing.JPanel();
+		dateEvento = new com.toedter.calendar.JDateChooser();
+		jPanel12 = new javax.swing.JPanel();
+		campoDescricao = new javax.swing.JTextField();
+		jPanel13 = new javax.swing.JPanel();
+		campoLocal = new javax.swing.JTextField();
+		jPanel14 = new javax.swing.JPanel();
+		scrollPaneTextObservacoes = new javax.swing.JScrollPane();
+		textObservacoes = new javax.swing.JTextArea();
+		novaMateriaPanel = new javax.swing.JPanel();
+		novaMateriaLabel = new java.awt.Label();
+		botaoConcluirEvento1 = new javax.swing.JButton();
+		jPanel18 = new javax.swing.JPanel();
+		campoNomeMateria = new javax.swing.JTextField();
+		jPanel15 = new javax.swing.JPanel();
+		comboboxPeriodo = new javax.swing.JComboBox<>();
+		jPanel16 = new javax.swing.JPanel();
+		comboboxProfessor = new javax.swing.JComboBox<>();
+		novoProfessorButton = new javax.swing.JButton();
+		jPanel17 = new javax.swing.JPanel();
+		campoCargaHorariaSemanal = new javax.swing.JTextField();
+		jPanel20 = new javax.swing.JPanel();
+		jScrollPane2 = new javax.swing.JScrollPane();
+		tableHorariosAula = new javax.swing.JTable();
+		materiasPanel = new javax.swing.JPanel();
+		todasMateriasLabel = new java.awt.Label();
+		jScrollPane8 = new javax.swing.JScrollPane();
+		tableMaterias = new javax.swing.JTable();
+		professoresPanel = new javax.swing.JPanel();
+		professoresLabel = new java.awt.Label();
+		jScrollPane9 = new javax.swing.JScrollPane();
+		tableProfessores = new javax.swing.JTable();
+
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+		setMinimumSize(new java.awt.Dimension(977, 606));
+		setName("mainFrame"); // NOI18N
+
+		panelColunaAulas.setLayout(new javax.swing.BoxLayout(panelColunaAulas, javax.swing.BoxLayout.Y_AXIS));
+
+		tableAulasDoDia.setModel(new AulaTableModel());
+		jScrollPane3.setViewportView(tableAulasDoDia);
+		tableAulasDoDia.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		diaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		diaDaSemanaLabel.setText(controller.getDiaSemana().toString());
+
+		javax.swing.GroupLayout panelDiaDaSemanaLayout = new javax.swing.GroupLayout(panelDiaDaSemana);
+		panelDiaDaSemana.setLayout(panelDiaDaSemanaLayout);
+		panelDiaDaSemanaLayout.setHorizontalGroup(panelDiaDaSemanaLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(panelDiaDaSemanaLayout.createSequentialGroup().addContainerGap()
+						.addGroup(panelDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 280,
+										Short.MAX_VALUE)
+								.addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING,
+										javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+						.addContainerGap()));
+		panelDiaDaSemanaLayout.setVerticalGroup(panelDiaDaSemanaLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(panelDiaDaSemanaLayout.createSequentialGroup().addGap(14, 14, 14)
+						.addComponent(diaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)));
+
+		panelColunaAulas.add(panelDiaDaSemana);
+
+		tableAulasDoProximoDia.setModel(new AulaTableModel());
+		jScrollPane5.setViewportView(tableAulasDoProximoDia);
+		tableAulasDoProximoDia.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		proximoDiaDaSemanaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		proximoDiaDaSemanaLabel.setText(controller.getProximoDiaSemana().toString());
+
+		javax.swing.GroupLayout panelProximoDiaDaSemanaLayout = new javax.swing.GroupLayout(panelProximoDiaDaSemana);
+		panelProximoDiaDaSemana.setLayout(panelProximoDiaDaSemanaLayout);
+		panelProximoDiaDaSemanaLayout.setHorizontalGroup(
+				panelProximoDiaDaSemanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup().addContainerGap()
+								.addGroup(panelProximoDiaDaSemanaLayout
+										.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+												280, Short.MAX_VALUE)
+										.addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING,
+												javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+								.addContainerGap()));
+		panelProximoDiaDaSemanaLayout.setVerticalGroup(panelProximoDiaDaSemanaLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(panelProximoDiaDaSemanaLayout.createSequentialGroup().addGap(14, 14, 14)
+						.addComponent(proximoDiaDaSemanaLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)));
+
+		panelColunaAulas.add(panelProximoDiaDaSemana);
+
+		getContentPane().add(panelColunaAulas, java.awt.BorderLayout.EAST);
+
+		nomeUsuarioLabel.setText(controller.getUsuario().getNome());
+
+		dataFinalPeriodoLabel.setText(controller.getDataFinalPeriodo().toString());
+
+		nomeInstituiçãoLabel.setText(controller.getNomeInstituicao());
+
+		nomeCursoLabel.setText(controller.getNomeCurso());
+
+		javax.swing.GroupLayout panelCabecalhoLayout = new javax.swing.GroupLayout(panelCabecalho);
+		panelCabecalho.setLayout(panelCabecalhoLayout);
+		panelCabecalhoLayout.setHorizontalGroup(panelCabecalhoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(panelCabecalhoLayout.createSequentialGroup().addGap(35, 35, 35)
+						.addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(nomeInstituiçãoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18)
+						.addComponent(nomeCursoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+						.addComponent(dataFinalPeriodoLabel).addContainerGap()));
+		panelCabecalhoLayout.setVerticalGroup(panelCabecalhoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabecalhoLayout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(panelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(nomeUsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 41,
+										Short.MAX_VALUE)
+								.addComponent(dataFinalPeriodoLabel).addComponent(nomeCursoLabel)
+								.addComponent(nomeInstituiçãoLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addContainerGap()));
+
+		getContentPane().add(panelCabecalho, java.awt.BorderLayout.NORTH);
+
+		panelColuna.setLayout(new javax.swing.BoxLayout(panelColuna, javax.swing.BoxLayout.Y_AXIS));
+
+		eventoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Eventos"));
+		eventoPanel.setLayout(new javax.swing.BoxLayout(eventoPanel, javax.swing.BoxLayout.Y_AXIS));
+
+		novoEventoButton.setText("Novo");
+		novoEventoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				novoEventoButtonActionPerformed(evt);
+			}
+		});
+		eventoPanel.add(novoEventoButton);
+
+		esperaEventoButton.setText("Espera");
+		esperaEventoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				esperaEventoButtonActionPerformed(evt);
+			}
+		});
+		eventoPanel.add(esperaEventoButton);
+
+		finalizadosEventoButton.setText("Finalizados");
+		finalizadosEventoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				finalizadosEventoButtonActionPerformed(evt);
+			}
+		});
+		eventoPanel.add(finalizadosEventoButton);
+
+		panelColuna.add(eventoPanel);
+
+		materiaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Matérias"));
+		materiaPanel.setLayout(new javax.swing.BoxLayout(materiaPanel, javax.swing.BoxLayout.Y_AXIS));
+
+		novaMateriaButton.setText("Nova");
+		novaMateriaButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				novaMateriaButtonActionPerformed(evt);
+			}
+		});
+		materiaPanel.add(novaMateriaButton);
+
+		todasMateriaButton.setText("Todas");
+		todasMateriaButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				todasMateriaButtonActionPerformed(evt);
+			}
+		});
+		materiaPanel.add(todasMateriaButton);
+
+		professoresMateriaButton.setText("Professores");
+		professoresMateriaButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				professoresMateriaButtonActionPerformed(evt);
+			}
+		});
+		materiaPanel.add(professoresMateriaButton);
+
+		panelColuna.add(materiaPanel);
+
+		periodoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Períodos"));
+		periodoPanel.setLayout(new javax.swing.BoxLayout(periodoPanel, javax.swing.BoxLayout.Y_AXIS));
+
+		historicoPeriodoButton.setText("Histórico");
+		historicoPeriodoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				historicoPeriodoButtonActionPerformed(evt);
+			}
+		});
+		periodoPanel.add(historicoPeriodoButton);
+
+		novoPeriodoButton.setText("Novo");
+		novoPeriodoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				novoPeriodoButtonActionPerformed(evt);
+			}
+		});
+		periodoPanel.add(novoPeriodoButton);
+
+		panelColuna.add(periodoPanel);
+
+		cursoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Cursos"));
+		cursoPanel.setLayout(new javax.swing.BoxLayout(cursoPanel, javax.swing.BoxLayout.Y_AXIS));
+
+		informacoesCursoButton.setText("Informações");
+		informacoesCursoButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				informacoesCursoButtonActionPerformed(evt);
+			}
+		});
+		cursoPanel.add(informacoesCursoButton);
+
+		panelColuna.add(cursoPanel);
+
+		getContentPane().add(panelColuna, java.awt.BorderLayout.WEST);
+
+		panelProximosEventos.setLayout(new java.awt.CardLayout());
+
+		proximosEventosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		proximosEventosLabel.setText(" Próximos Eventos");
+
+		tableProximosEventos.setModel(new EventoTableModel());
+		jScrollPane6.setViewportView(tableProximosEventos);
+		tableProximosEventos.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		javax.swing.GroupLayout proximosEventosPanelLayout = new javax.swing.GroupLayout(proximosEventosPanel);
+		proximosEventosPanel.setLayout(proximosEventosPanelLayout);
+		proximosEventosPanelLayout.setHorizontalGroup(proximosEventosPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(proximosEventosPanelLayout.createSequentialGroup().addContainerGap()
+						.addGroup(proximosEventosPanelLayout
+								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(proximosEventosLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+						.addContainerGap()));
+		proximosEventosPanelLayout.setVerticalGroup(
+				proximosEventosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(proximosEventosPanelLayout.createSequentialGroup().addContainerGap()
+								.addComponent(proximosEventosLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+								.addContainerGap()));
+
+		panelProximosEventos.add(proximosEventosPanel, "ProximosEventos");
+
+		tableEventosEspera.setModel(new EventoEsperaTableModel());
+		tableEventosEspera.setColumnSelectionAllowed(true);
+		jScrollPane10.setViewportView(tableEventosEspera);
+		tableEventosEspera.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		eventosEsperaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		eventosEsperaLabel.setText("  Eventos em Espera");
+
+		javax.swing.GroupLayout eventosEsperaPanelLayout = new javax.swing.GroupLayout(eventosEsperaPanel);
+		eventosEsperaPanel.setLayout(eventosEsperaPanelLayout);
+		eventosEsperaPanelLayout.setHorizontalGroup(
+				eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(eventosEsperaPanelLayout.createSequentialGroup().addContainerGap()
+								.addGroup(eventosEsperaPanelLayout
+										.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(eventosEsperaLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457,
+												Short.MAX_VALUE))
+								.addContainerGap()));
+		eventosEsperaPanelLayout.setVerticalGroup(
+				eventosEsperaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(eventosEsperaPanelLayout.createSequentialGroup().addContainerGap()
+								.addComponent(eventosEsperaLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+								.addContainerGap()));
+
+		panelProximosEventos.add(eventosEsperaPanel, "EsperaEventos");
+
+		tableEventosFinalizados.setModel(new EventoFinalizadoTableModel());
+		tableEventosFinalizados.setColumnSelectionAllowed(true);
+		jScrollPane7.setViewportView(tableEventosFinalizados);
+		tableEventosFinalizados.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		eventosFinalizadosLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		eventosFinalizadosLabel.setText("  Eventos Finalizados");
+
+		javax.swing.GroupLayout eventosFinalizadosPanelLayout = new javax.swing.GroupLayout(eventosFinalizadosPanel);
+		eventosFinalizadosPanel.setLayout(eventosFinalizadosPanelLayout);
+		eventosFinalizadosPanelLayout.setHorizontalGroup(eventosFinalizadosPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(eventosFinalizadosPanelLayout.createSequentialGroup().addContainerGap()
+						.addGroup(eventosFinalizadosPanelLayout
+								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+						.addContainerGap()));
+		eventosFinalizadosPanelLayout.setVerticalGroup(
+				eventosFinalizadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(eventosFinalizadosPanelLayout.createSequentialGroup().addContainerGap()
+								.addComponent(eventosFinalizadosLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+								.addContainerGap()));
+
+		panelProximosEventos.add(eventosFinalizadosPanel, "EventosFinalizados");
+
+		novoEventoLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		novoEventoLabel.setText("  Novo Evento");
+
+		botaoConcluirEvento.setText("Concluir");
+		botaoConcluirEvento.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				botaoConcluirEventoActionPerformed(evt);
+			}
+		});
+
+		jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
+
+		comboboxTipoEvento.setModel(new DefaultComboBoxModel<>());
+
+		javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+		jPanel9.setLayout(jPanel9Layout);
+		jPanel9Layout.setHorizontalGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel9Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxTipoEvento,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel9Layout.setVerticalGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel9Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(comboboxTipoEvento, javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Matéria"));
+
+		comboboxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>());
+		comboboxMaterias.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				comboboxMateriasActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+		jPanel10.setLayout(jPanel10Layout);
+		jPanel10Layout.setHorizontalGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel10Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxMaterias,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 66, Short.MAX_VALUE)));
+		jPanel10Layout.setVerticalGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel10Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(comboboxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
+
+		javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+		jPanel11.setLayout(jPanel11Layout);
+		jPanel11Layout.setHorizontalGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel11Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(dateEvento,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel11Layout.setVerticalGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel11Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(dateEvento, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+
+		javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+		jPanel12.setLayout(jPanel12Layout);
+		jPanel12Layout.setHorizontalGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel12Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(campoDescricao,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel12Layout.setVerticalGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel12Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Local"));
+
+		javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+		jPanel13.setLayout(jPanel13Layout);
+		jPanel13Layout.setHorizontalGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel13Layout.createSequentialGroup().addGap(0, 0, 0).addComponent(campoLocal,
+						javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)));
+		jPanel13Layout.setVerticalGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel13Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações"));
+
+		textObservacoes.setColumns(20);
+		textObservacoes.setRows(5);
+		scrollPaneTextObservacoes.setViewportView(textObservacoes);
+
+		javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+		jPanel14.setLayout(jPanel14Layout);
+		jPanel14Layout.setHorizontalGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel14Layout.createSequentialGroup().addContainerGap()
+						.addComponent(scrollPaneTextObservacoes).addContainerGap()));
+		jPanel14Layout.setVerticalGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel14Layout.createSequentialGroup().addContainerGap()
+						.addComponent(scrollPaneTextObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
+
+		javax.swing.GroupLayout novoEventoPanelLayout = new javax.swing.GroupLayout(novoEventoPanel);
+		novoEventoPanel.setLayout(novoEventoPanelLayout);
+		novoEventoPanelLayout.setHorizontalGroup(novoEventoPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(novoEventoPanelLayout.createSequentialGroup().addContainerGap(
+						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGroup(novoEventoPanelLayout
+								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+										novoEventoPanelLayout
+												.createSequentialGroup().addGroup(novoEventoPanelLayout
+														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+														.addComponent(novoEventoLabel,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addGroup(novoEventoPanelLayout.createSequentialGroup()
+																.addGroup(novoEventoPanelLayout
+																		.createParallelGroup(
+																				javax.swing.GroupLayout.Alignment.TRAILING,
+																				false)
+																		.addComponent(jPanel13,
+																				javax.swing.GroupLayout.Alignment.LEADING,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addComponent(jPanel10,
+																				javax.swing.GroupLayout.Alignment.LEADING,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addComponent(jPanel12,
+																				javax.swing.GroupLayout.Alignment.LEADING,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE))
+																.addGap(32, 32, 32)
+																.addGroup(novoEventoPanelLayout
+																		.createParallelGroup(
+																				javax.swing.GroupLayout.Alignment.LEADING)
+																		.addComponent(jPanel9,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addComponent(jPanel11,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.PREFERRED_SIZE))))
+												.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, novoEventoPanelLayout
+										.createSequentialGroup()
+										.addGroup(novoEventoPanelLayout
+												.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+												.addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addGroup(novoEventoPanelLayout.createSequentialGroup()
+														.addGap(0, 0, Short.MAX_VALUE)
+														.addComponent(botaoConcluirEvento)))
+										.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+		novoEventoPanelLayout.setVerticalGroup(novoEventoPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(novoEventoPanelLayout.createSequentialGroup().addGap(61, 61, 61)
+						.addComponent(novoEventoLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(42, 42, 42)
+						.addGroup(novoEventoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+								.addGroup(novoEventoPanelLayout.createSequentialGroup()
+										.addGroup(novoEventoPanelLayout
+												.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+												.addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addGap(18, 18, 18).addComponent(jPanel10,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGap(18, 18, 18)
+						.addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18)
+						.addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(28, 28, 28).addComponent(botaoConcluirEvento).addContainerGap()));
+
+		panelProximosEventos.add(novoEventoPanel, "NovoEvento");
+
+		novaMateriaLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		novaMateriaLabel.setText("Nova Materia");
+
+		botaoConcluirEvento1.setText("Concluir");
+		botaoConcluirEvento1.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				botaoConcluirEvento1ActionPerformed(evt);
+			}
+		});
+
+		jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+
+		campoNomeMateria.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				campoNomeMateriaActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+		jPanel18.setLayout(jPanel18Layout);
+		jPanel18Layout.setHorizontalGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel18Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(campoNomeMateria,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel18Layout.setVerticalGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel18Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(campoNomeMateria, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Período"));
+
+		comboboxPeriodo.setModel(new DefaultComboBoxModel<>());
+
+		javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+		jPanel15.setLayout(jPanel15Layout);
+		jPanel15Layout.setHorizontalGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel15Layout
+						.createSequentialGroup().addGap(0, 0, 0).addComponent(comboboxPeriodo,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+		jPanel15Layout.setVerticalGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel15Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(comboboxPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(0, 0, 0)));
+
+		jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Professor"));
+
+		comboboxProfessor.setModel(new javax.swing.DefaultComboBoxModel<>());
+		comboboxProfessor.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				comboboxProfessorActionPerformed(evt);
+			}
+		});
+
+		novoProfessorButton.setText("Novo");
+		novoProfessorButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				novoProfessorButtonActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+		jPanel16.setLayout(jPanel16Layout);
+		jPanel16Layout.setHorizontalGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel16Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addComponent(comboboxProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 131,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+						.addComponent(novoProfessorButton).addGap(0, 0, 0)));
+		jPanel16Layout.setVerticalGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel16Layout.createSequentialGroup().addGap(0, 0, 0)
+						.addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(comboboxProfessor, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(novoProfessorButton))
+						.addGap(0, 0, 0)));
+
+		jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Carga Horária Semanal"));
+
+		campoCargaHorariaSemanal.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				campoCargaHorariaSemanalActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+		jPanel17.setLayout(jPanel17Layout);
+		jPanel17Layout
+				.setHorizontalGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+								jPanel17Layout.createSequentialGroup()
+										.addGap(0, 0, 0).addComponent(campoCargaHorariaSemanal,
+												javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+										.addGap(0, 0, 0)));
+		jPanel17Layout.setVerticalGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+						jPanel17Layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(
+								campoCargaHorariaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
+
+		jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Horários da Aula"));
+		jPanel20.setLayout(new java.awt.BorderLayout());
+
+		tableHorariosAula.setModel(new HorarioAulaTableModel());
+		jScrollPane2.setViewportView(tableHorariosAula);
+
+		jPanel20.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+		javax.swing.GroupLayout novaMateriaPanelLayout = new javax.swing.GroupLayout(novaMateriaPanel);
+		novaMateriaPanel.setLayout(novaMateriaPanelLayout);
+		novaMateriaPanelLayout.setHorizontalGroup(novaMateriaPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(novaMateriaPanelLayout.createSequentialGroup()
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(novaMateriaLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGroup(novaMateriaPanelLayout
+										.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+										.addComponent(botaoConcluirEvento1)
+										.addGroup(novaMateriaPanelLayout
+												.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+												.addGroup(javax.swing.GroupLayout.Alignment.LEADING,
+														novaMateriaPanelLayout.createSequentialGroup()
+																.addComponent(jPanel18,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		Short.MAX_VALUE)
+																.addComponent(jPanel15,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		javax.swing.GroupLayout.PREFERRED_SIZE))
+												.addComponent(jPanel20, javax.swing.GroupLayout.Alignment.LEADING,
+														javax.swing.GroupLayout.PREFERRED_SIZE, 394,
+														javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addGroup(javax.swing.GroupLayout.Alignment.LEADING,
+														novaMateriaPanelLayout.createSequentialGroup()
+																.addComponent(jPanel16,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		Short.MAX_VALUE)
+																.addComponent(jPanel17,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		javax.swing.GroupLayout.PREFERRED_SIZE)))))
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		novaMateriaPanelLayout.setVerticalGroup(novaMateriaPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(novaMateriaPanelLayout.createSequentialGroup().addGap(61, 61, 61)
+						.addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+								.addGroup(novaMateriaPanelLayout.createSequentialGroup()
+										.addComponent(novaMateriaLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(42, 42, 42)
+										.addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGap(18, 18, 18)
+						.addGroup(novaMateriaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(jPanel16, javax.swing.GroupLayout.Alignment.TRAILING,
+										javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(jPanel17, javax.swing.GroupLayout.Alignment.TRAILING,
+										javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGap(18, 18, 18)
+						.addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 153,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18).addComponent(botaoConcluirEvento1).addContainerGap()));
+
+		panelProximosEventos.add(novaMateriaPanel, "NovaMateria");
+
+		todasMateriasLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		todasMateriasLabel.setText("Matérias");
+
+		tableMaterias.setModel(new MateriaTableModel());
+		tableMaterias.setColumnSelectionAllowed(true);
+		jScrollPane8.setViewportView(tableMaterias);
+		tableMaterias.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		javax.swing.GroupLayout materiasPanelLayout = new javax.swing.GroupLayout(materiasPanel);
+		materiasPanel.setLayout(materiasPanelLayout);
+		materiasPanelLayout.setHorizontalGroup(materiasPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(materiasPanelLayout.createSequentialGroup().addContainerGap()
+						.addGroup(materiasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(todasMateriasLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+						.addContainerGap()));
+		materiasPanelLayout
+				.setVerticalGroup(materiasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(materiasPanelLayout.createSequentialGroup().addContainerGap()
+								.addComponent(todasMateriasLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+								.addContainerGap()));
+
+		panelProximosEventos.add(materiasPanel, "Materias");
+
+		professoresLabel.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+		professoresLabel.setText("Professores");
+
+		tableProfessores.setModel(new ProfessorTableModel());
+		jScrollPane9.setViewportView(tableProfessores);
+		tableProfessores.getColumnModel().getSelectionModel()
+				.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+		javax.swing.GroupLayout professoresPanelLayout = new javax.swing.GroupLayout(professoresPanel);
+		professoresPanel.setLayout(professoresPanelLayout);
+		professoresPanelLayout.setHorizontalGroup(professoresPanelLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(professoresPanelLayout.createSequentialGroup().addContainerGap()
+						.addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(professoresLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+						.addContainerGap()));
+		professoresPanelLayout
+				.setVerticalGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(professoresPanelLayout.createSequentialGroup().addContainerGap()
+								.addComponent(professoresLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+								.addContainerGap()));
+
+		panelProximosEventos.add(professoresPanel, "Professores");
+
+		getContentPane().add(panelProximosEventos, java.awt.BorderLayout.CENTER);
+
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
 	private void checkButtonsColuna(JToggleButton button) {
 		for (Component c : eventoPanel.getComponents()) {
@@ -988,8 +1013,13 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 		novoEvento.setDetalhes(textObservacoes.getText());
 
 		controller.gravaEvento(novoEvento);
-		EventoTableModel model = (EventoTableModel) tableProximosEventos.getModel();
-		model.addRow(novoEvento);
+		if (novoEvento.getDataEvento().getTime() >= new java.util.Date().getTime()) {
+			EventoTableModel model = (EventoTableModel) tableProximosEventos.getModel();
+			model.addRow(novoEvento);
+		} else {
+			EventoEsperaTableModel model = (EventoEsperaTableModel) tableEventosEspera.getModel();
+			model.addRow(novoEvento);
+		}
 
 		limparCamposNovoEvento();
 
@@ -1105,86 +1135,86 @@ public class ModeloMainFrame extends javax.swing.JFrame {
 		// TODO add your handling code here:
 	}// GEN-LAST:event_novoProfessorButtonActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoConcluirEvento;
-    private javax.swing.JButton botaoConcluirEvento1;
-    private javax.swing.JTextField campoCargaHorariaSemanal;
-    private javax.swing.JTextField campoDescricao;
-    private javax.swing.JTextField campoLocal;
-    private javax.swing.JTextField campoNomeMateria;
-    private javax.swing.JComboBox<Materia> comboboxMaterias;
-    private javax.swing.JComboBox<Periodo> comboboxPeriodo;
-    private javax.swing.JComboBox<Professor> comboboxProfessor;
-    private javax.swing.JComboBox<TipoEvento> comboboxTipoEvento;
-    private javax.swing.JPanel cursoPanel;
-    private javax.swing.JLabel dataFinalPeriodoLabel;
-    private com.toedter.calendar.JDateChooser dateEvento;
-    private java.awt.Label diaDaSemanaLabel;
-    private javax.swing.JToggleButton esperaEventoButton;
-    private javax.swing.JPanel eventoPanel;
-    private java.awt.Label eventosEsperaLabel;
-    private javax.swing.JPanel eventosEsperaPanel;
-    private java.awt.Label eventosFinalizadosLabel;
-    private javax.swing.JPanel eventosFinalizadosPanel;
-    private javax.swing.JToggleButton finalizadosEventoButton;
-    private javax.swing.JToggleButton historicoPeriodoButton;
-    private javax.swing.JToggleButton informacoesCursoButton;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JPanel materiaPanel;
-    private javax.swing.JPanel materiasPanel;
-    private javax.swing.JLabel nomeCursoLabel;
-    private javax.swing.JLabel nomeInstituiçãoLabel;
-    private javax.swing.JLabel nomeUsuarioLabel;
-    private javax.swing.JToggleButton novaMateriaButton;
-    private java.awt.Label novaMateriaLabel;
-    private javax.swing.JPanel novaMateriaPanel;
-    private javax.swing.JToggleButton novoEventoButton;
-    private java.awt.Label novoEventoLabel;
-    private javax.swing.JPanel novoEventoPanel;
-    private javax.swing.JToggleButton novoPeriodoButton;
-    private javax.swing.JButton novoProfessorButton;
-    private javax.swing.JPanel panelCabecalho;
-    private javax.swing.JPanel panelColuna;
-    private javax.swing.JPanel panelColunaAulas;
-    private javax.swing.JPanel panelDiaDaSemana;
-    private javax.swing.JPanel panelProximoDiaDaSemana;
-    private javax.swing.JPanel panelProximosEventos;
-    private javax.swing.JPanel periodoPanel;
-    private java.awt.Label professoresLabel;
-    private javax.swing.JToggleButton professoresMateriaButton;
-    private javax.swing.JPanel professoresPanel;
-    private java.awt.Label proximoDiaDaSemanaLabel;
-    private java.awt.Label proximosEventosLabel;
-    private javax.swing.JPanel proximosEventosPanel;
-    private javax.swing.JScrollPane scrollPaneTextObservacoes;
-    private javax.swing.JTable tableAulasDoDia;
-    private javax.swing.JTable tableAulasDoProximoDia;
-    private javax.swing.JTable tableEventosEspera;
-    private javax.swing.JTable tableEventosFinalizados;
-    private javax.swing.JTable tableHorariosAula;
-    private javax.swing.JTable tableMaterias;
-    private javax.swing.JTable tableProfessores;
-    private javax.swing.JTable tableProximosEventos;
-    private javax.swing.JTextArea textObservacoes;
-    private javax.swing.JToggleButton todasMateriaButton;
-    private java.awt.Label todasMateriasLabel;
-    // End of variables declaration//GEN-END:variables
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private javax.swing.JButton botaoConcluirEvento;
+	private javax.swing.JButton botaoConcluirEvento1;
+	private javax.swing.JTextField campoCargaHorariaSemanal;
+	private javax.swing.JTextField campoDescricao;
+	private javax.swing.JTextField campoLocal;
+	private javax.swing.JTextField campoNomeMateria;
+	private javax.swing.JComboBox<Materia> comboboxMaterias;
+	private javax.swing.JComboBox<Periodo> comboboxPeriodo;
+	private javax.swing.JComboBox<Professor> comboboxProfessor;
+	private javax.swing.JComboBox<TipoEvento> comboboxTipoEvento;
+	private javax.swing.JPanel cursoPanel;
+	private javax.swing.JLabel dataFinalPeriodoLabel;
+	private com.toedter.calendar.JDateChooser dateEvento;
+	private java.awt.Label diaDaSemanaLabel;
+	private javax.swing.JToggleButton esperaEventoButton;
+	private javax.swing.JPanel eventoPanel;
+	private java.awt.Label eventosEsperaLabel;
+	private javax.swing.JPanel eventosEsperaPanel;
+	private java.awt.Label eventosFinalizadosLabel;
+	private javax.swing.JPanel eventosFinalizadosPanel;
+	private javax.swing.JToggleButton finalizadosEventoButton;
+	private javax.swing.JToggleButton historicoPeriodoButton;
+	private javax.swing.JToggleButton informacoesCursoButton;
+	private javax.swing.JPanel jPanel10;
+	private javax.swing.JPanel jPanel11;
+	private javax.swing.JPanel jPanel12;
+	private javax.swing.JPanel jPanel13;
+	private javax.swing.JPanel jPanel14;
+	private javax.swing.JPanel jPanel15;
+	private javax.swing.JPanel jPanel16;
+	private javax.swing.JPanel jPanel17;
+	private javax.swing.JPanel jPanel18;
+	private javax.swing.JPanel jPanel20;
+	private javax.swing.JPanel jPanel9;
+	private javax.swing.JScrollPane jScrollPane10;
+	private javax.swing.JScrollPane jScrollPane2;
+	private javax.swing.JScrollPane jScrollPane3;
+	private javax.swing.JScrollPane jScrollPane5;
+	private javax.swing.JScrollPane jScrollPane6;
+	private javax.swing.JScrollPane jScrollPane7;
+	private javax.swing.JScrollPane jScrollPane8;
+	private javax.swing.JScrollPane jScrollPane9;
+	private javax.swing.JPanel materiaPanel;
+	private javax.swing.JPanel materiasPanel;
+	private javax.swing.JLabel nomeCursoLabel;
+	private javax.swing.JLabel nomeInstituiçãoLabel;
+	private javax.swing.JLabel nomeUsuarioLabel;
+	private javax.swing.JToggleButton novaMateriaButton;
+	private java.awt.Label novaMateriaLabel;
+	private javax.swing.JPanel novaMateriaPanel;
+	private javax.swing.JToggleButton novoEventoButton;
+	private java.awt.Label novoEventoLabel;
+	private javax.swing.JPanel novoEventoPanel;
+	private javax.swing.JToggleButton novoPeriodoButton;
+	private javax.swing.JButton novoProfessorButton;
+	private javax.swing.JPanel panelCabecalho;
+	private javax.swing.JPanel panelColuna;
+	private javax.swing.JPanel panelColunaAulas;
+	private javax.swing.JPanel panelDiaDaSemana;
+	private javax.swing.JPanel panelProximoDiaDaSemana;
+	private javax.swing.JPanel panelProximosEventos;
+	private javax.swing.JPanel periodoPanel;
+	private java.awt.Label professoresLabel;
+	private javax.swing.JToggleButton professoresMateriaButton;
+	private javax.swing.JPanel professoresPanel;
+	private java.awt.Label proximoDiaDaSemanaLabel;
+	private java.awt.Label proximosEventosLabel;
+	private javax.swing.JPanel proximosEventosPanel;
+	private javax.swing.JScrollPane scrollPaneTextObservacoes;
+	private javax.swing.JTable tableAulasDoDia;
+	private javax.swing.JTable tableAulasDoProximoDia;
+	private javax.swing.JTable tableEventosEspera;
+	private javax.swing.JTable tableEventosFinalizados;
+	private javax.swing.JTable tableHorariosAula;
+	private javax.swing.JTable tableMaterias;
+	private javax.swing.JTable tableProfessores;
+	private javax.swing.JTable tableProximosEventos;
+	private javax.swing.JTextArea textObservacoes;
+	private javax.swing.JToggleButton todasMateriaButton;
+	private java.awt.Label todasMateriasLabel;
+	// End of variables declaration//GEN-END:variables
 }

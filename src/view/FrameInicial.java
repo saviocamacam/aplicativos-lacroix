@@ -24,7 +24,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableCellEditor;
@@ -552,6 +554,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		tableHorarioAulasMateria.setModel(new HorarioAulaTableModel());
 		tableHorarioAulasMateria.setColumnSelectionAllowed(true);
+		tableHorarioAulasMateria.setRowHeight(30);
 		TableColumn colunaHoraInicial = tableHorarioAulasMateria.getColumnModel().getColumn(2);
 		TableColumn colunaHoraFinal = tableHorarioAulasMateria.getColumnModel().getColumn(3);
 		TableColumn colunaDiaSemana = tableHorarioAulasMateria.getColumnModel().getColumn(0);
@@ -580,6 +583,9 @@ public class FrameInicial extends javax.swing.JFrame {
 				novoHorarioButtonActionPerformed(evt);
 			}
 		});
+
+		spinnerCargaHoraria.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+		spinnerPeriodo.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
 
 		javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
 		jPanel10.setLayout(jPanel10Layout);
@@ -1084,20 +1090,43 @@ public class FrameInicial extends javax.swing.JFrame {
 		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
 		controller.cadastrarAulas(modelAulas.getAulas(), novaMateria);
 
+		MateriaTableModel modelMateria = (MateriaTableModel) tabelaMateriasPeriodo.getModel();
+		modelMateria.addRow(novaMateria);
+
+		limparCamposCadastroMateria();
+
 	}// GEN-LAST:event_buttonConcluirCadastroMateriaActionPerformed
+
+	private void limparCamposCadastroMateria() {
+		campoNomeMateria.setText("");
+		spinnerPeriodo.setValue(0);
+		spinnerCargaHoraria.setValue(0);
+		tableHorarioAulasMateria.setModel(new HorarioAulaTableModel());
+	}
 
 	private void novoHorarioButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_novoHorarioButtonActionPerformed
 		Aula novaAula = new Aula();
+		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
+		modelAulas.addRow(novaAula);
 	}// GEN-LAST:event_novoHorarioButtonActionPerformed
 
 	private void removerHorarioButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_removerHorarioButtonActionPerformed
-		// TODO add your handling code here:
+		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
+		modelAulas.removeRow(tableHorarioAulasMateria.getSelectedRow());
 	}// GEN-LAST:event_removerHorarioButtonActionPerformed
 
 	private void novoProfessorButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_novoProfessorButtonActionPerformed
 		Professor professor = new Professor();
 		professor.setNomeProfessor(JOptionPane.showInputDialog(panelNovaMateria, "Qual o nome do professor?"));
 		professor.setEmail(JOptionPane.showInputDialog(panelNovaMateria, "Qual o email do professor?"));
+
+		if (!isPeriodoCadastrado) {
+			Periodo novoPeriodo = new Periodo();
+			novoPeriodo.setDataDeInicio(new Date(selecDataInicial.getDate().getTime()));
+			novoPeriodo.setDataTermino(new Date(selecDataFinal.getDate().getTime()));
+			controller.cadastrarPeriodo(novoPeriodo);
+			isPeriodoCadastrado = true;
+		}
 
 		controller.cadastrarProfessor(professor);
 		comboboxProfessor.addItem(professor);
@@ -1116,7 +1145,6 @@ public class FrameInicial extends javax.swing.JFrame {
 	}// GEN-LAST:event_removerMateriaActionPerformed
 
 	private void voltarPanelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voltarPanelActionPerformed
-		System.out.println(indexCadastroInicial);
 		CardLayout layout = (CardLayout) panelPrincipal.getLayout();
 		layout.previous(panelPrincipal);
 		if (indexCadastroInicial == 3) {

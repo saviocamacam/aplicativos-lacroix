@@ -26,7 +26,7 @@ class CaretListenerForDate implements CaretListener
         try {
             dateEditor.setCellEditorValue(dateFormat.parse(textField.getText()));
         } catch (ParseException e1) {
-            System.err.println(String.format("Worng date format! [%s] Error is [%s]", textField.getText(), e1.getMessage() ));
+            System.err.println(String.format("Formato de Data Errada! [%s] Erro [%s]", textField.getText(), e1.getMessage() ));
         }
 
     }              

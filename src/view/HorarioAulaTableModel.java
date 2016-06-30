@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,6 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 	
 	public HorarioAulaTableModel() {
 		this.aulas = new ArrayList<>();
-		this.aulas.add(new Aula());
 	}
 	
 	public HorarioAulaTableModel(List<Aula> aulas) {
@@ -72,10 +72,10 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 			aula.setLocal((String)aValue);
 			break;
 		case COL_INICIO:
-			aula.setHoraInicial((Time)aValue);
+			aula.setHoraInicial(new Time(((Date)aValue).getTime()));
 			break;
 		case COL_FIM:
-			aula.setHoraFinal((Time)aValue);
+			aula.setHoraFinal(new Time(((Date)aValue).getTime()));
 			break;
 		default:
 			break;

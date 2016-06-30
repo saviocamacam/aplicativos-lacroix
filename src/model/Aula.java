@@ -34,7 +34,10 @@ public class Aula {
 		this.sala = local;
 	}
 	
-	public Aula() {	}
+	public Aula() {
+		this.horaInicial = new Time(0);
+		this.horaFinal = new Time(0);
+	}
 
 	public int getIdAula() {
 		return idAula;
