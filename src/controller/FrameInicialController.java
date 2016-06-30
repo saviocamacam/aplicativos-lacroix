@@ -101,12 +101,12 @@ public class FrameInicialController {
 		MateriaDao.inserirMateria(novaMateria);
 		MateriaPeriodo.inserirMateriaPeriodo(novaMateria, this.periodos.get(this.periodos.size()-1));
 		MateriaPeriodo.inserirProfessorMateria(professor, novaMateria);
-		MateriaPeriodo.inserirProfessorPeriodo(professor, this.periodos.get(this.periodos.size()-1));
 		materias.add(novaMateria);
 	}
 
 	public void cadastrarProfessor(Professor professor) {
 		ProfessorDao.inserirProfessor(professor);
+		MateriaPeriodo.inserirProfessorPeriodo(professor, this.periodos.get(this.periodos.size()-1));
 		this.professores.add(professor);
 	}
 }

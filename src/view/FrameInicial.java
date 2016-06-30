@@ -1103,6 +1103,14 @@ public class FrameInicial extends javax.swing.JFrame {
 		professor.setNomeProfessor(JOptionPane.showInputDialog(panelNovaMateria, "Qual o nome do professor?"));
 		professor.setEmail(JOptionPane.showInputDialog(panelNovaMateria, "Qual o email do professor?"));
 
+		if (!isPeriodoCadastrado) {
+			Periodo novoPeriodo = new Periodo();
+			novoPeriodo.setDataDeInicio(new Date(selecDataInicial.getDate().getTime()));
+			novoPeriodo.setDataTermino(new Date(selecDataFinal.getDate().getTime()));
+			controller.cadastrarPeriodo(novoPeriodo);
+			isPeriodoCadastrado = true;
+		}
+
 		controller.cadastrarProfessor(professor);
 		comboboxProfessor.addItem(professor);
 
@@ -1120,7 +1128,6 @@ public class FrameInicial extends javax.swing.JFrame {
 	}// GEN-LAST:event_removerMateriaActionPerformed
 
 	private void voltarPanelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voltarPanelActionPerformed
-		System.out.println(indexCadastroInicial);
 		CardLayout layout = (CardLayout) panelPrincipal.getLayout();
 		layout.previous(panelPrincipal);
 		if (indexCadastroInicial == 3) {

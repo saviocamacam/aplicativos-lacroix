@@ -46,11 +46,14 @@ public class EventoDao {
 	public static int updateEvento( Evento evento){
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "UPDATE evento SET idmateria=?,"
-									+ "tipoevento=?,dataevento=?,"
-									+ "descricao=?,detalhes=?,"
-									+ "valornota=?,localevento=?"
-									+ "WHERE idevento=?";
+		String sql = "UPDATE evento SET (idmateria=?,"
+									+ "tipoevento=?,"
+									+ "dataevento=?,"
+									+ "descricao='?',"
+									+ "detalhes='?',"
+									+ "valornota=?,"
+									+ "localevento='?')"
+									+ "WHERE idevento= ?";
 		int numAlteracoes=0;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -64,7 +67,6 @@ public class EventoDao {
 			stmt.setInt(8, evento.getIdEvento() );
 
 			numAlteracoes = stmt.executeUpdate();
-			System.out.println(numAlteracoes);
 			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
