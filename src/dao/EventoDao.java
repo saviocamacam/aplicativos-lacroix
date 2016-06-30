@@ -46,14 +46,15 @@ public class EventoDao {
 	public static int updateEvento( Evento evento){
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "UPDATE evento SET (idmateria=?,"
+		String sql = "UPDATE evento SET idmateria=?,"
 									+ "tipoevento=?,"
 									+ "dataevento=?,"
-									+ "descricao='?',"
-									+ "detalhes='?',"
+									+ "descricao=?,"
+									+ "detalhes=?,"
 									+ "valornota=?,"
-									+ "localevento='?')"
-									+ "WHERE idevento= ?";
+									+ "notarecebida=?,"
+									+ "localevento=?"
+									+ "WHERE idevento=?";
 		int numAlteracoes=0;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -63,8 +64,9 @@ public class EventoDao {
 			stmt.setString(4, evento.getDescricao());
 			stmt.setString(5, evento.getDetalhes());
 			stmt.setFloat(6, evento.getValorNota());
-			stmt.setString(7, evento.getLocalEvento());
-			stmt.setInt(8, evento.getIdEvento() );
+			stmt.setFloat(7, evento.getNotaRecebida());
+			stmt.setString(8, evento.getLocalEvento());
+			stmt.setInt(9, evento.getIdEvento() );
 
 			numAlteracoes = stmt.executeUpdate();
 			
