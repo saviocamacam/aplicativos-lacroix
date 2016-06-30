@@ -24,7 +24,7 @@ public class MateriaDao {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, materia.getIdCurso());
+			stmt.setString(1, materia.getNomeProfessor());
 			stmt.setInt(2, materia.getIdCurso());
 			stmt.setString(3, materia.getNomeMateria());
 			stmt.setInt(4, materia.getPeriodoAssociado());
