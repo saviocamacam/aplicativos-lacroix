@@ -22,7 +22,6 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 	
 	public HorarioAulaTableModel() {
 		this.aulas = new ArrayList<>();
-		this.aulas.add(new Aula());
 	}
 	
 	public HorarioAulaTableModel(List<Aula> aulas) {

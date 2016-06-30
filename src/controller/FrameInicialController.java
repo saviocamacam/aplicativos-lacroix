@@ -92,6 +92,7 @@ public class FrameInicialController {
 		for( Aula aula : aulas ){
 			aula.setIdMateria(novaMateria.getIdMateria());
 			aula.setIdPeriodo(periodos.get(periodos.size()-1).getIdPeriodo());
+			aula.setNomeMateria(novaMateria.getNomeMateria());
 			AulaDao.inserirAula(aula);
 		}
 	}

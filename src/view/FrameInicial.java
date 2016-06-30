@@ -24,7 +24,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableCellEditor;
@@ -582,6 +584,9 @@ public class FrameInicial extends javax.swing.JFrame {
 			}
 		});
 
+		spinnerCargaHoraria.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+		spinnerPeriodo.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+
 		javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
 		jPanel10.setLayout(jPanel10Layout);
 		jPanel10Layout.setHorizontalGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1088,14 +1093,26 @@ public class FrameInicial extends javax.swing.JFrame {
 		MateriaTableModel modelMateria = (MateriaTableModel) tabelaMateriasPeriodo.getModel();
 		modelMateria.addRow(novaMateria);
 
+		limparCamposCadastroMateria();
+
 	}// GEN-LAST:event_buttonConcluirCadastroMateriaActionPerformed
+
+	private void limparCamposCadastroMateria() {
+		campoNomeMateria.setText("");
+		spinnerPeriodo.setValue(0);
+		spinnerCargaHoraria.setValue(0);
+		tableHorarioAulasMateria.setModel(new HorarioAulaTableModel());
+	}
 
 	private void novoHorarioButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_novoHorarioButtonActionPerformed
 		Aula novaAula = new Aula();
+		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
+		modelAulas.addRow(novaAula);
 	}// GEN-LAST:event_novoHorarioButtonActionPerformed
 
 	private void removerHorarioButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_removerHorarioButtonActionPerformed
-		// TODO add your handling code here:
+		HorarioAulaTableModel modelAulas = (HorarioAulaTableModel) tableHorarioAulasMateria.getModel();
+		modelAulas.removeRow(tableHorarioAulasMateria.getSelectedRow());
 	}// GEN-LAST:event_removerHorarioButtonActionPerformed
 
 	private void novoProfessorButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_novoProfessorButtonActionPerformed
