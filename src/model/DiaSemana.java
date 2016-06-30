@@ -27,6 +27,14 @@ public enum DiaSemana {
 		return null;
 	}
 	
+	public static DiaSemana getDiaSemana( String value ){
+		for( DiaSemana dia : values() ){
+			if(dia.diaSemana.equals(value))
+				return dia;
+		}
+		return null;
+	}
+	
 	public String getDiaSemanaBanco() {
 		return this.diaSemana;
 	}

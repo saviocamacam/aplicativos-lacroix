@@ -7,13 +7,13 @@ public class Aula {
 	private int idMateria;
 	private String nomeMateria;
 	private int idPeriodo;
-	private String diaSemana;
+	private DiaSemana diaSemana;
 	private Time horaInicial;
 	private Time horaFinal;
 	private String sala;
 	
 	
-	public Aula(int idMateria, String nomeMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
+	public Aula(int idMateria, String nomeMateria, int idPeriodo, DiaSemana diaSemana, Time horaInicial, Time horaFinal, String local) {
 		this.idMateria = idMateria;
 		this.nomeMateria = nomeMateria;
 		this.idPeriodo = idPeriodo;
@@ -23,7 +23,7 @@ public class Aula {
 		this.sala = local;
 	}
 	
-	public Aula(int idAula, int idMateria, String nomeMateria, int idPeriodo, String diaSemana, Time horaInicial, Time horaFinal, String local) {
+	public Aula(int idAula, int idMateria, String nomeMateria, int idPeriodo, DiaSemana diaSemana, Time horaInicial, Time horaFinal, String local) {
 		this.idAula = idAula;
 		this.idMateria = idMateria;
 		this.nomeMateria = nomeMateria;
@@ -34,6 +34,8 @@ public class Aula {
 		this.sala = local;
 	}
 	
+	public Aula() {	}
+
 	public int getIdAula() {
 		return idAula;
 	}
@@ -73,11 +75,11 @@ public class Aula {
 		this.idPeriodo = idPeriodo;
 	}
 
-	public String getDiaSemana() {
+	public DiaSemana getDiaSemana() {
 		return diaSemana;
 	}
 
-	public void setDiaSemana(String diaSemana) {
+	public void setDiaSemana(DiaSemana diaSemana) {
 		this.diaSemana = diaSemana;
 	}
 

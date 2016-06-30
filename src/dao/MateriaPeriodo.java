@@ -52,13 +52,16 @@ public class MateriaPeriodo {
 		Connection conn = daoHelper.getConnection();
 		String sql = "INSERT INTO materiaPeriodo(idMateria, idPeriodo, nota, estadoMateria) VALUES (?, ?, ?, ?)";
 		
-		PreparedStatement stmt;
+		System.out.println(materia.getIdMateria());
+		System.out.println(periodo.getIdPeriodo());
+		
 		try {
-			stmt = conn.prepareStatement(sql);
+			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, materia.getIdMateria());
 			stmt.setInt(2, periodo.getIdPeriodo());
 			stmt.setFloat(3, materia.getNota());
 			stmt.setString(4, materia.getEstado().getNomeEstado());
+			stmt.executeUpdate();
 			
 			daoHelper.releaseAll(stmt, conn);
 		} catch (SQLException e) {

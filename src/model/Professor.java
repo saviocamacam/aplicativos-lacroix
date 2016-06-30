@@ -16,6 +16,8 @@ public class Professor {
 		this.email = email;
 	}
 	
+	public Professor() {}
+
 	public int getIdProfessor() {
 		return idProfessor;
 	}

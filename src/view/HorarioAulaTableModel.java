@@ -1,11 +1,13 @@
 package view;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import model.Aula;
+import model.DiaSemana;
 import model.Professor;
 
 public class HorarioAulaTableModel extends AbstractTableModel {
@@ -19,6 +21,7 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 	
 	public HorarioAulaTableModel() {
 		this.aulas = new ArrayList<>();
+		this.aulas.add(new Aula());
 	}
 	
 	public HorarioAulaTableModel(List<Aula> aulas) {
@@ -48,6 +51,53 @@ public class HorarioAulaTableModel extends AbstractTableModel {
 	public int getRowCount() {
 		return aulas.size();
 	}
+	
+	public List<Aula> getAulas() {
+		return this.aulas;
+	}
+	
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		return true;
+	};
+	
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		Aula aula = aulas.get(rowIndex);
+		switch (columnIndex) {
+		case COL_DIA:
+			aula.setDiaSemana((DiaSemana)aValue);
+			break;
+		case COL_LOCAL:
+			aula.setLocal((String)aValue);
+			break;
+		case COL_INICIO:
+			aula.setHoraInicial((Time)aValue);
+			break;
+		case COL_FIM:
+			aula.setHoraFinal((Time)aValue);
+			break;
+		default:
+			break;
+		}
+	};
+	
+	
+	@Override
+	public java.lang.Class<?> getColumnClass(int columnIndex) {
+		switch (columnIndex) {
+		case COL_DIA:
+			return DiaSemana.class;
+		case COL_LOCAL:
+			return String.class;
+		case COL_INICIO:
+			return Time.class;
+		case COL_FIM:
+			return Time.class;
+		default:
+			return null;
+		}
+	};
 	
 	@Override
 	public String getColumnName(int column) {

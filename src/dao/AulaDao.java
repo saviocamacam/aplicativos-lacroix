@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Aula;
+import model.DiaSemana;
 
 public class AulaDao {
 	private static DaoHelper daoHelper;
@@ -24,7 +25,7 @@ public class AulaDao {
 			stmt.setInt(1, aula.getIdMateria());
 			stmt.setString(2, aula.getNomeMateria());
 			stmt.setInt(3, aula.getIdPeriodo());
-			stmt.setString(4, aula.getDiaSemana());
+			stmt.setString(4, aula.getDiaSemana().getDiaSemanaBanco());
 			stmt.setTime(5, aula.getHoraInicial());
 			stmt.setTime(6, aula.getHoraFinal());
 			stmt.setString(7, aula.getLocal());
@@ -60,7 +61,7 @@ public class AulaDao {
 								  rs.getInt("idMateria"),
 								  rs.getString("nomeMateria"),
 								  rs.getInt("idperiodo"),
-								  rs.getString("diasemana"),
+								  DiaSemana.getDiaSemana(rs.getString("diasemana")),
 								  rs.getTime("horainicial"),
 								  rs.getTime("horafinal"),
 								  rs.getString("sala")
@@ -90,7 +91,7 @@ public class AulaDao {
 				stmt.setInt(1, aula.getIdMateria());
 				stmt.setString(2, aula.getNomeMateria());
 				stmt.setInt(3, aula.getIdPeriodo());
-				stmt.setString(4, aula.getDiaSemana());
+				stmt.setString(4, aula.getDiaSemana().getDiaSemanaBanco());
 				stmt.setTime(5, aula.getHoraInicial());
 				stmt.setTime(6, aula.getHoraFinal());
 				stmt.setString(7, aula.getLocal());

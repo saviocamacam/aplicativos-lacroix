@@ -65,6 +65,10 @@ public class Materia {
 	}
 	
 
+	public Materia() {
+		this.estado = EstadoMateria.PENDENTE;
+	}
+
 	private void setEstado() {
 		if(this.nota >= 6)
 			this.estado = EstadoMateria.APROVADA;
