@@ -54,6 +54,17 @@ public class Materia {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
+	public Materia(int idMateria, String nomeProfessor, int idCurso, String nomeMateria, int periodoAssociado, int cargaHoraria, String cursadaUltimavez) {
+		this.idMateria = idMateria;
+		this.nomeProfessor = nomeProfessor;
+		this.idCurso = idCurso;
+		this.nomeMateria = nomeMateria;
+		this.periodoAssociado = periodoAssociado;
+		this.cargaHoraria = cargaHoraria;
+		this.cursadaUltimaVez = cursadaUltimavez;
+	}
+	
+
 	private void setEstado() {
 		if(this.nota >= 6)
 			this.estado = EstadoMateria.APROVADA;

@@ -80,6 +80,15 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
 			}
 		});
         
+        campoNomeUsuario.setInputVerifier( new InputVerifier() {
+			
+			@Override
+			public boolean verify(JComponent input) {
+				
+				return false;
+			}
+		});
+        
         javax.swing.GroupLayout panelNomeUsuarioLayout = new javax.swing.GroupLayout(panelNomeUsuario);
         panelNomeUsuario.setLayout(panelNomeUsuarioLayout);
         panelNomeUsuarioLayout.setHorizontalGroup(
