@@ -101,7 +101,7 @@ public class MateriaDao {
 			while(rs.next()) {
 				listaMaterias.add(new Materia(rs.getInt("idMateria"), rs.getString("nomeProfessor"), rs.getInt("idCurso"), rs.getString("nomeMateria"), estado, rs.getInt("periodoAssociado"), rs.getInt("cargaHoraria"), rs.getString("cursadaUltimaVez")));
 			}
-			ResultSet rs2 = null;
+			/*ResultSet rs2 = null;
 			PreparedStatement stmt2 = null;
 			daoHelper.release(rs);
 			daoHelper.release(stmt);
@@ -114,7 +114,7 @@ public class MateriaDao {
 				m.setEstado(estado);
 			}
 			daoHelper.release(rs2);
-			daoHelper.release(stmt2);
+			daoHelper.release(stmt2);*/
 			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,7 +157,7 @@ public class MateriaDao {
 			}
 			daoHelper.release(rs2);
 			daoHelper.release(stmt2);*/
-			daoHelper.releaseAll(rs, stmt, conn); 
+			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +183,6 @@ public class MateriaDao {
 						rs.getString("nomeProfessor"), 
 						rs.getInt("idCurso"), 
 						rs.getString("nomeMateria"),
-						EstadoMateria.DEPENDENTE,
 						rs.getInt("periodoAssociado"), 
 						rs.getInt("cargaHoraria"),
 						rs.getString("cursadaUltimaVez")
@@ -205,8 +204,7 @@ public class MateriaDao {
 			daoHelper.releaseAll(rs, ps, c); 
 			daoHelper.releaseAll(rs, ps, c);
 		}
-		catch(SQLException e)
-		{
+		catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return lista;
