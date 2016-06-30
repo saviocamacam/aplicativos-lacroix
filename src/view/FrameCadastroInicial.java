@@ -1,6 +1,11 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
@@ -80,14 +85,7 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
 			}
 		});
         
-        campoNomeUsuario.setInputVerifier( new InputVerifier() {
-			
-			@Override
-			public boolean verify(JComponent input) {
-				
-				return false;
-			}
-		});
+        
         
         javax.swing.GroupLayout panelNomeUsuarioLayout = new javax.swing.GroupLayout(panelNomeUsuario);
         panelNomeUsuario.setLayout(panelNomeUsuarioLayout);
@@ -458,7 +456,17 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
         }
     }                                           
 
-    private void avancarPanelActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    String pattern = "\\p{Punct}|\\p{Digit}";
+    Pattern r = Pattern.compile(pattern);
+    Matcher m ; 
+    private void avancarPanelActionPerformed(java.awt.event.ActionEvent evt) { 
+    	//checa o textbox do usuario
+    	m = r.matcher( campoNomeUsuario.getText() );
+    	if ( m.find() )
+    	{
+    		JOptionPane.showMessageDialog(null, "Nome Usuário tem caracteres invalidos");
+    		return ;
+    	}
         if( avancarPanel.isEnabled() && screen == 1){
             CardLayout layout = (CardLayout) panelPrincipal.getLayout();
             layout.show(panelPrincipal, "panelInstituicao" );
