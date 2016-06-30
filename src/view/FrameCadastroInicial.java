@@ -1,8 +1,10 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -10,6 +12,7 @@ import java.util.regex.PatternSyntaxException;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FrameCadastroInicial extends javax.swing.JFrame {
@@ -84,6 +87,8 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
 				}
 			}
 		});
+        
+  
         
         
         
@@ -441,7 +446,8 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
         getContentPane().add(panelButtons);
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold> 
+ 
 
     private void voltarPanelActionPerformed(java.awt.event.ActionEvent evt) {                                            
         if( voltarPanel.isEnabled() && screen == 2){
@@ -460,11 +466,29 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
     Pattern r = Pattern.compile(pattern);
     Matcher m ; 
     private void avancarPanelActionPerformed(java.awt.event.ActionEvent evt) { 
-    	//checa o textbox do usuario
+    	//checa JTextFields por caracteres especiais
     	m = r.matcher( campoNomeUsuario.getText() );
     	if ( m.find() )
     	{
-    		JOptionPane.showMessageDialog(null, "Nome Usuário tem caracteres invalidos");
+    		JOptionPane.showMessageDialog(null, "Nome de Usuário tem caracteres invalidos");
+    		return ;
+    	}
+    	m = r.matcher( campoNomeUsuario1.getText() );
+     	if ( m.find() )
+    	{
+    		JOptionPane.showMessageDialog(null, "Nome de Instiuição tem caracteres invalidos");
+    		return ;
+    	}
+     	m = r.matcher( campoRegistroAcademico1.getText() );
+     	if ( m.find() )
+    	{
+    		JOptionPane.showMessageDialog(null, "Nome de Cidade tem caracteres invalidos");
+    		return ;
+    	}
+     	m = r.matcher( campoNomeCurso.getText() );
+     	if ( m.find() )
+    	{
+    		JOptionPane.showMessageDialog(null, "Nome de Curso tem caracteres invalidos");
     		return ;
     	}
         if( avancarPanel.isEnabled() && screen == 1){
@@ -478,7 +502,7 @@ public class FrameCadastroInicial extends javax.swing.JFrame {
             screen = 3;
         }
         else if( avancarPanel.isEnabled() && screen == 3){
-
+        	
         }
     }                                            
 
