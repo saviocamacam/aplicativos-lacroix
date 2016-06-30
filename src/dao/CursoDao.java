@@ -67,7 +67,7 @@ public class CursoDao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				Curso curso = new Curso(rs.getInt("idCurso"), rs.getInt("idInstituicao"), rs.getInt("idUsuario"), Nivel.valueOf(rs.getString("nivel").toUpperCase()), Regime.valueOf(rs.getString("regime").toUpperCase()), rs.getString("nomeCurso"), rs.getInt("qtdPeriodos"));
+				Curso curso = new Curso(rs.getInt("idCurso"), rs.getInt("idInstituicao"), rs.getInt("idUsuario"), Nivel.valueOf(rs.getString("nivel").toUpperCase().replace(" ", "")), Regime.valueOf(rs.getString("regime").toUpperCase()), rs.getString("nomeCurso"), rs.getInt("qtdPeriodos"));
 				ArrayList<Periodo> listaPeriodos = PeriodoDao.listaPeriodos(rs.getInt("idCurso"));
 				curso.setPeriodos(listaPeriodos);
 				listaCursos.add(curso);

@@ -6,13 +6,20 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 import controller.FrameInicialController;
 import dao.DaoHelper;
@@ -37,8 +44,8 @@ public class FrameInicial extends javax.swing.JFrame {
 	 * Creates new form FrameInicial
 	 */
 	public FrameInicial() {
-		initComponents();
 		this.controller = new FrameInicialController();
+		initComponents();
 
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -313,20 +320,7 @@ public class FrameInicial extends javax.swing.JFrame {
 
 		panelDependencias.setMinimumSize(new java.awt.Dimension(820, 510));
 
-		jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
-
-		}, new String[] { "", "Materia", "Cursada última vez" }) {
-			Class[] types = new Class[] { java.lang.Boolean.class, java.lang.String.class, java.lang.String.class };
-			boolean[] canEdit = new boolean[] { true, false, false };
-
-			public Class getColumnClass(int columnIndex) {
-				return types[columnIndex];
-			}
-
-			public boolean isCellEditable(int rowIndex, int columnIndex) {
-				return canEdit[columnIndex];
-			}
-		});
+		jTable1.setModel(new MateriaDependenciaTableModel());
 		jScrollPane1.setViewportView(jTable1);
 
 		labelSetDependencias1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
@@ -872,10 +866,14 @@ public class FrameInicial extends javax.swing.JFrame {
 
 			layout = (CardLayout) this.getContentPane().getLayout();
 			layout.show(this.getContentPane(), "card2");
-
 		} else {
 			layout.next(panelPrincipal);
 			indexCadastroInicial++;
+			if (indexCadastroInicial == 1) {
+				MateriaDependenciaTableModel modelDependencia = new MateriaDependenciaTableModel(
+						controller.getMateriasDependencia());
+				jTable1.setModel(modelDependencia);
+			}
 			voltarPanel.setEnabled(true);
 		}
 	}// GEN-LAST:event_avancarPanelActionPerformed

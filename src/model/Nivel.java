@@ -2,7 +2,7 @@ package model;
 
 public enum Nivel {
 	ENSINOMEDIO("Ensino Medio"),
-	ENSINOTECNICO("Ensino Tenico"),
+	ENSINOTECNICO("Ensino Tecnico"),
 	ENSINOMEDIOTECNICO("Ensino Medio Tecnico"),
 	GRADUACAO("Graduacao"),
 	MESTRADO("Mestrado"),

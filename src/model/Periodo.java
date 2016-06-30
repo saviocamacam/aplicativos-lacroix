@@ -23,6 +23,8 @@ public class Periodo {
 		this.dataDeTermino = dataDeTermino;
 	}
 	
+	public Periodo() { }
+
 	public int getIdCurso() {
 		return idCurso;
 	}

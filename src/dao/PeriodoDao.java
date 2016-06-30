@@ -40,7 +40,7 @@ public class PeriodoDao {
 			stmt.setString(2, periodo.getNomePeriodo());
 			stmt.setDate(3, (Date) periodo.getDataDeInicio());
 			stmt.setDate(4, (Date) periodo.getDataDeTermino());
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
 			periodo.setIdPeriodo(rs.getInt(1));
@@ -79,6 +79,8 @@ public class PeriodoDao {
 		daoHelper = new DaoHelper();
 		Periodo periodo = null;
 		Connection conn = daoHelper.getConnection();
+		System.out.println(idCurso);
+		System.out.println(currentDate);
 		String sql = "select * from periodo where dataTermino > '" + currentDate + "' and idCurso ="  + idCurso;
 		
 		try {
