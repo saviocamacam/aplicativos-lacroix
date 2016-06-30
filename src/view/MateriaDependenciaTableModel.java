@@ -31,16 +31,28 @@ public class MateriaDependenciaTableModel extends AbstractTableModel {
 	
 	public void addRow(Materia m){
 		this.materias.add(m);
+		this.selecionados.add(false);
 		this.fireTableDataChanged();
 	}
 	
 	public void removeRow(int linha){
 		this.materias.remove(linha);
+		this.selecionados.remove(linha);
 		this.fireTableRowsDeleted(linha, linha);
 	}
 
 	public Materia get(int linha){
 		return this.materias.get(linha);
+	}
+	
+	public List<Materia> getMateriasSelecionadas(){
+		List<Materia> materiasSelecionadas = new ArrayList<>();
+		for(int i = 0; i < this.selecionados.size(); i++){
+			if(this.selecionados.get(i)){
+				materiasSelecionadas.add(this.materias.get(i));
+			}
+		}
+		return materiasSelecionadas;
 	}
 
 	@Override

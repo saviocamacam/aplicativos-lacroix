@@ -874,6 +874,11 @@ public class FrameInicial extends javax.swing.JFrame {
 						controller.getMateriasDependencia());
 				jTable1.setModel(modelDependencia);
 			}
+			if (indexCadastroInicial == 2) {
+				MateriaTableModel modelMaterias = new MateriaTableModel(
+						((MateriaDependenciaTableModel) jTable1.getModel()).getMateriasSelecionadas());
+				tabelaMateriasPeriodo.setModel(modelMaterias);
+			}
 			voltarPanel.setEnabled(true);
 		}
 	}// GEN-LAST:event_avancarPanelActionPerformed
