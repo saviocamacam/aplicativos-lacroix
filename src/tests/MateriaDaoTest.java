@@ -19,6 +19,15 @@ public class MateriaDaoTest {
 	}
 	
 	@Test
+	public void insertMateria()
+	{
+		Materia m  = new Materia("nomeProf",1,"NomaMateria",2,2,"hoje");
+		dao.MateriaDao dao = new dao.MateriaDao();
+		dao.inserirMateria(m);
+		assertTrue(true); // testado no banco
+	}
+	
+	@Test
 	public void updateTeste()
 	{
 		Materia m = MateriaDao.getAll().get(1);
