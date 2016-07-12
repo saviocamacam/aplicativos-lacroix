@@ -1,17 +1,17 @@
-drop table if exists usuario cascade;
-drop table if exists instituicao cascade;
-drop table if exists curso cascade;
-drop table if exists periodo cascade;
-drop table if exists professor cascade;
-drop table if exists materia cascade;
-drop table if exists aula cascade;
-drop table if exists evento cascade;
-drop table if exists professorMateria cascade;
-drop table if exists professorPeriodo cascade;
-drop table if exists materiaPeriodo cascade;
+drop table if exists usuario;
+drop table if exists instituicao;
+drop table if exists curso;
+drop table if exists periodo;
+drop table if exists professor;
+drop table if exists materia;
+drop table if exists aula;
+drop table if exists evento;
+drop table if exists professorMateria;
+drop table if exists professorPeriodo;
+drop table if exists materiaPeriodo;
 
 create table if not exists usuario(
-    idUsuario serial,
+    idUsuario integer,
     nomeUsuario varchar(50),
     registro integer,
     dataNascimento date,
@@ -19,14 +19,14 @@ create table if not exists usuario(
 );
 
 create table if not exists instituicao(
-    idInstituicao serial,
+    idInstituicao integer,
     nomeInstituicao varchar(50),
     cidade varchar(50),
     constraint pk_instituicao primary key(idInstituicao)
 );
 create table if not exists curso(
-    idCurso serial,
-    idInstituicao serial not null,
+    idCurso integer,
+    idInstituicao integer not null,
     idUsuario integer not null,
     nivel varchar(50),
     regime varchar(50),
@@ -39,7 +39,7 @@ create table if not exists curso(
 );
 
 create table if not exists periodo(
-    idPeriodo serial,
+    idPeriodo integer,
     nomePeriodo varchar(50),
     idCurso integer not null,
     dataInicio date,
@@ -50,7 +50,7 @@ create table if not exists periodo(
 );
 
 create table if not exists professor(
-    idProfessor serial,
+    idProfessor integer,
     nomeProfessor varchar(40),
     email varchar(40),
 
@@ -58,7 +58,7 @@ create table if not exists professor(
 );
 
 create table if not exists materia(
-    idMateria serial,
+    idMateria integer,
     nomeProfessor varchar(40),
     idCurso integer not null,
     nomeMateria varchar(60),
@@ -71,7 +71,7 @@ create table if not exists materia(
 );
 
 create table if not exists aula(
-    idAula serial,
+    idAula integer,
     idMateria integer not null,
     nomeMateria varchar(50),
     idPeriodo integer not null,
@@ -86,7 +86,7 @@ create table if not exists aula(
 );
 
 create table if not exists evento(
-    idEvento serial,
+    idEvento integer,
     idMateria integer not null,
     tipoEvento varchar(50),
     dataEvento date,

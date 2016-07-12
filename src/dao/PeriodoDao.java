@@ -1,5 +1,6 @@
 package dao;
 
+import java.awt.geom.RectangularShape;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -79,16 +80,16 @@ public class PeriodoDao {
 		daoHelper = new DaoHelper();
 		Periodo periodo = null;
 		Connection conn = daoHelper.getConnection();
-		System.out.println(idCurso);
-		System.out.println(currentDate);
-		String sql = "select * from periodo where dataTermino > '" + currentDate + "' and idCurso ="  + idCurso;
+		String sql = "select * from periodo where dataTermino > " + currentDate + " and idCurso ="  + idCurso;
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			rs.next();
 			periodo = new Periodo(rs.getInt("idPeriodo"), rs.getString("nomePeriodo"), idCurso, rs.getDate("dataInicio"), rs.getDate("dataTermino"));
-			
+			rs.close();
+			stmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

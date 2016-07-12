@@ -1322,7 +1322,6 @@ public class FrameInicial extends javax.swing.JFrame {
 					databaseExists = true;
 				} else {
 					layout.show(frame.getContentPane(), "card2");
-					// TODO: mudar nome para MainPanel
 				}
 				frame.setVisible(true);
 			}

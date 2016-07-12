@@ -20,7 +20,7 @@ public class UsuarioDao {
 	public static void cadastrarUsuario(Usuario usuario) {
 		daoHelper = new DaoHelper();
 		Connection conn = daoHelper.getConnection();
-		String sql = "INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO usuario(nomeUsuario, registro, dataNascimento) VALUES(?, ?, ?);";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -30,9 +30,7 @@ public class UsuarioDao {
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			usuario.setId(rs.getInt("idUsuario"));
-			stmt.close();
-			
+			usuario.setId(rs.getInt(1));
 			daoHelper.releaseAll(rs, stmt, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,11 +65,11 @@ public class UsuarioDao {
 		daoHelper = new DaoHelper();
 		ArrayList<Usuario> lista = new ArrayList<>();
 		Connection c = daoHelper.getConnection();
-		String sql = "SELECT * FROM usuario where "+nomeCampo+" = '"+valorCampo+"'";
+		String sql = "SELECT * FROM usuario where '"+nomeCampo+"' = '"+valorCampo+"'";
 		
 		try{
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
+			Statement ps = c.createStatement();
+			ResultSet rs = ps.executeQuery(sql);
 			while( rs.next() )
 			{
 				Usuario usr = new Usuario(rs.getInt		("idUsuario")	,

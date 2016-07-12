@@ -15,63 +15,64 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DaoHelper {
-	String host = "localhost";
-	String port = "5432";
-	String nomeBancoDados = "lacroixdb";
+	String nomeBancoDados = "lacroix.db";
 	String urlConnection;
-	private String user = "postgres";
-	private String password = "root";
-	
-	public DaoHelper(){
-		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
+
+	public DaoHelper() {
+		this.urlConnection = "jdbc:sqlite:" + nomeBancoDados;
 	}
-	
-	public Connection getConnection(){
-        try {
-           return DriverManager.getConnection(urlConnection, user, password);
-        } catch (SQLException ex) {
-        	throw new RuntimeException(ex);
-        }
+
+	public Connection getConnection() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			return DriverManager.getConnection(urlConnection);
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
-	
-	public void release( PreparedStatement stmt ) throws SQLException{
-    	if( stmt != null && !stmt.isClosed())
-    		try {
-    			stmt.close();
-    			stmt = null;
-    		} catch (SQLException ex) {
-    			Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
-    		}	
-    }
-   
-    public void release( Connection conn ) throws SQLException{
-    	if( conn != null  && !conn.isClosed())
-    		try {
-    			conn.close();
-    			conn = null;
-    		} catch (SQLException ex) {
-    			Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
-    		}
-    }
-    
-    public void release( ResultSet rs ) throws SQLException{
-    	if( rs != null &&  !rs.isClosed())
-    		try {
-    			rs.close();
-    		} catch (SQLException ex) {
-    			Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
-    		}
-  	}
-    
-    public void releaseAll( PreparedStatement stmt, Connection conn ) throws SQLException{
-    	release(stmt);
-    	release(conn);
-    }
-     
-    public void releaseAll( ResultSet rs, PreparedStatement stmt, Connection conn ) throws SQLException {
-    	release(rs);
-    	releaseAll(stmt, conn);
-    }
+
+	public void release(PreparedStatement stmt) throws SQLException {
+		if (stmt != null && !stmt.isClosed())
+			try {
+				stmt.close();
+				stmt = null;
+			} catch (SQLException ex) {
+				Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
+			}
+	}
+
+	public void release(Connection conn) throws SQLException {
+		if (conn != null && !conn.isClosed())
+			try {
+				conn.close();
+				conn = null;
+			} catch (SQLException ex) {
+				Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
+			}
+	}
+
+	public void release(ResultSet rs) throws SQLException {
+		if (rs != null && !rs.isClosed())
+			try {
+				rs.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DaoHelper.class.getName()).log(Level.SEVERE, null, ex);
+			}
+	}
+
+	public void releaseAll(PreparedStatement stmt, Connection conn) throws SQLException {
+		release(stmt);
+		release(conn);
+	}
+
+	public void releaseAll(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+		release(rs);
+		releaseAll(stmt, conn);
+	}
 
 	public void releaseAll(ResultSet rs, Statement stmt, Connection conn) {
 		try {
@@ -83,49 +84,43 @@ public class DaoHelper {
 			e.printStackTrace();
 		}
 	}
-	
-	public boolean checkDBExists(){
-		boolean retorno = false;
-	    try{
-	        Connection conn = DriverManager.getConnection(urlConnection, user, password);
-	        retorno = true;
-	    }
-	    catch(Exception e){
-	    	return false;
-	    }
-	    return retorno;
+
+	public boolean checkDBExists() {
+		try {
+			Connection conn = DriverManager.getConnection(urlConnection);
+			PreparedStatement stmt = conn
+					.prepareStatement("select name from sqlite_master where type='table' and name='usuario'");
+			return stmt.executeQuery().next();
+		} catch (Exception e) {
+			return false;
+		}
 	}
-	
+
 	public void createDatabase() {
 		List<String> linhas = new ArrayList<>();
-		PreparedStatement stmt = null;
-		Statement stmt2 = null;
+		Statement stmt = null;
 		Connection conn;
 		try {
-			linhas = Files.readAllLines( Paths.get("src/dao/banco.sql"));
+			linhas = Files.readAllLines(Paths.get("src/dao/banco.sql"));
 		} catch (IOException e) {
 			System.out.println("Erro na leitura do arquivo de Banco de Dados");
 			e.printStackTrace();
 		}
 		String sql = "";
-		for(String l : linhas) {
+		for (String l : linhas) {
 			sql = sql.concat(l);
 		}
+
 		try {
-			Connection conn2 = DriverManager.getConnection("jdbc:postgresql://" + host + ":" + port + "/", user, password);
-			stmt2 = conn2.createStatement();
-			String sqlCreate = "CREATE DATABASE " + nomeBancoDados;
-      		stmt2.executeUpdate(sqlCreate);
-			releaseAll(stmt, conn2);
-			
-			conn = DriverManager.getConnection(urlConnection, user, password);
-			stmt = conn.prepareStatement(sql);
-			stmt.executeUpdate();
-			releaseAll(stmt, conn);
+			conn = DriverManager.getConnection(urlConnection);
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+			release(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
